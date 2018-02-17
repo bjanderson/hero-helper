@@ -1,0 +1,18 @@
+@import '../../../../styles/_colors.scss';
+
+.app-header-nav {
+  border-bottom: 1px solid grey;
+  // height: 3rem;
+  padding: 0.25rem;
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .main-nav-item {
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

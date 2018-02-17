@@ -1,0 +1,28 @@
+<div class="app-header-nav">
+  <span class="logo">
+    Hero Helper
+  </span>
+
+  <span class="main-nav">
+    <a class="main-nav-item"
+      [routerLink]="['/home']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Home
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/books']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Books
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/sandbox']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Sandbox
+    </a>
+  </span>
+</div>

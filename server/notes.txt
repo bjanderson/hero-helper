@@ -1,0 +1,59 @@
+
+
+proxyconfig = {
+changeOrigin: true,
+context: '/api'
+ignorePath: true,
+secure: false,
+target: 'http://localhost:3001',
+xfwd: true
+}
+
+server.js
+const lowdb = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+const jsonServer = require('json-server')
+const devRoutes = require('./routes')
+const utilMiddleware = require('./routes/util-middleware')
+const dbjs = require('./routes/db')
+const profiledbjs = require('./routes/profiledb')
+const profileAdapter = new FileSync('mocks/profile.json')
+
+const server = jsonServer.create()
+const router = jsonServer.router('mocks/db.json')
+const db = router.db
+const profileDb = lowdb(profileAdapter)
+
+dbjs.setDb(db)
+profiledbjs.setDb(profileDb)
+
+server.use(jsonServer.bodyParser)
+server.use(jsonServer.defaults())
+
+server.use('/api', utilMiddleware.setJsonHeaders, devRoutes)
+
+server.use(jsonServer.rewriter({
+'/api': '/'
+})
+
+server.listen(3001, () => { console.log('JSON Server is running') })
+
+
+
+---
+routes/util-middleware
+
+function setJsonHeaders(req, res, next) {
+try {
+const method = req.method;
+if(['POST', 'PATCH', 'PUT'].indexOf(method) > -1) {
+req.headers['Accept'] = 'application/json';
+req.headers['Content-Type'] = 'application/json';
+}
+} catch (err) {
+console.log('setJsonHeaders - error: ', err);
+}
+next();
+}
+
+module.exports = {setJsonHeaders}

@@ -1,0 +1,17 @@
+
+header {
+  background-color: #e90;
+  grid-area: header;
+}
+
+main {
+  background-color: #9f9;
+  grid-area: main;
+  padding: 0.25rem;
+}
+
+footer {
+  background-color: #ccf;
+  grid-area: footer;
+  text-align: center;
+}
