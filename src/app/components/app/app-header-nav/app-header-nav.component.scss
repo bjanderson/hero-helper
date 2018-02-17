@@ -2,12 +2,30 @@
 
 .app-header-nav {
   border-bottom: 1px solid grey;
-  // height: 3rem;
   padding: 0.25rem;
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &.active-link {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .logo {
     font-size: 2rem;
     font-weight: bold;
+
+    img {
+      // text-shadow: 0px 0px 2px $white;
+      filter: drop-shadow(0px 0px 3px #fff);
+    }
   }
 
   .main-nav-item {

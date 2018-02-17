@@ -1,17 +1,21 @@
+@import '../../../styles/_colors.scss';
 
 header {
-  background-color: #e90;
+  background-color: $blue;
+  color: $white;
   grid-area: header;
 }
 
 main {
-  background-color: #9f9;
+  background-color: $white;
+  color: $black;
   grid-area: main;
   padding: 0.25rem;
 }
 
 footer {
-  background-color: #ccf;
+  background-color: $red;
+  color: $white;
   grid-area: footer;
   text-align: center;
 }

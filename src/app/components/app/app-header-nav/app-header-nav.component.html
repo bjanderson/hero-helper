@@ -1,5 +1,7 @@
 <div class="app-header-nav">
   <span class="logo">
+
+    <img src="/assets/img/usa-shield-28x32.png" alt="logo">
     Hero Helper
   </span>
 
@@ -12,17 +14,24 @@
     </a>
 
     <a class="main-nav-item"
-      [routerLink]="['/books']"
+      [routerLink]="['/heros']"
       [routerLinkActive]="['active-link']"
       [routerLinkActiveOptions]="{exact: true}">
-      Books
+      Heros
     </a>
 
     <a class="main-nav-item"
-      [routerLink]="['/sandbox']"
+      [routerLink]="['/villains']"
       [routerLinkActive]="['active-link']"
       [routerLinkActiveOptions]="{exact: true}">
-      Sandbox
+      Villains
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/admin']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Admin
     </a>
   </span>
 </div>

@@ -13,12 +13,22 @@ const routes: Routes = [{
       redirectTo: 'home',
     },
 
-    // ----- BOOKS ----- //
+    // ----- ADMIN ----- //
     {
-      path: 'books',
+      path: 'admin',
       loadChildren: () => new Promise(resolve => {
         (require as any).ensure([], require => {
-          resolve(require('../books/books.module').BooksModule);
+          resolve(require('../admin/admin.module').AdminModule);
+        });
+      })
+    },
+
+    // ----- HEROS ----- //
+    {
+      path: 'heros',
+      loadChildren: () => new Promise(resolve => {
+        (require as any).ensure([], require => {
+          resolve(require('../heros/heros.module').HerosModule);
         });
       })
     },
@@ -33,12 +43,12 @@ const routes: Routes = [{
       })
     },
 
-    // ----- SANDBOX ----- //
+    // ----- VILLAINS ----- //
     {
-      path: 'sandbox',
+      path: 'villains',
       loadChildren: () => new Promise(resolve => {
         (require as any).ensure([], require => {
-          resolve(require('../sandbox/sandbox.module').SandboxModule);
+          resolve(require('../villains/villains.module').VillainsModule);
         });
       })
     },
