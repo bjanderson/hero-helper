@@ -5,8 +5,5 @@
       "name": "Batman"
     }
   ],
-  "user": {
-    "name": "The Boss"
-  },
-  "count": 1
+  "heroCount": 1
 }

@@ -5,7 +5,7 @@ const db = require('../../db')
 
 function getHero(req, res, next) {
   const id = req.params.id
-  const hero = db.getHero(id)
+  const hero = db.heroDb.get(id)
   res.json(hero)
 }
 
