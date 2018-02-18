@@ -1,34 +1,40 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const path = require('path')
+import lowdb from 'lowdb'
+import FileSync from 'lowdb/adapters/FileSync'
+import path from 'path'
 
 const dbFile = path.resolve('server/data/hero-db.json')
 const adapter = new FileSync(dbFile)
-const db = low(adapter)
+const db = lowdb(adapter)
 
-function init() {
-  // Set some defaults (required if your JSON file is empty)
-  db.defaults({ heros: [], heroCount: 0 })
-    .write()
+export class HeroDb {
 
-  // Add a hero
-  db.get('heros')
-    .push({ id: 1, name: 'Batman'})
-    .write()
+  static create(hero) {
+    return db.get('heros')
+      .push(hero)
+      .write()
+  }
 
-  // Increment count
-  db.update('heroCount', n => n + 1)
-    .write()
-}
+  static delete(id) {
+    return db.get('heros')
+      .remove({ id })
+      .write()
+  }
 
-// init()
+  static get(id) {
+    return db.get('heros')
+      .find({ id })
+      .value()
+  }
 
-function get(id) {
-  return db.get('heros')
-    .find({ id: parseInt(id) })
-    .value()
-}
+  static getAll() {
+    return db.get('heros')
+      .value()
+  }
 
-module.exports = {
-  get
+  static update(hero) {
+    return db.get('heros')
+      .find({ id: hero.id })
+      .assign(hero)
+      .write()
+  }
 }

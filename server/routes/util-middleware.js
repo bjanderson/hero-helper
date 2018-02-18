@@ -1,5 +1,5 @@
 
-function setJsonHeaders(req, res, next) {
+export function setJsonHeaders(req, res, next) {
   try {
     if(['POST', 'PUT', 'PATCH'].indexOf(req.method) > -1) {
       req.headers['Accept'] = 'application/json';
@@ -10,5 +10,3 @@ function setJsonHeaders(req, res, next) {
   }
   next();
 }
-
-module.exports = {setJsonHeaders}

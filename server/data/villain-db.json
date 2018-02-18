@@ -1,9 +1,20 @@
 {
   "villains": [
     {
-      "id": 1,
+      "id": "1",
+      "name": "Tester"
+    },
+    {
+      "id": "4e8b013d-ced4-4d88-893b-ff033c1ce5e1",
       "name": "Joker"
+    },
+    {
+      "id": "9cb88c9c-108c-4cea-a97d-9ab40fcd0636",
+      "name": "Two Face"
+    },
+    {
+      "id": "edc4a6ed-dcbf-4c6a-b597-9ebc62fad02a",
+      "name": "Enigma"
     }
-  ],
-  "vilainCount": 1
+  ]
 }

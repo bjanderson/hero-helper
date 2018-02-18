@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "license": "MIT",
   "private": true,
+  "@std/esm": "all",
   "scripts": {
     "build": "NODE_ENV=production webpack --config config/webpack/config.js",
     "clean:coverage": "rm -rf coverage/",
     "clean:dist": "rm -rf dist/",
     "e2e": "protractor ./config/protractor/config.js",
-    "generate-mock-data": "node server/data/generate.js",
+    "generate-server-data": "node -r @std/esm server/data/generate.js",
     "json-server": "json-server --watch server/db.json --port 3001 --routes server/routes.json",
     "lint": "tslint --format codeFrame --project ./config/tslint/config.json \"src/app/**/*.ts\"; exit 0",
     "prebuild": "npm run clean",
@@ -16,7 +17,7 @@
     "preserve:build": "npm run build",
     "ng": "ng",
     "serve:build": "lite-server -c config/lite-server/config.json",
-    "start:server": "nodemon --watch server --ignore server/data server/server.js",
+    "start:server": "nodemon -r @std/esm --watch server --ignore server/data server/server.js",
     "start": "NODE_ENV=development webpack-dev-server --inline --config config/webpack/config.js --progress --port 3000",
     "test": "karma start ./config/karma/config.js --coverage=true"
   },
@@ -43,6 +44,7 @@
     "@angular/compiler-cli": "5.2.5",
     "@angular/language-service": "5.2.5",
     "@ngtools/webpack": "1.10.0",
+    "@std/esm": "0.21.7",
     "@types/jasmine": "2.8.6",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "9.4.6",
@@ -94,6 +96,7 @@
     "typescript": "2.7.2",
     "uglifyjs-webpack-plugin": "1.2.0",
     "url-loader": "0.6.2",
+    "uuid": "3.2.1",
     "webpack": "3.11.0",
     "webpack-dev-server": "2.11.1"
   }

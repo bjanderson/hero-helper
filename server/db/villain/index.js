@@ -1,34 +1,40 @@
-const low = require('lowdb')
-const FileSync = require('lowdb/adapters/FileSync')
-const path = require('path')
+import low from 'lowdb'
+import FileSync from 'lowdb/adapters/FileSync'
+import path from 'path'
 
 const dbFile = path.resolve('server/data/villain-db.json')
 const adapter = new FileSync(dbFile)
 const db = low(adapter)
 
-function init() {
-  // Set some defaults (required if your JSON file is empty)
-  db.defaults({ villains: [], vilainCount: 0 })
-    .write()
+export class VillainDb {
 
-  // Add a villain
-  db.get('villains')
-    .push({ id: 1, name: 'Joker'})
-    .write()
+  static create(villain) {
+    return db.get('villains')
+      .push(villain)
+      .write()
+  }
 
-  // Increment count
-  db.update('vilainCount', n => n + 1)
-    .write()
-}
+  static delete(id) {
+    return db.get('villains')
+      .remove({ id })
+      .write()
+  }
 
-// init()
+  static get(id) {
+    return db.get('villains')
+      .find({ id })
+      .value()
+  }
 
-function get(id) {
-  return db.get('villains')
-    .find({ id: parseInt(id) })
-    .value()
-}
+  static getAll() {
+    return db.get('villains')
+      .value()
+  }
 
-module.exports = {
-  get
+  static update(villain) {
+    return db.get('villains')
+      .find({ id: villain.id })
+      .assign(villain)
+      .write()
+  }
 }

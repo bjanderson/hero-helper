@@ -1,9 +1,20 @@
 {
   "heros": [
     {
-      "id": 1,
+      "id": "1",
+      "name": "Testman"
+    },
+    {
+      "id": "a7034067-54c7-4be5-99d5-ffa1a21ff7fa",
       "name": "Batman"
+    },
+    {
+      "id": "f7aa96fb-4285-48f7-980e-3ad1a164d6b9",
+      "name": "Superman"
+    },
+    {
+      "id": "3618a6c9-f2c1-41dd-bd6c-f84174d9239e",
+      "name": "Spiderman"
     }
-  ],
-  "heroCount": 1
+  ]
 }

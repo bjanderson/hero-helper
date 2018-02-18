@@ -1,0 +1,538 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+			"name": "hero-helper",
+			"description": "The Hero Helper API",
+			"order": [],
+			"folders": [
+				{
+					"name": "admin",
+					"description": "Hero Helper admin API",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"collection": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"order": [
+						"1963f46f-83c0-89ff-e5f2-5f1d47ab7bea"
+					],
+					"owner": "1432156",
+					"folders_order": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1bbe3be3-571e-4d5b-b56a-08ae9a5fd099",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4852453b-64d3-4ce6-972a-114f0ac6b018",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"createdAt": 1518950596727,
+					"updatedAt": 1518950596727,
+					"id": "c597143d-e297-5c76-a7b7-ee7e6f583d6f",
+					"collection_id": "2834e307-d3ff-b92b-310f-6b20fa24e784"
+				},
+				{
+					"name": "api",
+					"description": "Hero Helper API",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"collection": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"order": [
+						"bb058da4-8326-e094-b76b-723e0693f9d4"
+					],
+					"owner": "1432156",
+					"folders_order": [],
+					"auth": null,
+					"createdAt": 1518951336821,
+					"updatedAt": 1518951336821,
+					"id": "50267bf4-18fa-df73-d660-789a97c3a941",
+					"collection_id": "2834e307-d3ff-b92b-310f-6b20fa24e784"
+				},
+				{
+					"name": "hero",
+					"description": "Hero Helper hero API",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"collection": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"order": [
+						"025d201e-6520-939b-9df6-2be3ae233105",
+						"defd1cda-806c-1956-951e-88ceaed44e25",
+						"7c3a0480-eaab-ebff-8d21-0588fcc15b29",
+						"9ec83441-93c1-4a41-1698-e9bbb25e4309",
+						"61aba809-8057-5020-8e61-3f4b5eab9919"
+					],
+					"owner": "1432156",
+					"folders_order": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "44b9c432-bc4a-4c76-9c09-5357f8b5e79e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fabeffcc-c40e-44ae-a1cb-1db0076813b0",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"createdAt": 1518950607323,
+					"updatedAt": 1518950607323,
+					"id": "6e6cdb02-37fd-a601-3c20-053080b21fbb",
+					"collection_id": "2834e307-d3ff-b92b-310f-6b20fa24e784"
+				},
+				{
+					"name": "villain",
+					"description": "Hero Helper villain API",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"collection": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"order": [
+						"4b215505-93a9-945c-9d47-3cae89481fab",
+						"b8c9002e-f0a1-ce7d-d1bb-8c9413c01fb4",
+						"ef515420-b287-8d41-7815-4c1e32b43b79",
+						"872ec2ae-fb3c-fbf8-5717-1ca7ab2dcbe8",
+						"e02f6afb-7131-292b-bb40-927e930de6dc"
+					],
+					"owner": "1432156",
+					"folders_order": [],
+					"auth": null,
+					"createdAt": 1518950651798,
+					"updatedAt": 1518950651798,
+					"id": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"collection_id": "2834e307-d3ff-b92b-310f-6b20fa24e784"
+				}
+			],
+			"folders_order": [
+				"c597143d-e297-5c76-a7b7-ee7e6f583d6f",
+				"6e6cdb02-37fd-a601-3c20-053080b21fbb",
+				"4964f195-9ff8-1881-1299-640cd53776a4",
+				"50267bf4-18fa-df73-d660-789a97c3a941"
+			],
+			"timestamp": 1518950391748,
+			"synced": false,
+			"remote_id": 0,
+			"owner": "1432156",
+			"sharedWithTeam": false,
+			"subscribed": false,
+			"remoteLink": "",
+			"remoteLinkUpdatedAt": null,
+			"public": false,
+			"createdAt": 1518950391748,
+			"updatedAt": 1518956668234,
+			"write": true,
+			"published": false,
+			"favorite": false,
+			"permissions": {},
+			"syncedPermissions": {},
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "558721de-dea8-4f7c-a889-27342d61606d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "00979a4e-af24-498f-b882-1c8b4a829172",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"variables": [
+				{
+					"key": "protocol",
+					"value": "http",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "host",
+					"value": "localhost",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "port",
+					"value": "3001",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "url",
+					"value": "{{protocol}}://{{host}}:{{port}}",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "api",
+					"value": "{{url}}/api",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "admin",
+					"value": "{{api}}/admin",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "hero",
+					"value": "{{api}}/hero",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				},
+				{
+					"key": "villain",
+					"value": "{{api}}/villain",
+					"description": "",
+					"type": "text",
+					"disabled": false
+				}
+			],
+			"auth": null,
+			"requests": [
+				{
+					"id": "025d201e-6520-939b-9df6-2be3ae233105",
+					"headers": "",
+					"headerData": [],
+					"url": "{{hero}}",
+					"folder": "6e6cdb02-37fd-a601-3c20-053080b21fbb",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518951691253,
+					"name": "/api/hero",
+					"description": "Get all heros",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "1963f46f-83c0-89ff-e5f2-5f1d47ab7bea",
+					"headers": "",
+					"headerData": [],
+					"url": "{{admin}}",
+					"folder": "c597143d-e297-5c76-a7b7-ee7e6f583d6f",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518951692493,
+					"name": "/api/admin",
+					"description": "",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "4b215505-93a9-945c-9d47-3cae89481fab",
+					"headers": "",
+					"headerData": [],
+					"url": "{{villain}}",
+					"folder": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518951671565,
+					"name": "/api/villain",
+					"description": "Get all villains",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "61aba809-8057-5020-8e61-3f4b5eab9919",
+					"headers": "",
+					"headerData": [],
+					"url": "{{hero}}/1",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "DELETE",
+					"data": "",
+					"dataMode": "raw",
+					"version": 2,
+					"auth": null,
+					"time": 1518955715883,
+					"name": "/api/hero/:id",
+					"description": "Update an existing hero with the given request body.",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "7c3a0480-eaab-ebff-8d21-0588fcc15b29",
+					"headers": "Content-Type: application/json\n",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"url": "{{hero}}",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "POST",
+					"data": "{\n\t\"name\": \"New Hero\"\n}",
+					"dataMode": "raw",
+					"auth": null,
+					"time": 1518956030344,
+					"name": "/api/hero",
+					"description": "Create a new Hero from the given request body",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "872ec2ae-fb3c-fbf8-5717-1ca7ab2dcbe8",
+					"headers": "Content-Type: application/json\n",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"url": "{{villain}}",
+					"folder": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "PUT",
+					"data": "{\n\t\"id\": \"1\",\n\t\"name\": \"Updated Villain\"\n}",
+					"dataMode": "raw",
+					"version": 2,
+					"auth": null,
+					"time": 1518956414868,
+					"name": "/api/villain",
+					"description": "Update and existing villain with the given request body.",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "9ec83441-93c1-4a41-1698-e9bbb25e4309",
+					"headers": "Content-Type: application/json\n",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"url": "{{hero}}",
+					"folder": "6e6cdb02-37fd-a601-3c20-053080b21fbb",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "PUT",
+					"data": "{\n\t\"id\": \"1\",\n\t\"name\": \"Updated Hero\"\n}",
+					"dataMode": "raw",
+					"auth": null,
+					"time": 1518956323080,
+					"name": "/api/hero",
+					"description": "Update an existing hero with the given request body.",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "b8c9002e-f0a1-ce7d-d1bb-8c9413c01fb4",
+					"headers": "",
+					"headerData": [],
+					"url": "{{villain}}/1",
+					"folder": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518956561875,
+					"name": "/api/villain/:id",
+					"description": "Get the villain with the given id",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "bb058da4-8326-e094-b76b-723e0693f9d4",
+					"headers": "",
+					"headerData": [],
+					"url": "{{api}}",
+					"folder": "50267bf4-18fa-df73-d660-789a97c3a941",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518951662549,
+					"name": "/api",
+					"description": "",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "defd1cda-806c-1956-951e-88ceaed44e25",
+					"headers": "",
+					"headerData": [],
+					"url": "{{hero}}/1",
+					"folder": "6e6cdb02-37fd-a601-3c20-053080b21fbb",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"version": 2,
+					"auth": null,
+					"time": 1518955717722,
+					"name": "/api/hero/:id",
+					"description": "Get the hero with the given id",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "e02f6afb-7131-292b-bb40-927e930de6dc",
+					"headers": "",
+					"headerData": [],
+					"url": "{{villain}}/1",
+					"queryParams": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"events": [],
+					"auth": null,
+					"method": "DELETE",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"data": null,
+					"dataMode": "params",
+					"name": "/api/villain/:id",
+					"description": "Delete the villain with the given id",
+					"descriptionFormat": "html",
+					"time": 1518956660561,
+					"version": 2,
+					"responses": [],
+					"folder": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"currentHelper": null,
+					"helperAttributes": null
+				},
+				{
+					"id": "ef515420-b287-8d41-7815-4c1e32b43b79",
+					"headers": "Content-Type: application/json\n",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"url": "{{villain}}",
+					"folder": "4964f195-9ff8-1881-1299-640cd53776a4",
+					"queryParams": [],
+					"events": [],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "POST",
+					"data": "{\n\t\"name\": \"New Villain\"\n}",
+					"dataMode": "raw",
+					"version": 2,
+					"auth": null,
+					"time": 1518956580889,
+					"name": "/api/villain",
+					"description": "Create a new Villain from the given request body",
+					"collectionId": "2834e307-d3ff-b92b-310f-6b20fa24e784",
+					"responses": [],
+					"currentHelper": null,
+					"helperAttributes": null
+				}
+			]
+		}
+	],
+	"environments": [],
+	"headerPresets": [],
+	"globals": []
+}
