@@ -17,6 +17,7 @@
 *.launch
 .settings/
 *.sublime-workspace
+test-report.xml
 
 # IDE - VSCode
 .vscode/*

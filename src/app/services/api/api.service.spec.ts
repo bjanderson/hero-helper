@@ -144,7 +144,7 @@ describe('ApiService', function () {
     });
 
     it('calls the mapResponse function', function () {
-      spyOn(service, 'mapResponse');
+      spyOn(service, 'mapResponse').and.returnValue(empty());
       service.mapError();
       expect(service.mapResponse).toHaveBeenCalled();
     });

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { catchError, map} from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+
+import 'rxjs/add/observable/throw';
 
 import { RequestBuilderService } from '../request-builder';
 

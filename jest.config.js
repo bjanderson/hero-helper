@@ -1,5 +1,10 @@
 module.exports = {
-  mapCoverage: true,
+  collectCoverageFrom: [
+    'src/app/**/*.{ts}'
+  ],
+
+  coverageDirectory: 'coverage',
+
   globals: {
     '__TS_CONFIG__': {
       'target': 'es6',
@@ -12,34 +17,22 @@ module.exports = {
     '__TRANSFORM_HTML__': true
   },
 
-  // testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|js)$',
-  testRegex: "(\.)(spec)(\.)(ts)$",
 
-  setupTestFrameworkScriptFile: '<rootDir>/jest/setupJest.ts',
-  transform: {
-    // '^.+\\.(ts|html)$': '<rootDir>/node_modules/jest-preset-angular/preprocessor.js',
-    '^.+\\.(ts|html)$': '<rootDir>/jest/preprocessor.js'
-  },
-  transformIgnorePatterns: [
-    'node_modules/(?!@ngrx)'
-  ],
-  collectCoverageFrom: [
-    'src/app/module/**/*.{ts}',
-    '!src/app/*.{ts}',
-    '!src/app/**/*.{js}',
-    '!src/app/environment/*.{ts}',
-    '!src/app/language/*.{ts}',
-    '!src/app/**/*.module.{ts}',
-    '!src/app/**/*.interface.{ts}',
-    '!src/app/**/*.state.{ts}',
-    '!src/app/**/*.entity.{ts}'
-  ],
+  mapCoverage: true,
+
   moduleFileExtensions: [
     'ts',
     'tsx',
     'js',
     'json'
   ],
+
+  moduleNameMapper: {
+    "\.scss$": "jest/scssStub.js"
+  },
+
+  setupTestFrameworkScriptFile: '<rootDir>/jest/setupJest.ts',
+
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
@@ -47,10 +40,17 @@ module.exports = {
     'src/app/*.{js}',
     'src/app/*.{scss}'
   ],
+
+  testRegex: "(\.)(spec)(\.)(ts)$",
+
   testResultsProcessor: 'jest-sonar-reporter',
-  moduleNameMapper: {
-    // "app/(.*)": "<rootDir>/src/app/$1",
-    // "@common/(.*)": "<rootDir>/src/app/common/$1",
-    "\.scss$": "jest/scssStub.js"
-  }
+
+  transform: {
+    // '^.+\\.(ts|html)$': '<rootDir>/node_modules/jest-preset-angular/preprocessor.js',
+    '^.+\\.(ts|html)$': '<rootDir>/jest/preprocessor.js'
+  },
+
+  transformIgnorePatterns: [
+    'node_modules/(?!@ngrx)'
+  ]
 };
