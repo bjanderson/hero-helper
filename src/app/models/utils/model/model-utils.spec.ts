@@ -27,7 +27,7 @@ describe('ModelUtils', function () {
     })
 
     it('returns true when obj has properties in common with clazz', function () {
-      const obj = {title: 'test'}
+      const obj = {name: 'test'}
       const expected = true
       const result = ModelUtils.hasPropertyOf(Being, obj)
       expect(result).toEqual(expected)
@@ -64,7 +64,7 @@ describe('ModelUtils', function () {
     })
 
     it('returns false when obj does not have all properties in common with clazz', function () {
-      const obj = {title: 'test'}
+      const obj = {name: 'test'}
       const expected = false
       const result = ModelUtils.isInstanceOf(Being, obj)
       expect(result).toEqual(expected)

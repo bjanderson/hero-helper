@@ -25,7 +25,7 @@ describe('models', function () {
         };
 
         let expected = {
-          heroes: [new Hero(obj[0])]
+          heroes: [new Hero(obj.heroes[0])]
         }
 
         let test = new HeroStoreState(obj);

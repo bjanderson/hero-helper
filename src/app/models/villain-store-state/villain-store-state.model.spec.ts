@@ -25,7 +25,7 @@ describe('models', function () {
         };
 
         let expected = {
-          villains: [new Villain(obj[0])]
+          villains: [new Villain(obj.villains[0])]
         }
 
         let test = new VillainStoreState(obj);

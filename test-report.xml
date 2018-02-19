@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/utils/model/model-utils.spec.ts">
+    <testCase name="ModelUtils hasPropertyOf(clazz, obj) returns false when clazz is undefined" duration="8"/>
+    <testCase name="ModelUtils hasPropertyOf(clazz, obj) returns false when obj is undefined" duration="1"/>
+    <testCase name="ModelUtils hasPropertyOf(clazz, obj) returns false when obj does not have any properties in common with clazz" duration="1"/>
+    <testCase name="ModelUtils hasPropertyOf(clazz, obj) returns true when obj has properties in common with clazz" duration="1"/>
+    <testCase name="ModelUtils hasPropertyOf(clazz, obj) returns true when obj is an instance of clazz" duration="0"/>
+    <testCase name="ModelUtils isInstanceOf(clazz, obj) returns false when clazz is undefined" duration="0"/>
+    <testCase name="ModelUtils isInstanceOf(clazz, obj) returns false when obj is undefined" duration="1"/>
+    <testCase name="ModelUtils isInstanceOf(clazz, obj) returns false when obj does not have any properties in common with clazz" duration="0"/>
+    <testCase name="ModelUtils isInstanceOf(clazz, obj) returns false when obj does not have all properties in common with clazz" duration="1"/>
+    <testCase name="ModelUtils isInstanceOf(clazz, obj) returns true when obj is an instance of clazz" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/utils/date/date-utils.spec.ts">
+    <testCase name="DateUtils formatDate(date) returns &quot;Invalid Date&quot; for an invalid date" duration="8"/>
+    <testCase name="DateUtils formatDate(date) returns a displayable date for a number" duration="6"/>
+    <testCase name="DateUtils getDate(date) returns a JavaScript Date if the input is a valid date" duration="1"/>
+    <testCase name="DateUtils getDate(date) returns an empty string if the input is not a valid date" duration="0"/>
+    <testCase name="DateUtils isValidDate(date) returns true when the date is a correct mmddyyyy string" duration="0"/>
+    <testCase name="DateUtils isValidDate(date) returns true when the date is a Date" duration="1"/>
+    <testCase name="DateUtils isValidDate(date) returns true when the date is null" duration="0"/>
+    <testCase name="DateUtils isValidDate(date) returns true when the date is a number" duration="1"/>
+    <testCase name="DateUtils isValidDate(date) returns false when the date is an empty string" duration="0"/>
+    <testCase name="DateUtils isValidDate(date) returns false when the date is NaN" duration="1"/>
+    <testCase name="DateUtils isValidDate(date) returns false when the date is not correctly formatted" duration="0"/>
+    <testCase name="DateUtils isValidDate(date) returns false when the date is not a correct mmddyyyy date" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/utils/array/array-utils.spec.ts">
+    <testCase name="ArrayUtils getArray(objs) returns an empty array when objs is undefined" duration="9"/>
+    <testCase name="ArrayUtils getArray(objs) returns an empty array when objs is null" duration="1"/>
+    <testCase name="ArrayUtils getArray(objs) returns an array of strings objs is a string" duration="1"/>
+    <testCase name="ArrayUtils getArray(objs) returns objs when it is an array" duration="0"/>
+    <testCase name="ArrayUtils getArrayOfModels(clazz, objs) returns an empty array when objs is undefined" duration="0"/>
+    <testCase name="ArrayUtils getArrayOfModels(clazz, objs) returns an empty array when objs is null" duration="1"/>
+    <testCase name="ArrayUtils getArrayOfModels(clazz, objs) returns an array of models when objs is a single model" duration="1"/>
+    <testCase name="ArrayUtils getArrayOfModels(clazz, objs) returns an array of models when objs is an array of models" duration="1"/>
+    <testCase name="ArrayUtils getArrayOfModels(clazz, objs) returns an empty array when objs is not of the given model type" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/hero/hero.store.actions.spec.ts">
+    <testCase name="heroActions HeroActionTypes has an action named LOAD" duration="3"/>
+    <testCase name="heroActions HeroActionTypes has an action named LOAD_FAIL" duration="1"/>
+    <testCase name="heroActions HeroActionTypes has an action named LOAD_SUCCESS" duration="0"/>
+    <testCase name="heroActions LoadAction() sets action.type to LOAD" duration="1"/>
+    <testCase name="heroActions LoadFailAction() sets action.type to LOAD_FAIL" duration="1"/>
+    <testCase name="heroActions LoadFailAction() sets action.payload to the given payload" duration="0"/>
+    <testCase name="heroActions LoadSuccessAction() sets action.type to LOAD_SUCCESS" duration="1"/>
+    <testCase name="heroActions LoadSuccessAction() sets action.payload to the given payload" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/villain/villain.store.actions.spec.ts">
+    <testCase name="villainActions VillainActionTypes has an action named LOAD" duration="3"/>
+    <testCase name="villainActions VillainActionTypes has an action named LOAD_FAIL" duration="0"/>
+    <testCase name="villainActions VillainActionTypes has an action named LOAD_SUCCESS" duration="0"/>
+    <testCase name="villainActions LoadAction() sets action.type to LOAD" duration="1"/>
+    <testCase name="villainActions LoadFailAction() sets action.type to LOAD_FAIL" duration="0"/>
+    <testCase name="villainActions LoadFailAction() sets action.payload to the given payload" duration="1"/>
+    <testCase name="villainActions LoadSuccessAction() sets action.type to LOAD_SUCCESS" duration="0"/>
+    <testCase name="villainActions LoadSuccessAction() sets action.payload to the given payload" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/permissions/permissions.service.spec.ts">
+    <testCase name="PermissionsService initialization constructs" duration="2"/>
+    <testCase name="PermissionsService canAccessRoute(routeId: string): Observable&lt;boolean&gt; calls isInitialized()" duration="2"/>
+    <testCase name="PermissionsService canAccessRoute(routeId: string): Observable&lt;boolean&gt; calls userHasRoutePermissions with the correct value" duration="2"/>
+    <testCase name="PermissionsService isInitialized(): boolean returns false when approvedUserRoutes are null" duration="14"/>
+    <testCase name="PermissionsService isInitialized(): boolean returns false when approvedUserRoutes are an empty array" duration="0"/>
+    <testCase name="PermissionsService isInitialized(): boolean returns true when approvedUserRoutes.length &gt; 0" duration="1"/>
+    <testCase name="PermissionsService userHasRoutePermissions(routeId: string): boolean returns false when the given route is not in the approvedUserRoutes" duration="1"/>
+    <testCase name="PermissionsService userHasRoutePermissions(routeId: string): boolean returns true when the given route is in the approvedUserRoutes" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/request-builder/request-builder.service.spec.ts">
+    <testCase name="RequestBuilderService constructor() constructs" duration="8"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request has a function named buildGetRequest" duration="2"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request calls buildRequestOptions with the correct method and url" duration="4"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request creates the request using the GET method" duration="2"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request creates the request with the given url and the given parameter" duration="1"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request creates the request with the given url and the given parameters" duration="1"/>
+    <testCase name="RequestBuilderService buildGetRequest(url: string, params?: Object): Request creates a jsonp request with the given url" duration="1"/>
+    <testCase name="RequestBuilderService buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions has a function named buildRequestOptions" duration="0"/>
+    <testCase name="RequestBuilderService buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions creates the request using the POST method" duration="1"/>
+    <testCase name="RequestBuilderService buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions creates the request with the given url" duration="0"/>
+    <testCase name="RequestBuilderService buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions creates the request with the given body" duration="1"/>
+    <testCase name="RequestBuilderService buildDeleteRequest(url: string): Request has a function named buildDeleteRequest" duration="1"/>
+    <testCase name="RequestBuilderService buildDeleteRequest(url: string): Request creates the request using the POST method" duration="0"/>
+    <testCase name="RequestBuilderService buildDeleteRequest(url: string): Request creates the request with the given url" duration="1"/>
+    <testCase name="RequestBuilderService buildPostRequest(url: string): Request has a function named buildPostRequest" duration="0"/>
+    <testCase name="RequestBuilderService buildPostRequest(url: string): Request creates the request using the POST method" duration="1"/>
+    <testCase name="RequestBuilderService buildPostRequest(url: string): Request creates the request with the given url" duration="1"/>
+    <testCase name="RequestBuilderService buildPostRequest(url: string): Request creates the request with the given body" duration="0"/>
+    <testCase name="RequestBuilderService buildPutRequest(url: string): Request has a function named buildPutRequest" duration="1"/>
+    <testCase name="RequestBuilderService buildPutRequest(url: string): Request creates the request using the POST method" duration="0"/>
+    <testCase name="RequestBuilderService buildPutRequest(url: string): Request creates the request with the given url" duration="1"/>
+    <testCase name="RequestBuilderService buildPutRequest(url: string): Request creates the request with the given body" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/api-error/api-error.model.spec.ts">
+    <testCase name="ApiError constructor defaults should set the default values when no input object is given" duration="2"/>
+    <testCase name="ApiError constructor defaults should set the default values when an empty input object is given" duration="1"/>
+    <testCase name="ApiError constructor defaults should set all fields as passed into the constructor object" duration="1"/>
+    <testCase name="ApiError constructor defaults should set the errorMessage to the passed in string" duration="0"/>
+    <testCase name="ApiError constructor defaults should set the errorMessage to the message of the passed in Error" duration="1"/>
+    <testCase name="ApiError constructor defaults should set the errorMessage to the errorMessage of the passed in object" duration="0"/>
+    <testCase name="ApiError fields should have all of, and only, the expected fields" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/villain-store-state/villain-store-state.model.spec.ts">
+    <testCase name="models VillainStoreState constructor defaults should set the default values when no input object is given" duration="3"/>
+    <testCase name="models VillainStoreState constructor defaults should set the default values when an empty input object is given" duration="1"/>
+    <testCase name="models VillainStoreState constructor defaults should set all fields as passed into the constructor object" duration="1"/>
+    <testCase name="models VillainStoreState fields should have all of, and only, the expected fields" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/api/api.service.spec.ts">
+    <testCase name="ApiService constructor() constructs" duration="9"/>
+    <testCase name="ApiService delete(url: string, body: any): void should call requestBuilder.buildDeleteRequest with the correct url and body" duration="8"/>
+    <testCase name="ApiService get(url: string, params?: any): void should call requestBuilder.buildGetRequest with the correct url" duration="2"/>
+    <testCase name="ApiService getObservable&lt;TResponse&gt;(request: Request): Observable&lt;TResponse&gt; should have a function named getObservable" duration="0"/>
+    <testCase name="ApiService getObservable&lt;TResponse&gt;(request: Request): Observable&lt;TResponse&gt; should call http.request" duration="2"/>
+    <testCase name="ApiService post(url: string, body: any): void should call requestBuilder.buildPostRequest with the correct url and body" duration="1"/>
+    <testCase name="ApiService put(url: string, body: any): void should call requestBuilder.buildPutRequest with the correct url and body" duration="1"/>
+    <testCase name="ApiService mapError&lt;TResponse&gt;(error: any): Observable&lt;TResponse&gt; calls the mapResponse function" duration="5">
+      <failure message="TypeError: Observable_1.Observable.throw is not a function"><![CDATA[TypeError: Observable_1.Observable.throw is not a function
+    at ApiService.Object.<anonymous>.ApiService.mapError (/home/bj/dev/projects/hero-helper/src/app/services/api/api.service.ts:42:45)
+    at Object.<anonymous> (/home/bj/dev/projects/hero-helper/src/app/services/api/api.service.spec.ts:126:21)
+    at Object.asyncFn (/home/bj/dev/projects/hero-helper/node_modules/jest-jasmine2/build/jasmine_async.js:129:432)
+    at resolve (/home/bj/dev/projects/hero-helper/node_modules/jest-jasmine2/build/queue_runner.js:51:12)
+    at new Promise (<anonymous>)
+    at mapper (/home/bj/dev/projects/hero-helper/node_modules/jest-jasmine2/build/queue_runner.js:40:274)
+    at promise.then (/home/bj/dev/projects/hero-helper/node_modules/jest-jasmine2/build/queue_runner.js:83:39)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:188:7)]]></failure>
+    </testCase>
+    <testCase name="ApiService mapResponse(response: any): any returns response.json() if possible" duration="1"/>
+    <testCase name="ApiService mapResponse(response: any): any returns the given response if response.json() fails" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/hero-store-state/hero-store-state.model.spec.ts">
+    <testCase name="models HeroStoreState constructor defaults should set the default values when no input object is given" duration="3"/>
+    <testCase name="models HeroStoreState constructor defaults should set the default values when an empty input object is given" duration="1"/>
+    <testCase name="models HeroStoreState constructor defaults should set all fields as passed into the constructor object" duration="1"/>
+    <testCase name="models HeroStoreState fields should have all of, and only, the expected fields" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/villain/villain.store.service.spec.ts">
+    <testCase name="VillainStoreService constructor constructs" duration="8"/>
+    <testCase name="VillainStoreService getState() has a function named getState" duration="3"/>
+    <testCase name="VillainStoreService getState() calls store.select()" duration="3"/>
+    <testCase name="VillainStoreService getVillains() has a function named getVillains" duration="1"/>
+    <testCase name="VillainStoreService getVillains() calls store.select()" duration="1"/>
+    <testCase name="VillainStoreService dispatchLoadAction() has a function named dispatchLoadAction" duration="0"/>
+    <testCase name="VillainStoreService dispatchLoadAction() calls dispatchAction()" duration="1"/>
+    <testCase name="VillainStoreService dispatchLoadFailAction(payload: string) has a function named dispatchLoadFailAction" duration="1"/>
+    <testCase name="VillainStoreService dispatchLoadFailAction(payload: string) calls dispatchAction()" duration="1"/>
+    <testCase name="VillainStoreService dispatchLoadSuccessAction(payload: string) has a function named dispatchLoadSuccessAction" duration="1"/>
+    <testCase name="VillainStoreService dispatchLoadSuccessAction(payload: string) calls dispatchAction()" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/hero/hero.store.service.spec.ts">
+    <testCase name="HeroStoreService constructor constructs" duration="8"/>
+    <testCase name="HeroStoreService getState() has a function named getState" duration="2"/>
+    <testCase name="HeroStoreService getState() calls store.select()" duration="3"/>
+    <testCase name="HeroStoreService getHeroes() has a function named getHeroes" duration="1"/>
+    <testCase name="HeroStoreService getHeroes() calls store.select()" duration="1"/>
+    <testCase name="HeroStoreService dispatchLoadAction() has a function named dispatchLoadAction" duration="1"/>
+    <testCase name="HeroStoreService dispatchLoadAction() calls dispatchAction()" duration="1"/>
+    <testCase name="HeroStoreService dispatchLoadFailAction(payload: string) has a function named dispatchLoadFailAction" duration="0"/>
+    <testCase name="HeroStoreService dispatchLoadFailAction(payload: string) calls dispatchAction()" duration="1"/>
+    <testCase name="HeroStoreService dispatchLoadSuccessAction(payload: string) has a function named dispatchLoadSuccessAction" duration="1"/>
+    <testCase name="HeroStoreService dispatchLoadSuccessAction(payload: string) calls dispatchAction()" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/villain/villain.model.spec.ts">
+    <testCase name="models Villain constructor defaults should set the default values when no input object is given" duration="3"/>
+    <testCase name="models Villain constructor defaults should set the default values when an empty input object is given" duration="0"/>
+    <testCase name="models Villain constructor defaults should set all fields as passed into the constructor object" duration="0"/>
+    <testCase name="models Villain fields should have all of, and only, the expected fields" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/being/being.model.spec.ts">
+    <testCase name="models Being constructor defaults should set the default values when no input object is given" duration="3"/>
+    <testCase name="models Being constructor defaults should set the default values when an empty input object is given" duration="1"/>
+    <testCase name="models Being constructor defaults should set all fields as passed into the constructor object" duration="0"/>
+    <testCase name="models Being fields should have all of, and only, the expected fields" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/hero/hero.model.spec.ts">
+    <testCase name="models Hero constructor defaults should set the default values when no input object is given" duration="3"/>
+    <testCase name="models Hero constructor defaults should set the default values when an empty input object is given" duration="1"/>
+    <testCase name="models Hero constructor defaults should set all fields as passed into the constructor object" duration="1"/>
+    <testCase name="models Hero fields should have all of, and only, the expected fields" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/hero/hero.store.reducers.spec.ts">
+    <testCase name="heroReducer returns the given state by default" duration="2"/>
+    <testCase name="heroReducer returns the state with the error added" duration="2"/>
+    <testCase name="heroReducer returns the state with the payload added" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/villain/villain.store.reducers.spec.ts">
+    <testCase name="villainReducer returns the given state by default" duration="3"/>
+    <testCase name="villainReducer returns the state with the error added" duration="1"/>
+    <testCase name="villainReducer returns the state with the payload added" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/auth-guard/auth-guard.service.spec.ts">
+    <testCase name="AuthGuardService initialization constructs" duration="2"/>
+    <testCase name="AuthGuardService canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&lt;boolean&gt; calls permissions.canAccessRoute()" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/page-not-found/page-not-found.component.spec.ts">
+    <testCase name="PageNotFoundComponent constructor() should create the component" duration="2"/>
+    <testCase name="PageNotFoundComponent ngOnInit(): void has a function named ngOnInit" duration="0"/>
+    <testCase name="PageNotFoundComponent ngOnInit(): void does nothing" duration="0"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/global-variables/global-variables.service.spec.ts">
+    <testCase name="GlobalVariablesService should have APP_METADATA defined" duration="2"/>
+    <testCase name="GlobalVariablesService should have HOSTNAME defined" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/hero/hero.service.spec.ts">
+    <testCase name="HeroService constructor constructs" duration="2"/>
+    <testCase name="HeroService get has a function named get" duration="0"/>
+    <testCase name="HeroService get calls api.get()" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/villain/villain.service.spec.ts">
+    <testCase name="VillainService constructor constructs" duration="3"/>
+    <testCase name="VillainService get has a function named get" duration="1"/>
+    <testCase name="VillainService get calls api.get()" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/villains/villains.component.spec.ts">
+    <testCase name="VillainsComponent constructor() should create the component" duration="1"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/app/app-header-nav/app-header-nav.component.spec.ts">
+    <testCase name="AppHeaderNavComponent constructor() should create the component" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/hero/hero.store.effects.spec.ts">
+    <testCase name="HeroEffects constructor has a function named " duration="3"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/sandbox/sandbox.component.spec.ts">
+    <testCase name="SandboxComponent constructor() should create the component" duration="5"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/admin/admin.component.spec.ts">
+    <testCase name="AdminComponent constructor() should create the component" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/services/book/book.service.spec.ts">
+    <testCase name="BookService constructor constructs" duration="12"/>
+    <testCase name="BookService get has a function named get" duration="1"/>
+    <testCase name="BookService get calls api.get()" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/heros/heros.component.spec.ts">
+    <testCase name="HerosComponent constructor() should create the component" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/store/villain/villain.store.effects.spec.ts">
+    <testCase name="VillainEffects constructor has a function named " duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/home/home.component.spec.ts">
+    <testCase name="HomeComponent constructor() should create the component" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/models/payload-action/payload-action.model.spec.ts">
+    <testCase name="PayloadAction sets the type and payload" duration="2"/>
+  </file>
+  <file path="/home/bj/dev/projects/hero-helper/src/app/components/app/app.component.spec.ts">
+    <testCase name="AppComponent constructor constructs" duration="1"/>
+  </file>
+</testExecutions>
