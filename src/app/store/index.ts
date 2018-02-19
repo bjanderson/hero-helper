@@ -1,2 +1,3 @@
 export * from './app';
-export * from './book';
+export * from './hero';
+export * from './villain';

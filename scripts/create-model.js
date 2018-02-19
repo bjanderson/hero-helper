@@ -16,6 +16,7 @@ function createModel() {
   value: string;
 
   constructor(obj?: any) {
+    obj = obj != null ? obj : {};
     this.value = obj != null && obj.value != null ? obj.value : '';
   }
 }

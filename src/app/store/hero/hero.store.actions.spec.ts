@@ -1,29 +1,29 @@
 import {
-  BookActionTypes,
+  HeroActionTypes,
 
   LoadAction,
   LoadFailAction,
   LoadSuccessAction
-} from './book.store.actions';
+} from './hero.store.actions';
 
-describe('bookActions', function () {
-  describe('BookActionTypes', function () {
+describe('heroActions', function () {
+  describe('HeroActionTypes', function () {
     it('has an action named LOAD', function () {
-      expect(BookActionTypes.LOAD).toEqual('[Book] Load');
+      expect(HeroActionTypes.LOAD).toEqual('[Hero] Load');
     });
 
     it('has an action named LOAD_FAIL', function () {
-      expect(BookActionTypes.LOAD_FAIL).toEqual('[Book] Load Fail');
+      expect(HeroActionTypes.LOAD_FAIL).toEqual('[Hero] Load Fail');
     });
 
     it('has an action named LOAD_SUCCESS', function () {
-      expect(BookActionTypes.LOAD_SUCCESS).toEqual('[Book] Load Success');
+      expect(HeroActionTypes.LOAD_SUCCESS).toEqual('[Hero] Load Success');
     });
   });
 
   describe('LoadAction()', function () {
     it('sets action.type to LOAD', function () {
-      const expected: any = '[Book] Load';
+      const expected: any = '[Hero] Load';
       const result: any = new LoadAction().type;
       expect(result).toEqual(expected);
     });
@@ -32,7 +32,7 @@ describe('bookActions', function () {
   describe('LoadFailAction()', function () {
     it('sets action.type to LOAD_FAIL', function () {
       const payload: any = 'test-payload';
-      const expected: any = '[Book] Load Fail';
+      const expected: any = '[Hero] Load Fail';
       const result: any = new LoadFailAction(payload).type;
       expect(result).toEqual(expected);
     });
@@ -48,7 +48,7 @@ describe('bookActions', function () {
   describe('LoadSuccessAction()', function () {
     it('sets action.type to LOAD_SUCCESS', function () {
       const payload: any = 'test-payload';
-      const expected: any = '[Book] Load Success';
+      const expected: any = '[Hero] Load Success';
       const result: any = new LoadSuccessAction(payload).type;
       expect(result).toEqual(expected);
     });

@@ -1,9 +1,8 @@
-import uuid from 'uuid/v4'
+import { Being } from './being'
 
-export class Hero {
+export class Hero extends Being {
   constructor(obj) {
     obj = obj != null ? obj : {}
-    this.id = obj.id != null ? obj.id : uuid()
-    this.name = obj.name != null ? obj.name : ''
+    super(obj)
   }
 }

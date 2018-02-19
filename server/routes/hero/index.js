@@ -17,9 +17,9 @@ function deleteHero(req, res, next) {
   res.status(200).send()
 }
 
-function getAllHeros(req, res, next) {
-  const heros = HeroDb.getAll()
-  res.json(heros)
+function getAllHeroes(req, res, next) {
+  const heroes = HeroDb.getAll()
+  res.json(heroes)
 }
 
 function getHero(req, res, next) {
@@ -36,6 +36,6 @@ function updateHero(req, res, next) {
 
 router.get('/:id', getHero)
 router.delete('/:id', deleteHero)
-router.get('/', getAllHeros)
+router.get('/', getAllHeroes)
 router.post('/', createHero)
 router.put('/', updateHero)

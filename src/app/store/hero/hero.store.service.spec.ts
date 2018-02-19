@@ -1,13 +1,13 @@
-import { LoadAction, LoadFailAction, LoadSuccessAction } from './book.store.actions';
-import { BookStoreService } from './book.store.service';
+import { LoadAction, LoadFailAction, LoadSuccessAction } from './hero.store.actions';
+import { HeroStoreService } from './hero.store.service';
 
-describe('BookStoreService', function () {
-  let service: BookStoreService;
+describe('HeroStoreService', function () {
+  let service: HeroStoreService;
   let store: any = {select: () => undefined};
 
   describe('constructor', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
     it('constructs', function () {
@@ -17,7 +17,7 @@ describe('BookStoreService', function () {
 
   describe('getState()', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
     it('has a function named getState', function () {
@@ -31,25 +31,25 @@ describe('BookStoreService', function () {
     });
   });
 
-  describe('getBooks()', function () {
+  describe('getHeroes()', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
-    it('has a function named getBooks', function () {
-      expect(typeof service.getBooks).toEqual('function');
+    it('has a function named getHeroes', function () {
+      expect(typeof service.getHeroes).toEqual('function');
     });
 
     it('calls store.select()', function () {
       spyOn(store, 'select').and.returnValue(null);
-      service.getBooks();
-      expect(store.select).toHaveBeenCalledWith(service.booksSelector);
+      service.getHeroes();
+      expect(store.select).toHaveBeenCalledWith(service.heroesSelector);
     });
   });
 
   describe('dispatchLoadAction()', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
     it('has a function named dispatchLoadAction', function () {
@@ -65,7 +65,7 @@ describe('BookStoreService', function () {
 
   describe('dispatchLoadFailAction(payload: string)', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
     it('has a function named dispatchLoadFailAction', function () {
@@ -82,7 +82,7 @@ describe('BookStoreService', function () {
 
   describe('dispatchLoadSuccessAction(payload: string)', function () {
     beforeEach(() => {
-      service = new BookStoreService(store);
+      service = new HeroStoreService(store);
     });
 
     it('has a function named dispatchLoadSuccessAction', function () {

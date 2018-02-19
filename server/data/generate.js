@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-import { getHeros } from './heros'
+import { getHeroes } from './heroes'
 import { getVillains } from './villains'
 
 const heroDbFile = path.resolve('server/data/hero-db.json')
@@ -10,16 +10,16 @@ const villainDbFile = path.resolve('server/data/villain-db.json')
 /////////////////////////////////////
 
 console.log('Generating data...')
-generateHeros()
+generateHeroes()
 generateVillains()
 console.log('Done generating data.')
 
 /////////////////////////////////////
 
-function generateHeros() {
-  console.log(`  Generating heros data...`)
+function generateHeroes() {
+  console.log(`  Generating heroes data...`)
   const data = {
-    heros: getHeros()
+    heroes: getHeroes()
   }
   writeToFile(heroDbFile, JSON.stringify(data, null, 2))
 }

@@ -1,38 +1,34 @@
-import { ApiError } from '../api-error';
-import { Book } from '../book';
+import { Villain } from '../villain';
 
-import { BookStoreState } from './book-store-state.model';
+import { VillainStoreState } from './villain-store-state.model';
 
 function testDefaults(obj: any) {
-  expect(obj.books).toEqual([]);
-  expect(obj.error).toBeNull();
+  expect(obj.villains).toEqual([]);
 }
 
 describe('models', function () {
-  describe('BookStoreState', function () {
+  describe('VillainStoreState', function () {
     describe('constructor defaults', function () {
       it('should set the default values when no input object is given', function () {
-        let obj = new BookStoreState();
+        let obj = new VillainStoreState();
         testDefaults(obj);
       });
 
       it('should set the default values when an empty input object is given', function () {
-        let obj = new BookStoreState({});
+        let obj = new VillainStoreState({});
         testDefaults(obj);
       });
 
       it('should set all fields as passed into the constructor object', function () {
         let obj = {
-          books: [{title: 'test string 1'}],
-          error: {errorMessage: 'test error'}
+          villains: [{name: 'test villain'}]
         };
 
         let expected = {
-          books: [new Book({title: 'test string 1'})],
-          error: new ApiError({errorMessage: 'test error'})
-        };
+          villains: [new Villain(obj[0])]
+        }
 
-        let test = new BookStoreState(obj);
+        let test = new VillainStoreState(obj);
 
         for (let field of Object.keys(obj)) {
           expect(test[field]).toEqual(expected[field]);
@@ -42,10 +38,9 @@ describe('models', function () {
 
     describe('fields', function () {
       it('should have all of, and only, the expected fields', function () {
-        let test = new BookStoreState();
+        let test = new VillainStoreState();
         expect(Object.keys(test)).toEqual([
-          'books',
-          'error'
+          'villains'
         ]);
       });
     });

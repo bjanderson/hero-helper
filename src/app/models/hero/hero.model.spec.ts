@@ -1,30 +1,30 @@
-import { Book } from './book.model';
+import { Hero } from './hero.model';
 
 function testDefaults(obj: any) {
-  expect(obj.id).toEqual(0);
-  expect(obj.title).toEqual('');
+  expect(obj.id).toEqual('');
+  expect(obj.name).toEqual('');
 }
 
 describe('models', function () {
-  describe('Book', function () {
+  describe('Hero', function () {
     describe('constructor defaults', function () {
       it('should set the default values when no input object is given', function () {
-        let obj = new Book();
+        let obj = new Hero();
         testDefaults(obj);
       });
 
       it('should set the default values when an empty input object is given', function () {
-        let obj = new Book({});
+        let obj = new Hero({});
         testDefaults(obj);
       });
 
       it('should set all fields as passed into the constructor object', function () {
         let obj = {
-          id: 1,
-          title: 'test string 1'
+          id: 'test string 1',
+          name: 'test string 2'
         };
 
-        let test = new Book(obj);
+        let test = new Hero(obj);
 
         for (let field of Object.keys(obj)) {
           expect(test[field]).toEqual(obj[field]);
@@ -34,10 +34,10 @@ describe('models', function () {
 
     describe('fields', function () {
       it('should have all of, and only, the expected fields', function () {
-        let test = new Book();
+        let test = new Hero();
         expect(Object.keys(test)).toEqual([
           'id',
-          'title'
+          'name'
         ]);
       });
     });

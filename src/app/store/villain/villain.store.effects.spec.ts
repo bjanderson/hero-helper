@@ -1,15 +1,15 @@
 import { empty } from 'rxjs/observable/empty';
 
-import { BookEffects } from './book.store.effects';
+import { VillainEffects } from './villain.store.effects';
 
-describe('BookEffects', function () {
-  let effects: BookEffects;
+describe('VillainEffects', function () {
+  let effects: VillainEffects;
   let actions$: any = empty();
-  let bookService: any = { get: empty() };
+  let villainService: any = { get: empty() };
 
   describe('constructor', function () {
     beforeEach(() => {
-      effects = new BookEffects(actions$, bookService);
+      effects = new VillainEffects(actions$, villainService);
     });
 
     it('has a function named ', function () {

@@ -1,6 +1,6 @@
 import { Hero } from '../models'
 
-export function getHeros() {
+export function getHeroes() {
   return [
     new Hero({id: "1", name: 'Testman'}),
     new Hero({name: 'Batman'}),
