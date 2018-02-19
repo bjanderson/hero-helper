@@ -4,7 +4,17 @@ import { ModelUtils } from './model-utils'
 
 describe('ModelUtils', function () {
 
+  describe('getString()', function () {
+    it('has a function named getString', function () {
+      expect(typeof ModelUtils.getString).toEqual('function');
+    });
+  });
+
   describe('hasPropertyOf(clazz, obj)', function () {
+    it('has a function named hasPropertyOf', function () {
+      expect(typeof ModelUtils.hasPropertyOf).toEqual('function');
+    });
+
     it('returns false when clazz is undefined', function () {
       const obj = {}
       const expected = false
@@ -42,6 +52,10 @@ describe('ModelUtils', function () {
   })
 
   describe('isInstanceOf(clazz, obj)', function () {
+    it('has a function named isInstanceOf', function () {
+      expect(typeof ModelUtils.isInstanceOf).toEqual('function');
+    });
+
     it('returns false when clazz is undefined', function () {
       const obj = {}
       const expected = false
