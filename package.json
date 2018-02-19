@@ -5,20 +5,19 @@
   "private": true,
   "@std/esm": "all",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config config/webpack/config.js",
+    "build": "NODE_ENV=production webpack --config webpack/config.js",
     "clean:coverage": "rm -rf coverage/",
     "clean:dist": "rm -rf dist/",
-    "e2e": "protractor ./config/protractor/config.js",
+    "e2e": "protractor protractor-config.js",
     "generate-server-data": "node -r @std/esm server/data/generate.js",
-    "json-server": "json-server --watch server/db.json --port 3001 --routes server/routes.json",
-    "lint": "tslint --format codeFrame --project ./config/tslint/config.json \"src/app/**/*.ts\"; exit 0",
-    "prebuild": "npm run clean",
+    "lint": "tslint --format codeFrame --project tslint-config.json \"src/app/**/*.ts\"; exit 0",
+    "prebuild": "npm run clean:dist",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
     "preserve:build": "npm run build",
     "ng": "ng",
-    "serve:build": "lite-server -c config/lite-server/config.json",
+    "serve:build": "lite-server -c bs-config.json",
     "start:server": "nodemon -r @std/esm --watch server --ignore server/data server/server.js",
-    "start": "NODE_ENV=development webpack-dev-server --inline --config config/webpack/config.js --progress --port 3000",
+    "start": "NODE_ENV=development webpack-dev-server --inline --config webpack/config.js --progress --port 3000",
     "test": "karma start ./config/karma/config.js --coverage=true"
   },
   "dependencies": {
@@ -35,7 +34,6 @@
     "@ngrx/effects": "5.1.0",
     "@ngrx/router-store": "5.0.1",
     "@ngrx/store": "5.1.0",
-    "@ngrx/store-devtools": "5.1.0",
     "core-js": "2.5.3",
     "rxjs": "5.5.6",
     "zone.js": "0.8.20"
@@ -43,6 +41,7 @@
   "devDependencies": {
     "@angular/compiler-cli": "5.2.5",
     "@angular/language-service": "5.2.5",
+    "@ngrx/store-devtools": "5.1.0",
     "@ngtools/webpack": "1.10.0",
     "@std/esm": "0.21.7",
     "@types/jasmine": "2.8.6",
