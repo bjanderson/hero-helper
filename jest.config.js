@@ -22,21 +22,26 @@ module.exports = {
 
   moduleFileExtensions: [
     'ts',
-    'tsx',
     'js',
     'json'
   ],
 
   moduleNameMapper: {
-    "\.scss$": "jest/scssStub.js"
+    "\(.*)$.component.scss": "jest/scssStub.js"
   },
 
   setupTestFrameworkScriptFile: '<rootDir>/jest/setupJest.ts',
 
   testPathIgnorePatterns: [
-    '/node_modules/',
-    '/dist/',
-    '/e2e/',
+    'config/',
+    'coverage/',
+    'dist/',
+    'e2e/',
+    'jest/',
+    'node_modules/',
+    'scripts/',
+    'server/',
+    'webpack/',
     'src/app/*.{js}',
     'src/app/*.{scss}'
   ],
@@ -46,7 +51,6 @@ module.exports = {
   testResultsProcessor: 'jest-sonar-reporter',
 
   transform: {
-    // '^.+\\.(ts|html)$': '<rootDir>/node_modules/jest-preset-angular/preprocessor.js',
     '^.+\\.(ts|html)$': '<rootDir>/jest/preprocessor.js'
   },
 

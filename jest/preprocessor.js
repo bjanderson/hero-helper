@@ -1,26 +1,3 @@
-/* const tsc = require('typescript');
-const tsConfig = require('./tsconfig.json');
-
-module.exports = {
-  process(src, path) {
-    /* if (src.match(/scss/)) {
-      console.log('src: ', src);
-    } * /
-    if (path.match(/\.[css|less|scss]/)) {
-      return '';
-    } else if (path.endsWith('.ts')) {
-      return tsc.transpile(
-        src,
-        tsConfig.compilerOptions,
-        path,
-        []
-      );
-    }
-    return src;
-  },
-};
- */
-
 const process = require('ts-jest/preprocessor.js').process;
 const TEMPLATE_URL_REGEX = /templateUrl:\s*('|")(\.\/){0,}(.*)('|")/g;
 const STYLE_URLS_REGEX = /styleUrls:\s*\[\s*((?:'|").*\s*(?:'|")).*\s*.*\]/g;

@@ -16,7 +16,12 @@
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "types": ["jasmine"]
-  }
+    ]
+  },
+
+  "exclude": [
+    "node_modules",
+    "e2e",
+    "**/*.spec.ts"
+  ]
 }

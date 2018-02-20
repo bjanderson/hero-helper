@@ -1,5 +1,13 @@
 export class ModelUtils {
 
+  static getNumber(value: any, defaultValue: number = 0) {
+    let num = value != null ? Number(value) : defaultValue;
+    if (isNaN(num)) {
+      num = defaultValue;
+    }
+    return num;
+  }
+
   static getString(value: any, defaultValue: string = '') {
     let str = value != null ? value.toString() : defaultValue;
     if (str.indexOf('[object Object]') > -1) {

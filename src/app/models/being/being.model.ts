@@ -1,3 +1,5 @@
+import { Utils } from '../utils';
+
 export class Being {
 
   id: string;
@@ -5,7 +7,7 @@ export class Being {
 
   constructor(obj?: any) {
     obj = obj != null ? obj : {};
-    this.id = obj != null && obj.id != null ? obj.id : '';
-    this.name = obj != null && obj.name != null ? obj.name : '';
+    this.id = Utils.model.getString(obj.id);
+    this.name = Utils.model.getString(obj.name);
   }
 }
