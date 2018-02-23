@@ -8,6 +8,7 @@ import { setJsonHeaders } from './routes/util-middleware'
 const server = express()
 
 server.use(morgan(':method :url :status - :response-time ms'))
+
 server.use(bodyParser.json())
 
 server.use('/api', setJsonHeaders, router)
