@@ -33,10 +33,6 @@ export class RouterEffects {
   @Effect({ dispatch: false })
   logTransition$: Observable<void> = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
-    filter((action: RouterNavigationAction<any>) => {
-      console.log('logTransition$ - action: ', action);
-      return true;
-    }),
     map((action: any) => action.payload),
     map((payload: RouterNavigationPayload<any>) => console.info('navigated to ' + payload.routerState.url))
   );
@@ -44,10 +40,7 @@ export class RouterEffects {
   @Effect({ dispatch: false })
   navigate$ = this.actions$.pipe(
     ofType(RouterActionTypes.GO),
-    map((action: GoAction) => {
-      console.log('navigate$ - GoAction - action: ', action);
-      return action.payload;
-    }),
+    map((action: GoAction) => action.payload),
     tap((payload: RouteGoPayload) => this.router.navigate(payload.path, {
       queryParams: payload.queryParams,
       ...payload.extras
@@ -57,35 +50,21 @@ export class RouterEffects {
   @Effect({ dispatch: false })
   navigateBack$ = this.actions$.pipe(
     ofType(RouterActionTypes.BACK),
-    map((action: BackAction) => {
-      console.log('navigateBack$ - BackAction - action: ', action);
-      return action.payload;
-    }),
     tap(() => this.location.back()));
 
   @Effect({ dispatch: false })
   navigateForward$ = this.actions$.pipe(
     ofType(RouterActionTypes.FORWARD),
-    map((action: ForwardAction) => {
-      console.log('navigateForward$ - ForwardAction - action: ', action);
-      return action.payload;
-    }),
     tap(() => this.location.forward())
   );
 
   @Effect({ dispatch: false }) heroRouted = this.actions$.pipe(
-    this.ofRoute('heros'),
-    map((x: any) => {
-      console.log('heroRouted - x: ', x);
-    }),
+    this.ofRoute('heroes'),
     tap(() => this.heroStoreService.dispatchLoadAction())
   )
 
   @Effect({ dispatch: false }) villainRouted = this.actions$.pipe(
     this.ofRoute('villains'),
-    map((x: any) => {
-      console.log('villainRouted - x: ', x);
-    }),
     tap(() => this.villainStoreService.dispatchLoadAction())
   )
 
@@ -93,7 +72,6 @@ export class RouterEffects {
     this.router.events.pipe(
       filter(event => event instanceof ActivationEnd)
     ).subscribe((event: ActivationEnd) => {
-      console.log('listenToRouter - event: ', event);
       return this.routerStoreService.dispatchRouteChangeAction({
         params: { ...event.snapshot.params },
         path: event.snapshot.routeConfig.path
@@ -102,7 +80,6 @@ export class RouterEffects {
   }
 
   ofRoute(route: string | string[]) {
-    console.log('ofRoute - route: ', route);
     return filter((action: PayloadAction) => {
 
       const isRouteAction = action.type === RouterActionTypes.ROUTE_CHANGE;

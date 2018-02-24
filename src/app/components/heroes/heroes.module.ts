@@ -3,20 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HerosComponent } from './heros.component';
+import { HeroesComponent } from './heroes.component';
 
 export const routes: Routes = [{
   path: '',
-  component: HerosComponent
+  component: HeroesComponent
 }];
 
 @NgModule({
   declarations: [
-    HerosComponent
+    HeroesComponent
   ],
 
   exports: [
-    HerosComponent
+    HeroesComponent
   ],
 
   imports: [
@@ -25,4 +25,4 @@ export const routes: Routes = [{
     RouterModule.forChild(routes)
   ]
 })
-export class HerosModule {}
+export class HeroesModule {}

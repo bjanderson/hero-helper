@@ -15,22 +15,6 @@ describe('HeroStoreService', function () {
     });
   });
 
-  describe('getState()', function () {
-    beforeEach(() => {
-      service = new HeroStoreService(store);
-    });
-
-    it('has a function named getState', function () {
-      expect(typeof service.getState).toEqual('function');
-    });
-
-    it('calls store.select()', function () {
-      spyOn(store, 'select').and.returnValue(null);
-      service.getState();
-      expect(store.select).toHaveBeenCalledWith(service.stateSelector);
-    });
-  });
-
   describe('getHeroes()', function () {
     beforeEach(() => {
       service = new HeroStoreService(store);

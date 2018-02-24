@@ -1,3 +1,10 @@
 <div class="villains">
   Villains Component
+
+  <ul>
+    <li *ngFor="let villain of villains$ | async">
+      {{villain.name}}
+    </li>
+  </ul>
+
 </div>

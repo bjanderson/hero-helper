@@ -282,14 +282,9 @@ import { LoadAction, LoadFailAction, LoadSuccessAction } from './${config.name}.
 @Injectable()
 export class ${config.pascal}StoreService extends AppStoreService {
   ${config.camel}s = createFeatureSelector<${config.pascal}StoreState>('${config.camel}s');
-  stateSelector = createSelector(this.${config.camel}s, this.getState);
-  ${config.camel}sSelector = createSelector(this.stateSelector, this.getProperty('${config.camel}s'));
+  ${config.camel}sSelector = createSelector(this.${config.camel}s, this.getProperty('${config.camel}s'));
 
   constructor(public store: Store<${config.pascal}StoreState>) { super(); }
-
-  getState() {
-    return this.store.select(this.stateSelector);
-  }
 
   get${config.pascal}s() {
     return this.store.select(this.${config.camel}sSelector);
@@ -326,22 +321,6 @@ describe('${config.pascal}StoreService', function () {
 
     it('constructs', function () {
       expect(service).toBeDefined();
-    });
-  });
-
-  describe('getState()', function () {
-    beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
-    });
-
-    it('has a function named getState', function () {
-      expect(typeof service.getState).toEqual('function');
-    });
-
-    it('calls store.select()', function () {
-      spyOn(store, 'select').and.returnValue(null);
-      service.getState();
-      expect(store.select).toHaveBeenCalledWith(service.stateSelector);
     });
   });
 

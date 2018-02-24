@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 
+import { VillainStoreService } from '../../store';
+
 @Component({
   selector: 'villains',
   styles: [require('./villains.component.scss')],
   template: require('./villains.component.html'),
 })
 export class VillainsComponent {
-  constructor() {}
+
+  villains$ = this.villainStoreService.getVillains();
+
+  constructor(
+    private villainStoreService: VillainStoreService
+  ) {}
 }

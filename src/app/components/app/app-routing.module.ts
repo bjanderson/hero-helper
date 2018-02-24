@@ -25,10 +25,10 @@ const routes: Routes = [{
 
     // ----- HEROS ----- //
     {
-      path: 'heros',
+      path: 'heroes',
       loadChildren: () => new Promise(resolve => {
         (require as any).ensure([], require => {
-          resolve(require('../heros/heros.module').HerosModule);
+          resolve(require('../heroes/heroes.module').HeroesModule);
         });
       })
     },

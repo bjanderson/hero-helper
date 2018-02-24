@@ -10,14 +10,9 @@ import { LoadAction, LoadFailAction, LoadSuccessAction } from './villain.store.a
 @Injectable()
 export class VillainStoreService extends AppStoreService {
   villains = createFeatureSelector<VillainStoreState>('villains');
-  stateSelector = createSelector(this.villains, this.getState);
-  villainsSelector = createSelector(this.stateSelector, this.getProperty('villains'));
+  villainsSelector = createSelector(this.villains, this.getProperty('villains'));
 
   constructor(public store: Store<VillainStoreState>) { super(); }
-
-  getState() {
-    return this.store.select(this.stateSelector);
-  }
 
   getVillains() {
     return this.store.select(this.villainsSelector);

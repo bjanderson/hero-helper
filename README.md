@@ -2,7 +2,7 @@
 
 This is a practice application to learn Angular.
 
-It is inspired by the Tour of Heros angular tutorial.
+It is inspired by the Tour of Heroes angular tutorial.
 
 ---
 
