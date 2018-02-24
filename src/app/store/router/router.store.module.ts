@@ -3,6 +3,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { routerReducer } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 
+import { HeroStoreModule, HeroStoreService } from '../hero';
+import { VillainStoreModule, VillainStoreService } from '../villain';
+
 import { RouterEffects } from './router.store.effects';
 import { RouterStoreService } from './router.store.service';
 
@@ -14,10 +17,16 @@ import { RouterStoreService } from './router.store.service';
 
   imports: [
     StoreModule.forFeature('router', routerReducer),
-    EffectsModule.forFeature([RouterEffects])
+    EffectsModule.forFeature([RouterEffects]),
+
+    HeroStoreModule,
+    VillainStoreModule
   ],
 
   providers: [
+    HeroStoreService,
+    VillainStoreService,
+
     RouterStoreService
   ]
 })

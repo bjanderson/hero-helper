@@ -3,5 +3,7 @@ export * from './being';
 export * from './hero';
 export * from './hero-store-state';
 export * from './payload-action';
+export * from './route-change-payload';
+export * from './route-go-payload';
 export * from './villain';
 export * from './villain-store-state';

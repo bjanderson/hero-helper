@@ -11,13 +11,15 @@ addToModelsIndex();
 console.log(`\n${config.pascal} model created successfully.\n`);
 
 function createModel() {
-  const text = `export class ${config.pascal} {
+  const text = `import { Utils } from '../utils';
+
+export class ${config.pascal} {
 
   value: string;
 
   constructor(obj?: any) {
     obj = obj != null ? obj : {};
-    this.value = obj != null && obj.value != null ? obj.value : '';
+    this.value = Utils.getString(obj.value);
   }
 }
 `;

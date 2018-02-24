@@ -15,6 +15,7 @@ import {
 
 import {
   AppStoreModule,
+  RouterStoreModule,
   metaReducers
 } from '../../store';
 
@@ -31,6 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
 
     AppStoreModule,
+    RouterStoreModule,
     StoreModule.forRoot({} as any, {initialState: {}, metaReducers}),
     StoreRouterConnectingModule,
 
