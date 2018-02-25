@@ -1,45 +1,62 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, Request } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map } from 'rxjs/operators';
 
 import 'rxjs/add/observable/throw';
 
-import { RequestBuilderService } from '../request-builder';
-
 @Injectable()
 export class ApiService {
 
+  options: any = {
+    headers: new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8'),
+    responseType: 'json',
+    withCredentials: true
+  };
+
   constructor(
-    private http: Http,
-    private requestBuilder: RequestBuilderService
+    private http: HttpClient
   ) {}
 
-  delete(url: string): Observable<any> {
-    const request = this.requestBuilder.buildDeleteRequest(url);
-    return this.getObservable(request);
-  }
-
-  get(url: string, params?: any): Observable<any> {
-    const request = this.requestBuilder.buildGetRequest(url, params);
-    return this.getObservable(request);
-  }
-
-  getObservable(request: Request): Observable<any> {
-    return this.http.request(request).pipe(
+  delete(url: string, options: any = this.options): Observable<any> {
+    return this.http.delete(url, options).pipe(
       map(this.mapResponse.bind(this)),
-      catchError(this.mapError.bind(this))
-    );
+      catchError(this.mapError.bind(this)));
   }
 
-  post(url: string, body: any): Observable<any> {
-    const request = this.requestBuilder.buildPostRequest(url, body);
-    return this.getObservable(request);
+  get(url: string, params?: any, options: any = this.options): Observable<any> {
+    const requestOptions = Object.assign({}, options);
+    const httpParams = new HttpParams();
+
+    if (params != null) {
+      for (const key of Object.keys(params)) {
+        httpParams.set(key, params[key]);
+      }
+    }
+
+    requestOptions.params = httpParams;
+
+    return this.http.get(url, requestOptions).pipe(
+      map(this.mapResponse.bind(this)),
+      catchError(this.mapError.bind(this)));
   }
 
-  put(url: string, body: any): Observable<any> {
-    const request = this.requestBuilder.buildPutRequest(url, body);
-    return this.getObservable(request);
+  patch(url: string, body: any, options: any = this.options): Observable<any> {
+    return this.http.patch(url, body, options).pipe(
+      map(this.mapResponse.bind(this)),
+      catchError(this.mapError.bind(this)));
+  }
+
+  post(url: string, body: any, options: any = this.options): Observable<any> {
+    return this.http.post(url, body, options).pipe(
+      map(this.mapResponse.bind(this)),
+      catchError(this.mapError.bind(this)));
+  }
+
+  put(url: string, body: any, options: any = this.options): Observable<any> {
+    return this.http.put(url, body, options).pipe(
+      map(this.mapResponse.bind(this)),
+      catchError(this.mapError.bind(this)));
   }
 
   private mapError(error: any): Observable<any> {

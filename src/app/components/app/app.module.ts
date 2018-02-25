@@ -1,16 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModule } from '@ngrx/store';
 
 import {
   ApiService,
   AuthGuardService,
   GlobalVariablesService,
-  PermissionsService,
-  RequestBuilderService
+  PermissionsService
 } from '../../services';
 
 import {
@@ -29,7 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
 
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
 
     AppStoreModule,
     RouterStoreModule,
@@ -44,8 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
     ApiService,
     AuthGuardService,
     GlobalVariablesService,
-    PermissionsService,
-    RequestBuilderService
+    PermissionsService
   ]
 })
 export class AppModule { }
