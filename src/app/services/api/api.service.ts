@@ -59,11 +59,11 @@ export class ApiService {
       catchError(this.mapError.bind(this)));
   }
 
-  private mapError(error: any): Observable<any> {
+  mapError(error: any): Observable<any> {
     return Observable.throw(this.mapResponse(error));
   }
 
-  private mapResponse(response: any): any {
+  mapResponse(response: any): any {
     let res;
     try {
       res = response.json();

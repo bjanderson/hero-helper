@@ -1,24 +1,20 @@
-import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
 import { empty } from 'rxjs/observable/empty';
 
 import { ApiService } from './api.service';
-import { RequestBuilderService } from '../request-builder';
 
 describe('ApiService', function () {
-  let http;
-  let mockBackend;
-  let requestBuilder;
-  let requestOptions;
-  let service;
+  let service: ApiService;
+  const http: any = {
+    delete: () => empty(),
+    get: () => empty(),
+    patch: () => empty(),
+    post: () => empty(),
+    put: () => empty()
+  };
 
   describe('constructor()', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestBuilder = <RequestBuilderService>{};
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
     it('constructs', function () {
@@ -26,137 +22,72 @@ describe('ApiService', function () {
     });
   });
 
-  describe('delete(url: string, body: any): void', function () {
+  describe('delete(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      requestBuilder.buildDeleteRequest = function () { return 'test.url'; };
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
-    it('should call requestBuilder.buildDeleteRequest with the correct url and body', function () {
-      requestBuilder.buildDeleteRequest = function () {};
-
-      mockBackend.connections.subscribe(connection => {
-        connection.mockRespond(new Response(new ResponseOptions({body: {test: 'test response'}})));
-      });
-
-      spyOn(requestBuilder, 'buildDeleteRequest').and.returnValue('test.url');
-      service.delete('test.url');
-      expect(requestBuilder.buildDeleteRequest).toHaveBeenCalledWith('test.url');
+    it('has a function named delete', function () {
+      expect(typeof service.delete).toEqual('function');
     });
   });
 
-  describe('get(url: string, params?: any): void', function () {
+  describe('get(url: string, params?: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      requestBuilder.buildGetRequest = function () { return 'test.url'; };
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
-    it('should call requestBuilder.buildGetRequest with the correct url', function () {
-      spyOn(requestBuilder, 'buildGetRequest').and.callThrough();
-      service.get('test.url');
-      expect(requestBuilder.buildGetRequest).toHaveBeenCalledWith('test.url', undefined);
+    it('has a function named get', function () {
+      expect(typeof service.get).toEqual('function');
     });
   });
 
-  describe('getObservable<TResponse>(request: Request): Observable<TResponse>', function () {
+  describe('patch(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = <Http>{};
-      http.request = () => empty();
-      requestBuilder = <RequestBuilderService>{};
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
-    it('should have a function named getObservable', function () {
-      expect(typeof service.getObservable).toEqual('function');
-    });
-
-    it('should call http.request', function () {
-      spyOn(http, 'request').and.returnValue(empty());
-      service.getObservable({url: 'test.url'});
-      expect(http.request).toHaveBeenCalledWith({url: 'test.url'});
+    it('has a function named patch', function () {
+      expect(typeof service.patch).toEqual('function');
     });
   });
 
-  describe('post(url: string, body: any): void', function () {
+  describe('post(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      requestBuilder.buildPostRequest = function () { return 'test.url'; };
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
-    it('should call requestBuilder.buildPostRequest with the correct url and body', function () {
-      requestBuilder.buildPostRequest = function () {};
-
-      mockBackend.connections.subscribe(connection => {
-        connection.mockRespond(new Response(new ResponseOptions({body: {test: 'test response'}})));
-      });
-
-      spyOn(requestBuilder, 'buildPostRequest').and.returnValue('test.url');
-      service.post('test.url', {test: 'testing'});
-      expect(requestBuilder.buildPostRequest).toHaveBeenCalledWith('test.url', {test: 'testing'});
+    it('has a function named post', function () {
+      expect(typeof service.post).toEqual('function');
     });
   });
 
-  describe('put(url: string, body: any): void', function () {
+  describe('put(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      requestBuilder.buildPutRequest = function () { return 'test.url'; };
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
-    it('should call requestBuilder.buildPutRequest with the correct url and body', function () {
-      requestBuilder.buildPutRequest = function () {};
-
-      mockBackend.connections.subscribe(connection => {
-        connection.mockRespond(new Response(new ResponseOptions({body: {test: 'test response'}})));
-      });
-
-      spyOn(requestBuilder, 'buildPutRequest').and.returnValue('test.url');
-      service.put('test.url', {test: 'testing'});
-      expect(requestBuilder.buildPutRequest).toHaveBeenCalledWith('test.url', {test: 'testing'});
+    it('has a function named put', function () {
+      expect(typeof service.put).toEqual('function');
     });
   });
 
   describe('mapError<TResponse>(error: any): Observable<TResponse>', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
       service.mapResponse = function () {};
     });
 
     it('calls the mapResponse function', function () {
       spyOn(service, 'mapResponse').and.returnValue(empty());
-      service.mapError();
+      service.mapError({});
       expect(service.mapResponse).toHaveBeenCalled();
     });
   });
 
   describe('mapResponse(response: any): any', function () {
     beforeEach(function () {
-      mockBackend = new MockBackend();
-      requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
-      requestBuilder = <RequestBuilderService>{};
-      service = new ApiService(http, requestBuilder);
+      service = new ApiService(http);
     });
 
     it('returns response.json() if possible', function () {
