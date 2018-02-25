@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeroStoreService } from '../../store';
 
 @Component({
-  selector: 'heroes',
+  selector: 'hh-heroes',
   styles: [require('./heroes.component.scss')],
   template: require('./heroes.component.html'),
 })

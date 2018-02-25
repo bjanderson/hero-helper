@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sandbox',
+  selector: 'hh-sandbox',
   styles: [require('./sandbox.component.scss')],
   template: require('./sandbox.component.html'),
 })

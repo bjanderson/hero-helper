@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { VillainStoreService } from '../../store';
 
 @Component({
-  selector: 'villains',
+  selector: 'hh-villains',
   styles: [require('./villains.component.scss')],
   template: require('./villains.component.html'),
 })

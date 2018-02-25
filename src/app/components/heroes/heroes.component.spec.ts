@@ -1,10 +1,10 @@
-import { empty } from "rxjs/observable/empty";
+import { empty } from 'rxjs/observable/empty';
 
 import { HeroesComponent } from './heroes.component';
 
 describe('HeroesComponent', function () {
   let component;
-  let heroStoreService: any = { getHeroes: () => empty() };
+  const heroStoreService: any = { getHeroes: () => empty() };
 
   describe('constructor()', function () {
     beforeEach(function () {
