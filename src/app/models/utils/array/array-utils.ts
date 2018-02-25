@@ -1,29 +1,29 @@
-import { ModelUtils } from '../model'
+import { ModelUtils } from '../model';
 
 export class ArrayUtils {
   static getArray(objs) {
-    objs = objs != null ? objs : []
-    let array = []
+    objs = objs != null ? objs : [];
+    let array = [];
 
     if (objs.constructor === Array) {
-      array = objs
+      array = objs;
     } else {
-      array = [objs]
+      array = [objs];
     }
 
-    return array
+    return array;
   }
 
   static getArrayOfModels(clazz, objs) {
-    objs = ArrayUtils.getArray(objs)
-    const array = []
+    objs = ArrayUtils.getArray(objs);
+    const array = [];
 
     for (const obj of objs) {
       if (ModelUtils.hasPropertyOf(clazz, obj)) {
-        array.push(new clazz(obj))
+        array.push(new clazz(obj));
       }
     }
 
-    return array
+    return array;
   }
 }

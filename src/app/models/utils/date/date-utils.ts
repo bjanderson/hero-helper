@@ -1,37 +1,37 @@
 export class DateUtils {
 
   static formatDate(date) {
-    let formattedDate = ''
+    let formattedDate = '';
 
     try {
-      formattedDate = new Date(date).toLocaleDateString()
+      formattedDate = new Date(date).toLocaleDateString();
     } catch (err) {
-      console.error('ModelUtils.formatDate - Invalid date: ', date)
+      console.error('ModelUtils.formatDate - Invalid date: ', date);
     }
 
-    return formattedDate
+    return formattedDate;
   }
 
   static getDate(date) {
-    let theDate: any = ''
+    let theDate: any = '';
 
     if (DateUtils.isValidDate(date)) {
-      theDate = new Date(date)
+      theDate = new Date(date);
     }
 
-    return theDate
+    return theDate;
   }
 
   static isValidDate(date) {
-    let isValid = true
+    let isValid = true;
 
     try {
-      let d = new Date(date)
-      isValid = d.toString() !== 'Invalid Date'
+      const d = new Date(date);
+      isValid = d.toString() !== 'Invalid Date';
     } catch (err) {
-      console.error('ModelUtils.isValidDate - Invalid Date: ', date)
-      isValid = false
+      console.error('ModelUtils.isValidDate - Invalid Date: ', date);
+      isValid = false;
     }
-    return isValid
+    return isValid;
   }
 }

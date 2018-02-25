@@ -16,12 +16,12 @@ export class ApiService {
   ) {}
 
   delete(url: string): Observable<any> {
-    let request = this.requestBuilder.buildDeleteRequest(url);
+    const request = this.requestBuilder.buildDeleteRequest(url);
     return this.getObservable(request);
   }
 
   get(url: string, params?: any): Observable<any> {
-    let request = this.requestBuilder.buildGetRequest(url, params);
+    const request = this.requestBuilder.buildGetRequest(url, params);
     return this.getObservable(request);
   }
 
@@ -33,12 +33,12 @@ export class ApiService {
   }
 
   post(url: string, body: any): Observable<any> {
-    let request = this.requestBuilder.buildPostRequest(url, body);
+    const request = this.requestBuilder.buildPostRequest(url, body);
     return this.getObservable(request);
   }
 
   put(url: string, body: any): Observable<any> {
-    let request = this.requestBuilder.buildPutRequest(url, body);
+    const request = this.requestBuilder.buildPutRequest(url, body);
     return this.getObservable(request);
   }
 

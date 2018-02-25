@@ -9,24 +9,24 @@ describe('models', function () {
   describe('RouteChangePayload', function () {
     describe('constructor defaults', function () {
       it('should set the default values when no input object is given', function () {
-        let obj = new RouteChangePayload();
+        const obj = new RouteChangePayload();
         testDefaults(obj);
       });
 
       it('should set the default values when an empty input object is given', function () {
-        let obj = new RouteChangePayload({});
+        const obj = new RouteChangePayload({});
         testDefaults(obj);
       });
 
       it('should set all fields as passed into the constructor object', function () {
-        let obj = {
+        const obj = {
           params: {test: 'ok'},
           path: 'test string 1'
         };
 
-        let test = new RouteChangePayload(obj);
+        const test = new RouteChangePayload(obj);
 
-        for (let field of Object.keys(obj)) {
+        for (const field of Object.keys(obj)) {
           expect(test[field]).toEqual(obj[field]);
         }
       });
@@ -34,7 +34,7 @@ describe('models', function () {
 
     describe('fields', function () {
       it('should have all of, and only, the expected fields', function () {
-        let test = new RouteChangePayload();
+        const test = new RouteChangePayload();
         expect(Object.keys(test)).toEqual([
           'params',
           'path'

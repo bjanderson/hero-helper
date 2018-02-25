@@ -10,27 +10,27 @@ describe('models', function () {
   describe('VillainStoreState', function () {
     describe('constructor defaults', function () {
       it('should set the default values when no input object is given', function () {
-        let obj = new VillainStoreState();
+        const obj = new VillainStoreState();
         testDefaults(obj);
       });
 
       it('should set the default values when an empty input object is given', function () {
-        let obj = new VillainStoreState({});
+        const obj = new VillainStoreState({});
         testDefaults(obj);
       });
 
       it('should set all fields as passed into the constructor object', function () {
-        let obj = {
+        const obj = {
           villains: [{name: 'test villain'}]
         };
 
-        let expected = {
+        const expected = {
           villains: [new Villain(obj.villains[0])]
-        }
+        };
 
-        let test = new VillainStoreState(obj);
+        const test = new VillainStoreState(obj);
 
-        for (let field of Object.keys(obj)) {
+        for (const field of Object.keys(obj)) {
           expect(test[field]).toEqual(expected[field]);
         }
       });
@@ -38,7 +38,7 @@ describe('models', function () {
 
     describe('fields', function () {
       it('should have all of, and only, the expected fields', function () {
-        let test = new VillainStoreState();
+        const test = new VillainStoreState();
         expect(Object.keys(test)).toEqual([
           'villains'
         ]);
