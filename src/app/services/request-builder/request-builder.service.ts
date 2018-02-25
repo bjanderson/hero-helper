@@ -14,10 +14,10 @@ export class RequestBuilderService {
   constructor() {}
 
   buildGetRequest(url: string, params?: Object): Request {
-    let options = this.buildRequestOptions(RequestMethod.Get, url);
+    const options = this.buildRequestOptions(RequestMethod.Get, url);
 
     if (params != null) {
-      for (let key of Object.keys(params)) {
+      for (const key of Object.keys(params)) {
         options.search.append(key, params[key]);
       }
     }
@@ -26,24 +26,24 @@ export class RequestBuilderService {
   }
 
   buildDeleteRequest(url: string): Request {
-    let options = this.buildRequestOptions(RequestMethod.Delete, url);
+    const options = this.buildRequestOptions(RequestMethod.Delete, url);
     return new Request(options);
   }
 
   buildPostRequest(url: string, body: any): Request {
-    let options = this.buildRequestOptions(RequestMethod.Post, url, body);
+    const options = this.buildRequestOptions(RequestMethod.Post, url, body);
     return new Request(options);
   }
 
   buildPutRequest(url: string, body: any): Request {
-    let options = this.buildRequestOptions(RequestMethod.Put, url, body);
+    const options = this.buildRequestOptions(RequestMethod.Put, url, body);
     return new Request(options);
   }
 
   buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions {
-    let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+    const headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
 
-    let options = new RequestOptions();
+    const options = new RequestOptions();
     options.headers = headers;
     options.method = method;
     options.responseType = ResponseContentType.Json;

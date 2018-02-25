@@ -1,6 +1,6 @@
 import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { empty } from 'rxjs/observable/empty'
+import { empty } from 'rxjs/observable/empty';
 
 import { ApiService } from './api.service';
 import { RequestBuilderService } from '../request-builder';
@@ -160,14 +160,14 @@ describe('ApiService', function () {
     });
 
     it('returns response.json() if possible', function () {
-      let response = {a: 'a', json: function () { return 'test response'; }};
-      let test = service.mapResponse(response);
+      const response = {a: 'a', json: function () { return 'test response'; }};
+      const test = service.mapResponse(response);
       expect(test).toEqual('test response');
     });
 
     it('returns the given response if response.json() fails', function () {
-      let response = {a: 'a', b: 'test response'};
-      let test = service.mapResponse(response);
+      const response = {a: 'a', b: 'test response'};
+      const test = service.mapResponse(response);
       expect(test).toEqual(response);
     });
   });

@@ -2,7 +2,7 @@ import { VillainService } from './villain.service';
 
 describe('VillainService', function () {
   let service: VillainService;
-  let api: any = {
+  const api: any = {
     delete: () => undefined,
     get: () => undefined,
     post: () => undefined,

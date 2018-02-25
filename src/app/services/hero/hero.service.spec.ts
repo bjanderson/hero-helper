@@ -2,7 +2,7 @@ import { HeroService } from './hero.service';
 
 describe('HeroService', function () {
   let service: HeroService;
-  let api: any = {
+  const api: any = {
     delete: () => undefined,
     get: () => undefined,
     post: () => undefined,
