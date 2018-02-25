@@ -4,7 +4,7 @@ import { HeroesComponent } from './heroes.component';
 
 describe('HeroesComponent', function () {
   let component;
-  let heroStoreService: any = { getHeroes: empty() };
+  let heroStoreService: any = { getHeroes: () => empty() };
 
   describe('constructor()', function () {
     beforeEach(function () {

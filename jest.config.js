@@ -5,6 +5,12 @@ module.exports = {
 
   coverageDirectory: 'coverage',
 
+  coverageReporters: [
+    "json",
+    "lcov",
+    "text-summary"
+  ],
+
   globals: {
     '__TS_CONFIG__': {
       'target': 'es6',

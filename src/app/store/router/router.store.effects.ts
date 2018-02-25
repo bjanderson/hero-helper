@@ -19,6 +19,41 @@ import { log } from 'util';
 // https://github.com/amcdnl/ngrx-router/blob/master/src/effects.ts
 @Injectable()
 export class RouterEffects {
+
+  @Effect({ dispatch: false })
+  logTransition$ = this.actions$.pipe(
+    ofType(ROUTER_NAVIGATION),
+    map(this.logTransition.bind(this))
+  );
+
+  @Effect({ dispatch: false })
+  navigate$ = this.actions$.pipe(
+    ofType(RouterActionTypes.GO),
+    tap(this.navigate.bind(this))
+  );
+
+  @Effect({ dispatch: false })
+  navigateBack$ = this.actions$.pipe(
+    ofType(RouterActionTypes.BACK),
+    tap(this.navigateBack.bind(this))
+  );
+
+  @Effect({ dispatch: false })
+  navigateForward$ = this.actions$.pipe(
+    ofType(RouterActionTypes.FORWARD),
+    tap(this.navigateForward.bind(this))
+  );
+
+  @Effect({ dispatch: false }) heroRouted = this.actions$.pipe(
+    this.ofRoute('heroes'),
+    tap(this.loadHeroes.bind(this))
+  );
+
+  @Effect({ dispatch: false }) villainRouted = this.actions$.pipe(
+    this.ofRoute('villains'),
+    tap(this.loadVillains.bind(this))
+  );
+
   constructor(
     private actions$: Actions,
     private router: Router,
@@ -30,53 +65,36 @@ export class RouterEffects {
       this.listenToRouter();
   }
 
-  @Effect({ dispatch: false })
-  logTransition$: Observable<void> = this.actions$.pipe(
-    ofType(ROUTER_NAVIGATION),
-    map((action: any) => action.payload),
-    map((payload: RouterNavigationPayload<any>) => console.info('navigated to ' + payload.routerState.url))
-  );
-
-  @Effect({ dispatch: false })
-  navigate$ = this.actions$.pipe(
-    ofType(RouterActionTypes.GO),
-    map((action: GoAction) => action.payload),
-    tap((payload: RouteGoPayload) => this.router.navigate(payload.path, {
-      queryParams: payload.queryParams,
-      ...payload.extras
-    }))
-  );
-
-  @Effect({ dispatch: false })
-  navigateBack$ = this.actions$.pipe(
-    ofType(RouterActionTypes.BACK),
-    tap(() => this.location.back()));
-
-  @Effect({ dispatch: false })
-  navigateForward$ = this.actions$.pipe(
-    ofType(RouterActionTypes.FORWARD),
-    tap(() => this.location.forward())
-  );
-
-  @Effect({ dispatch: false }) heroRouted = this.actions$.pipe(
-    this.ofRoute('heroes'),
-    tap(() => this.heroStoreService.dispatchLoadAction())
-  )
-
-  @Effect({ dispatch: false }) villainRouted = this.actions$.pipe(
-    this.ofRoute('villains'),
-    tap(() => this.villainStoreService.dispatchLoadAction())
-  )
-
   listenToRouter() {
     this.router.events.pipe(
       filter(event => event instanceof ActivationEnd)
-    ).subscribe((event: ActivationEnd) => {
-      return this.routerStoreService.dispatchRouteChangeAction({
-        params: { ...event.snapshot.params },
-        path: event.snapshot.routeConfig.path
-      })
-    });
+    ).subscribe(this.changeRoute.bind(this));
+  }
+
+  changeRoute(event: ActivationEnd) {
+    this.routerStoreService.dispatchRouteChangeAction({
+      params: { ...event.snapshot.params },
+      path: event.snapshot.routeConfig.path
+    })
+  }
+
+  logTransition(action: any) {
+    console.info('navigated to ' + action.payload.routerState.url);
+  }
+
+  navigate(action: GoAction) {
+    this.router.navigate(action.payload.path, {
+      queryParams: action.payload.queryParams,
+      ...action.payload.extras
+    })
+  }
+
+  navigateBack() {
+    this.location.back()
+  }
+
+  navigateForward() {
+    this.location.forward()
   }
 
   ofRoute(route: string | string[]) {
@@ -94,5 +112,13 @@ export class RouterEffects {
 
       return isRouteAction;
     });
+  }
+
+  loadHeroes() {
+    this.heroStoreService.dispatchLoadAction();
+  }
+
+  loadVillains() {
+    this.villainStoreService.dispatchLoadAction()
   }
 }

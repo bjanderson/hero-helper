@@ -6,13 +6,17 @@ import { RouteChangePayload, RouteGoPayload } from '../../models';
 
 import { AppState, AppStoreService } from '../app';
 
-import { BackAction, ForwardAction, GoAction, RouteChangeAction } from './router.store.actions';
+import {
+  BackAction,
+  ForwardAction,
+  GoAction,
+  RouteChangeAction
+} from './router.store.actions';
 
 @Injectable()
 export class RouterStoreService extends AppStoreService {
   router = createFeatureSelector<RouterReducerState>('router');
-  routerSelector = createSelector(this.router, this.getState);
-  routerPathSelector = createSelector(this.routerSelector, this.getProperty('url'));
+  routerPathSelector = createSelector(this.router, this.getProperty('url'));
 
   constructor(public store: Store<AppState>) { super(); }
 

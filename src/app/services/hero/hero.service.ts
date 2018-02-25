@@ -11,23 +11,23 @@ export class HeroService {
 
   constructor(private api: ApiService) {}
 
-  getAll() {
-    return this.api.get(this.url);
+  create(hero: Hero) {
+    return this.api.post(this.url, hero);
+  }
+
+  delete(id: string) {
+    return this.api.delete(`${this.url}/${id}`);
   }
 
   get(id: string) {
     return this.api.get(`${this.url}/${id}`);
   }
 
-  create(hero: Hero) {
-    return this.api.post(this.url, hero);
+  getAll() {
+    return this.api.get(this.url);
   }
 
   update(hero: Hero) {
     return this.api.put(this.url, hero);
-  }
-
-  delete(id: string) {
-    return this.api.delete(`${this.url}/${id}`);
   }
 }

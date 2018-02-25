@@ -19,9 +19,8 @@
     "serve:build": "lite-server -c bs-config.json",
     "start:server": "nodemon -r @std/esm --watch server --ignore server/data server/server.js",
     "start": "NODE_ENV=development webpack-dev-server --inline --config webpack/config.js --progress --port 3000",
-    "test": "jest --clearCache && jest",
-    "test:coverage": "jest --clearCache && jest --runInBand --coverage",
-    "test:watch": "jest --clearCache && jest --watch"
+    "test": "jest --clearCache && jest --coverage --runInBand --watch",
+    "test:once": "jest --clearCache && jest --runInBand --coverage"
   },
   "dependencies": {
     "@angular/animations": "5.2.5",
