@@ -1,7 +1,7 @@
 import { Action, Store } from '@ngrx/store';
 
 export abstract class AppStoreService {
-  store: Store<any>
+  store: Store<any>;
 
   dispatchAction(action: Action) {
     return this.store.dispatch(action);
@@ -10,7 +10,7 @@ export abstract class AppStoreService {
   getProperty(prop: string) {
     return (obj: any = {}) => {
       return obj[prop];
-    }
+    };
   }
 
   // doing this mainly to clean up unit test results

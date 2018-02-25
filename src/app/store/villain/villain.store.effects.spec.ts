@@ -4,8 +4,8 @@ import { VillainEffects } from './villain.store.effects';
 
 describe('VillainEffects', function () {
   let effects: VillainEffects;
-  let actions$: any = empty();
-  let villainService: any = { get: empty() };
+  const actions$: any = empty();
+  const villainService: any = { get: empty() };
 
   describe('constructor', function () {
     beforeEach(() => {

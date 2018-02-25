@@ -75,26 +75,26 @@ export class RouterEffects {
     this.routerStoreService.dispatchRouteChangeAction({
       params: { ...event.snapshot.params },
       path: event.snapshot.routeConfig.path
-    })
+    });
   }
 
   logTransition(action: any) {
-    console.info('navigated to ' + action.payload.routerState.url);
+    console.info.call(console, 'navigated to ' + action.payload.routerState.url);
   }
 
   navigate(action: GoAction) {
     this.router.navigate(action.payload.path, {
       queryParams: action.payload.queryParams,
       ...action.payload.extras
-    })
+    });
   }
 
   navigateBack() {
-    this.location.back()
+    this.location.back();
   }
 
   navigateForward() {
-    this.location.forward()
+    this.location.forward();
   }
 
   ofRoute(route: string | string[]) {
@@ -119,6 +119,6 @@ export class RouterEffects {
   }
 
   loadVillains() {
-    this.villainStoreService.dispatchLoadAction()
+    this.villainStoreService.dispatchLoadAction();
   }
 }

@@ -5,7 +5,7 @@ import { HeroAction, HeroActionTypes } from './hero.store.actions';
 export function heroReducer(state: HeroStoreState = new HeroStoreState(), action: HeroAction) {
   let newState: HeroStoreState;
 
-  switch(action.type) {
+  switch (action.type) {
 
     case HeroActionTypes.LOAD_FAIL:
       newState = new HeroStoreState(Object.assign({}, state, {error: action.payload}));

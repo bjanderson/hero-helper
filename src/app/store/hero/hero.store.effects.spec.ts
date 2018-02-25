@@ -4,8 +4,8 @@ import { HeroEffects } from './hero.store.effects';
 
 describe('HeroEffects', function () {
   let effects: HeroEffects;
-  let actions$: any = empty();
-  let heroService: any = { get: empty() };
+  const actions$: any = empty();
+  const heroService: any = { get: empty() };
 
   describe('constructor', function () {
     beforeEach(() => {

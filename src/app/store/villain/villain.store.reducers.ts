@@ -5,7 +5,7 @@ import { VillainAction, VillainActionTypes } from './villain.store.actions';
 export function villainReducer(state: VillainStoreState = new VillainStoreState(), action: VillainAction) {
   let newState: VillainStoreState;
 
-  switch(action.type) {
+  switch (action.type) {
 
     case VillainActionTypes.LOAD_FAIL:
       newState = new VillainStoreState(Object.assign({}, state, {error: action.payload}));
