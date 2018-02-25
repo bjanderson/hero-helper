@@ -1,15 +1,16 @@
-import { empty } from "rxjs/observable/empty";
+import { empty } from 'rxjs/observable/empty';
 
+import { RouterActionTypes } from './router.store.actions';
 import { RouterEffects } from './router.store.effects';
 
 describe('RouterEffects', function () {
   let effects: RouterEffects;
-  let actions: any = empty();
-  let router: any = { events: empty(), navigate: () => undefined };
-  let location: any = {back: () => undefined, forward: () => undefined};
-  let routerStoreService: any = {dispatchRouteChangeAction: () => undefined};
-  let heroStoreService: any = {dispatchLoadAction: () => undefined};
-  let villainStoreService: any = {dispatchLoadAction: () => undefined};
+  const actions: any = empty();
+  const router: any = { events: empty(), navigate: () => undefined };
+  const location: any = {back: () => undefined, forward: () => undefined};
+  const routerStoreService: any = {dispatchRouteChangeAction: () => undefined};
+  const heroStoreService: any = {dispatchLoadAction: () => undefined};
+  const villainStoreService: any = {dispatchLoadAction: () => undefined};
 
   describe('constructor', function () {
     beforeEach(() => {
@@ -118,6 +119,13 @@ describe('RouterEffects', function () {
 
     it('has a function named ofRoute', function () {
       expect(typeof effects.ofRoute).toEqual('function');
+    });
+
+    it('returns a function', function () {
+      const f = effects.ofRoute('test-route');
+      const expected: any = 'function';
+      const result: any = typeof f;
+      expect(result).toEqual(expected);
     });
   });
 

@@ -13,16 +13,15 @@ import { VillainActionTypes, LoadSuccessAction, LoadFailAction } from './villain
 @Injectable()
 export class VillainEffects {
   @Effect()
-  loadVillains$: Observable<Action> = this.actions$.pipe(
+  loadVillains$ = this.actions$.pipe(
     ofType(VillainActionTypes.LOAD),
-    switchMap(() =>
-      this.villainService.getAll()
-        .pipe(
-          map((villains: Villain[]) => new LoadSuccessAction(villains)),
-          catchError(error => of(new LoadFailAction(error)))
-        )
-    )
-  );
+    switchMap(this.loadVillains.bind(this)));
 
   constructor(private actions$: Actions, private villainService: VillainService) {}
+
+  loadVillains() {
+    this.villainService.getAll().pipe(
+      map((villains: Villain[]) => new LoadSuccessAction(villains)),
+      catchError(error => of(new LoadFailAction(error))));
+  }
 }

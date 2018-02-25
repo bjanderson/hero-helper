@@ -13,16 +13,15 @@ import { HeroActionTypes, LoadSuccessAction, LoadFailAction } from './hero.store
 @Injectable()
 export class HeroEffects {
   @Effect()
-  loadHeroes$: Observable<Action> = this.actions$.pipe(
+  loadHeroes$ = this.actions$.pipe(
     ofType(HeroActionTypes.LOAD),
-    switchMap(() =>
-      this.heroService.getAll()
-        .pipe(
-          map((heroes: Hero[]) => new LoadSuccessAction(heroes)),
-          catchError(error => of(new LoadFailAction(error)))
-        )
-    )
-  );
+    switchMap(this.loadHeroes.bind(this)));
 
   constructor(private actions$: Actions, private heroService: HeroService) {}
+
+  loadHeroes() {
+    this.heroService.getAll().pipe(
+      map((heroes: Hero[]) => new LoadSuccessAction(heroes)),
+      catchError(error => of(new LoadFailAction(error))));
+  }
 }

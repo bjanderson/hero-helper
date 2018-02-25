@@ -1,6 +1,6 @@
-import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
+import { BaseRequestOptions, HttpClient, Response, ResponseOptions } from '@angular/common/http';
 import { MockBackend } from '@angular/http/testing';
-import { empty } from 'rxjs/observable/empty'
+import { empty } from 'rxjs/observable/empty';
 
 import { ApiService } from './api.service';
 import { RequestBuilderService } from '../request-builder';
@@ -17,7 +17,7 @@ describe('ApiService', function () {
       mockBackend = new MockBackend();
       requestBuilder = <RequestBuilderService>{};
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       service = new ApiService(http, requestBuilder);
     });
 
@@ -30,7 +30,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       requestBuilder.buildDeleteRequest = function () { return 'test.url'; };
       service = new ApiService(http, requestBuilder);
@@ -53,7 +53,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       requestBuilder.buildGetRequest = function () { return 'test.url'; };
       service = new ApiService(http, requestBuilder);
@@ -70,7 +70,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = <Http>{};
+      http = <HttpClient>{};
       http.request = () => empty();
       requestBuilder = <RequestBuilderService>{};
       service = new ApiService(http, requestBuilder);
@@ -91,7 +91,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       requestBuilder.buildPostRequest = function () { return 'test.url'; };
       service = new ApiService(http, requestBuilder);
@@ -114,7 +114,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       requestBuilder.buildPutRequest = function () { return 'test.url'; };
       service = new ApiService(http, requestBuilder);
@@ -137,7 +137,7 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       service = new ApiService(http, requestBuilder);
       service.mapResponse = function () {};
@@ -154,20 +154,20 @@ describe('ApiService', function () {
     beforeEach(function () {
       mockBackend = new MockBackend();
       requestOptions = new BaseRequestOptions();
-      http = new Http(mockBackend, requestOptions);
+      http = new HttpClient(mockBackend, requestOptions);
       requestBuilder = <RequestBuilderService>{};
       service = new ApiService(http, requestBuilder);
     });
 
     it('returns response.json() if possible', function () {
-      let response = {a: 'a', json: function () { return 'test response'; }};
-      let test = service.mapResponse(response);
+      const response = {a: 'a', json: function () { return 'test response'; }};
+      const test = service.mapResponse(response);
       expect(test).toEqual('test response');
     });
 
     it('returns the given response if response.json() fails', function () {
-      let response = {a: 'a', b: 'test response'};
-      let test = service.mapResponse(response);
+      const response = {a: 'a', b: 'test response'};
+      const test = service.mapResponse(response);
       expect(test).toEqual(response);
     });
   });

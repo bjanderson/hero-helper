@@ -1,54 +1,54 @@
 import { Injectable } from '@angular/core';
 import {
-  Headers,
-  Request,
-  RequestMethod,
-  RequestOptions,
-  ResponseContentType,
-  URLSearchParams
-} from '@angular/http';
+  HttpHeaders,
+  HttpParams,
+  HttpRequest
+} from '@angular/common/http';
 
 @Injectable()
 export class RequestBuilderService {
 
   constructor() {}
 
-  buildGetRequest(url: string, params?: Object): Request {
-    let options = this.buildRequestOptions(RequestMethod.Get, url);
+  /* buildGetRequest(url: string, params?: Object): HttpRequest {
+    const options = this.buildHttpRequest('GET', url);
 
     if (params != null) {
-      for (let key of Object.keys(params)) {
+      for (const key of Object.keys(params)) {
         options.search.append(key, params[key]);
       }
     }
 
-    return new Request(options);
+    return new HttpRequest(options);
   }
 
-  buildDeleteRequest(url: string): Request {
-    let options = this.buildRequestOptions(RequestMethod.Delete, url);
-    return new Request(options);
+  buildDeleteRequest(url: string): HttpRequest {
+    const options = this.buildHttpRequest('DELETE', url);
+    return new HttpRequest(options);
   }
 
-  buildPostRequest(url: string, body: any): Request {
-    let options = this.buildRequestOptions(RequestMethod.Post, url, body);
-    return new Request(options);
+  buildPostRequest(url: string, body: any): HttpRequest {
+    const options = this.buildHttpRequest('POST', url, body);
+    return new HttpRequest(options);
   }
 
-  buildPutRequest(url: string, body: any): Request {
-    let options = this.buildRequestOptions(RequestMethod.Put, url, body);
-    return new Request(options);
+  buildPutRequest(url: string, body: any): HttpRequest {
+    const options = this.buildHttpRequest('PUT', url, body);
+    return new HttpRequest(options);
   }
 
-  buildRequestOptions(method: RequestMethod, url: string, body?: any): RequestOptions {
-    let headers = new Headers({ 'Content-Type': 'application/json; charset=utf-8' });
+  buildHttpRequest(method: 'DELETE'|'GET'|'HEAD'|'JSONP'|'OPTIONS'|'POST'|'PUT', url: string, body?: any): any {
+    const request = new HttpRequest(method, url);
 
-    let options = new RequestOptions();
+    const headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json; charset=utf-8');
+
+    const options: any = {};
     options.headers = headers;
     options.method = method;
-    options.responseType = ResponseContentType.Json;
+    options.responseType = 'json';
 
-    options.search = new URLSearchParams();
+    options.params = new HttpParams();
     options.url = url;
     options.withCredentials = true;
 
@@ -57,5 +57,5 @@ export class RequestBuilderService {
     }
 
     return options;
-  }
+  } */
 }

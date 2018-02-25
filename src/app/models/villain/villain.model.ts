@@ -4,6 +4,6 @@ export class Villain extends Being {
 
   constructor(obj?: any) {
     obj = obj != null ? obj : {};
-    super(obj)
+    super(obj);
   }
 }

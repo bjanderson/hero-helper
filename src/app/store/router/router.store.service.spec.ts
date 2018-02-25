@@ -8,7 +8,7 @@ import { RouterStoreService } from './router.store.service';
 
 describe('RouterStoreService', function () {
   let service: RouterStoreService;
-  let store: any = {
+  const store: any = {
     select: () => undefined
   };
 

@@ -3,7 +3,7 @@ import { HeroStoreService } from './hero.store.service';
 
 describe('HeroStoreService', function () {
   let service: HeroStoreService;
-  let store: any = {select: () => undefined};
+  const store: any = {select: () => undefined};
 
   describe('constructor', function () {
     beforeEach(() => {

@@ -6,7 +6,7 @@ class TestStoreService extends AppStoreService {
 
 describe('AppStoreService', function () {
   let service: AppStoreService;
-  let store: any = { dispatch: () => undefined };
+  const store: any = { dispatch: () => undefined };
 
   describe('dispatchAction(action: Action)', function () {
     beforeEach(() => {

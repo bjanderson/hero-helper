@@ -38,23 +38,23 @@ describe('models', function () {
   describe('${config.pascal}', function () {
     describe('constructor defaults', function () {
       it('should set the default values when no input object is given', function () {
-        let obj = new ${config.pascal}();
+        const obj = new ${config.pascal}();
         testDefaults(obj);
       });
 
       it('should set the default values when an empty input object is given', function () {
-        let obj = new ${config.pascal}({});
+        const obj = new ${config.pascal}({});
         testDefaults(obj);
       });
 
       it('should set all fields as passed into the constructor object', function () {
-        let obj = {
+        const obj = {
           value: 'test string 1'
         };
 
-        let test = new ${config.pascal}(obj);
+        const test = new ${config.pascal}(obj);
 
-        for (let field of Object.keys(obj)) {
+        for (const field of Object.keys(obj)) {
           expect(test[field]).toEqual(obj[field]);
         }
       });
@@ -62,7 +62,7 @@ describe('models', function () {
 
     describe('fields', function () {
       it('should have all of, and only, the expected fields', function () {
-        let test = new ${config.pascal}();
+        const test = new ${config.pascal}();
         expect(Object.keys(test)).toEqual([
           'value'
         ]);
