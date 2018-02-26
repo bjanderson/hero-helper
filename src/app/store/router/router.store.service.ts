@@ -15,8 +15,8 @@ import {
 
 @Injectable()
 export class RouterStoreService extends AppStoreService {
-  router = createFeatureSelector<RouterReducerState>('router');
-  routerPathSelector = createSelector(this.router, this.getProperty('url'));
+  routerReducerState = createFeatureSelector<RouterReducerState>('router');
+  routerPathSelector = createSelector(this.routerReducerState, this.getProperty('url'));
 
   constructor(public store: Store<AppState>) { super(); }
 

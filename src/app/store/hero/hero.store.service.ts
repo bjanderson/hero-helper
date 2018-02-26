@@ -9,8 +9,8 @@ import { LoadAction, LoadFailAction, LoadSuccessAction } from './hero.store.acti
 
 @Injectable()
 export class HeroStoreService extends AppStoreService {
-  heroes = createFeatureSelector<HeroStoreState>('heroes');
-  heroesSelector = createSelector(this.heroes, this.getProperty('heroes'));
+  heroStoreState = createFeatureSelector<HeroStoreState>('heroes');
+  heroesSelector = createSelector(this.heroStoreState, this.getProperty('heroes'));
 
   constructor(public store: Store<HeroStoreState>) { super(); }
 
