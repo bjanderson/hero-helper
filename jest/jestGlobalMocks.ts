@@ -30,6 +30,6 @@ Object.defineProperty(window, 'APP_METADATA', {
     return {
       ENV: 'env-test',
       VERSION: 'version-test'
-    }
+    };
   }
-})
+});

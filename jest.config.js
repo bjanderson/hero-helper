@@ -23,7 +23,6 @@ module.exports = {
     '__TRANSFORM_HTML__': true
   },
 
-
   mapCoverage: true,
 
   moduleFileExtensions: [

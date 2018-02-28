@@ -11,12 +11,15 @@ import { PayloadAction, RouteGoPayload } from '../../models';
 import { HeroStoreService } from '../hero';
 import { VillainStoreService } from '../villain';
 
-import { BackAction, ForwardAction, GoAction, RouterActionTypes, RouteChangeAction } from './router.store.actions';
+import {
+  BackAction,
+  ForwardAction,
+  GoAction,
+  RouterActionTypes,
+  RouteChangeAction
+} from './router.store.actions';
 import { RouterStoreService } from './router.store.service';
-import { log } from 'util';
 
-// https://medium.com/@amcdnl/angular-routing-data-with-ngrx-effects-1cda1bd5e579
-// https://github.com/amcdnl/ngrx-router/blob/master/src/effects.ts
 @Injectable()
 export class RouterEffects {
 
@@ -44,12 +47,14 @@ export class RouterEffects {
     tap(this.navigateForward.bind(this))
   );
 
-  @Effect({ dispatch: false }) heroRouted = this.actions$.pipe(
+  @Effect({ dispatch: false })
+  heroRouted = this.actions$.pipe(
     this.ofRoute('heroes'),
     tap(this.loadHeroes.bind(this))
   );
 
-  @Effect({ dispatch: false }) villainRouted = this.actions$.pipe(
+  @Effect({ dispatch: false })
+  villainRouted = this.actions$.pipe(
     this.ofRoute('villains'),
     tap(this.loadVillains.bind(this))
   );
