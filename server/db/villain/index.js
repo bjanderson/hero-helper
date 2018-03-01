@@ -2,8 +2,9 @@ import low from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import path from 'path'
 
-const dbFile = path.resolve('server/data/villain-db.json')
-const adapter = new FileSync(dbFile)
+import { dataFiles } from '../'
+
+const adapter = new FileSync(dataFiles.villain)
 const db = low(adapter)
 
 export class VillainDb {

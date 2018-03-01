@@ -2,8 +2,9 @@ import lowdb from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import path from 'path'
 
-const dbFile = path.resolve('server/data/hero-db.json')
-const adapter = new FileSync(dbFile)
+import { dataFiles } from '../'
+
+const adapter = new FileSync(dataFiles.hero)
 const db = lowdb(adapter)
 
 export class HeroDb {
