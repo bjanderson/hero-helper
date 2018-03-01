@@ -9,7 +9,7 @@
     "clean:coverage": "rm -rf coverage/",
     "clean:dist": "rm -rf dist/",
     "e2e": "protractor protractor-config.js",
-    "generate-server-data": "node -r @std/esm server/data/generate.js",
+    "build-data": "node -r @std/esm server/data-builder/main.js",
     "lint": "tslint --format codeFrame --project tslint.json \"src/app/**/*.ts\"; exit 0",
     "postinstall": "node scripts/fix-ngtools.js",
     "prebuild": "npm run clean:dist",

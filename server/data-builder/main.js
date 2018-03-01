@@ -1,11 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 
+import { dataFiles } from '../db'
+
 import { getHeroes } from './heroes'
 import { getVillains } from './villains'
-
-const heroDbFile = path.resolve('server/data/hero-db.json')
-const villainDbFile = path.resolve('server/data/villain-db.json')
 
 /////////////////////////////////////
 
@@ -21,7 +20,7 @@ function generateHeroes() {
   const data = {
     heroes: getHeroes()
   }
-  writeToFile(heroDbFile, JSON.stringify(data, null, 2))
+  writeToFile(dataFiles.hero, JSON.stringify(data, null, 2))
 }
 
 function generateVillains() {
@@ -29,7 +28,7 @@ function generateVillains() {
   const data = {
     villains: getVillains()
   }
-  writeToFile(villainDbFile, JSON.stringify(data, null, 2))
+  writeToFile(dataFiles.villain, JSON.stringify(data, null, 2))
 }
 
 function writeToFile(file, text) {
