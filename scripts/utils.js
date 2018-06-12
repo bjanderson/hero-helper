@@ -3,9 +3,16 @@ const fs = require('fs');
 const path = require('path');
 
 function getConfig(baseDir = '') {
-  const name = process.argv[2];
-  const config = {};
+  process.argv.splice(0, 2);
+  const config = {
+    isModule: isModule(),
+    hasRoute: hasRoute()
+  };
 
+  removeModuleFlag();
+  removeRouteFlag();
+
+  const name = process.argv[0];
   config.camel = getCamel(name);
   config.caps = getCaps(name);
   config.name = name;
@@ -15,6 +22,32 @@ function getConfig(baseDir = '') {
 
   console.log('config: \n', config);
   return config;
+}
+
+function isModule() {
+  const isModule = process.argv.includes('-m') || process.argv.includes('--module');
+  return isModule;
+}
+
+function hasRoute() {
+  const hasRoute = process.argv.includes('-r') || process.argv.includes('--route');
+  return hasRoute;
+}
+
+function removeModuleFlag() {
+  if (process.argv.includes('-m')) {
+    process.argv.splice(process.argv.indexOf('-m'), 1);
+  } else if (process.argv.includes('--module')) {
+    process.argv.splice(process.argv.indexOf('--module'), 1);
+  }
+}
+
+function removeRouteFlag() {
+  if (process.argv.includes('-r')) {
+    process.argv.splice(process.argv.indexOf('-r'), 1);
+  } else if (process.argv.includes('--route')) {
+    process.argv.splice(process.argv.indexOf('--route'), 1);
+  }
 }
 
 function getCamel(str) {
