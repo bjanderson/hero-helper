@@ -1,0 +1,21 @@
+{
+  "name": "hero-helper-server",
+  "version": "0.0.1",
+  "author": "BJ Anderson",
+  "license": "MIT",
+  "private": true,
+  "@std/esm": "all",
+  "scripts": {
+    "data": "node -r @std/esm src/data-builder/main.js",
+    "start": "nodemon -r @std/esm --watch src --ignore src/data src/index.js"
+  },
+  "dependencies": {
+    "@std/esm": "0.26.0",
+    "body-parser": "1.18.3",
+    "express": "4.16.3",
+    "lowdb": "1.0.0",
+    "morgan": "1.9.0",
+    "nodemon": "1.17.5",
+    "uuid": "3.2.1"
+  }
+}

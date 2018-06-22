@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HeroHelper</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <hh-root>
+
+    <style type="text/css">
+      @keyframes spin {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+      }
+
+      @keyframes spin-back {
+        0% {transform: rotate(360deg);}
+        100% {transform: rotate(0deg);}
+      }
+
+      #pre-bootstrap, #bootstrap-error {
+        bottom: 0px;
+        left: 0px;
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        z-index: 999999;
+      }
+
+      .message {
+        color: #000000;
+        font-family: monospace;
+        font-size: 18px;
+        left: 0px;
+        line-height: 14px;
+        position: absolute;
+        right: 0px;
+        text-align: center;
+        top: 50%;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #pre-bootstrap #spinners {
+        display: block;
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        right: calc(50% - 100px);
+        top: calc(50% - 165px);
+      }
+
+      #pre-bootstrap #d1 {
+        animation: spin 0.5s infinite ease-out;
+        border-top: 3px solid #0ff;
+        border-radius: 15px;
+        border-right: 3px solid #0ff;
+        display: block;
+        height: 30px;
+        position: absolute;
+        right: calc(50% - 15px);
+        top: calc(50% - 15px);
+        width: 30px;
+      }
+
+      #pre-bootstrap #d2 {
+        animation: spin-back 0.75s infinite ease-in;
+        border-bottom: 3px solid #0f0;
+        border-left: 3px solid #0f0;
+        border-radius: 30px;
+        display: block;
+        height: 60px;
+        position: absolute;
+        right: calc(50% - 30px);
+        top: calc(50% - 30px);
+        width: 60px;
+      }
+
+      #pre-bootstrap #d3 {
+        animation: spin 1.0s infinite ease-out;
+        border-bottom: 3px solid #f00;
+        border-radius: 45px;
+        border-right: 3px solid #f00;
+        display: block;
+        height: 90px;
+        position: absolute;
+        right: calc(50% - 45px);
+        top: calc(50% - 45px);
+        width: 90px;
+      }
+
+      #bootstrap-error #box {
+        background: #c00;
+        box-shadow: 0 0 0 10px white, 0 0 24px 12px #B3B3B3, inset 0 0 16px 1px #B3B3B3;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        position: absolute;
+        right: calc(50% - 75px);
+        top: calc(50% - 235px);
+        margin: 40px auto;
+      }
+
+      #bootstrap-error #box:before, #bootstrap-error #box:after{
+        background: white;
+        box-shadow: 0 0 16px 1px #B3B3B3;
+        content: '';
+        height: 100px;
+        width: 20px;
+        position:absolute;
+        left: 64px;
+        top: 25px;
+      }
+
+      #bootstrap-error #box:before{
+        transform: skew(28deg)
+      }
+
+      #bootstrap-error #box:after{
+        transform: skew(-28deg);
+      }
+    </style>
+
+    <div id="pre-bootstrap">
+      <div id="spinners">
+        <div id="d1"></div>
+        <div id="d2"></div>
+        <div id="d3"></div>
+      </div>
+
+      <div class="message">
+        Loading...
+      </div>
+    </div>
+
+    <div id="bootstrap-error" class="hidden">
+      <div id="box"></div>
+
+      <div class="message">
+        An Error Occurred.
+      </div>
+    </div>
+
+  </hh-root>
+
+</body>
+</html>

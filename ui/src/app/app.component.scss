@@ -1,0 +1,34 @@
+@import '../styles/_colors.scss';
+
+:host {
+  display: grid;
+  grid-gap: 10px;
+  height: 100%;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+  grid-template-rows: 3rem 1fr 2rem;
+}
+
+header {
+  background-color: $blue;
+  color: $white;
+  grid-area: header;
+}
+
+main {
+  background-color: $white;
+  color: $black;
+  grid-area: main;
+  padding: 0.25rem;
+}
+
+footer {
+  background-color: $red;
+  color: $white;
+  grid-area: footer;
+  text-align: center;
+}

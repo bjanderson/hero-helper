@@ -1,0 +1,20 @@
+{
+  "heroes": [
+    {
+      "id": "1",
+      "name": "Testman"
+    },
+    {
+      "id": "43339187-7fb4-433d-b917-ab4af5ea2e6a",
+      "name": "Good Man"
+    },
+    {
+      "id": "115ec38b-c8ef-4d51-a8ed-f2d615a9cab5",
+      "name": "Helpful Woman"
+    },
+    {
+      "id": "0d8c3f51-0864-4bdc-ba74-1db216593bff",
+      "name": "Happy Boy"
+    }
+  ]
+}
