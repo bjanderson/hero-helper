@@ -28,45 +28,33 @@ export class ${config.pascal} {
 }
 
 function createModelSpec() {
-  const text = `import { ${config.pascal} } from './${config.name}.model';
+  const text = `import { defaultString } from '../../utils';
+import { hasExpectedFieldsAndValues } from '../../utils/test';
 
-function testDefaults(obj: any) {
-  expect(obj.value).toEqual('');
-}
+import { ${config.pascal} } from './${config.name}.model';
 
-describe('models', function () {
-  describe('${config.pascal}', function () {
-    describe('constructor defaults', function () {
-      it('should set the default values when no input object is given', function () {
-        let obj = new ${config.pascal}();
-        testDefaults(obj);
-      });
+describe('${config.pascal}', function () {
+  describe('constructor defaults', function () {
+    const defaults = {
+      value: defaultString
+    };
 
-      it('should set the default values when an empty input object is given', function () {
-        let obj = new ${config.pascal}({});
-        testDefaults(obj);
-      });
-
-      it('should set all fields as passed into the constructor object', function () {
-        let obj = {
-          value: 'test string 1'
-        };
-
-        let test = new ${config.pascal}(obj);
-
-        for (let field of Object.keys(obj)) {
-          expect(test[field]).toEqual(obj[field]);
-        }
-      });
+    it('should set the default values when given no input object', function () {
+      expect(hasExpectedFieldsAndValues(defaults, new ${config.pascal}())).toEqual(true);
     });
 
-    describe('fields', function () {
-      it('should have all of, and only, the expected fields', function () {
-        let test = new ${config.pascal}();
-        expect(Object.keys(test)).toEqual([
-          'value'
-        ]);
-      });
+    it('should set the default values when given null', function () {
+      expect(hasExpectedFieldsAndValues(defaults, new ${config.pascal}())).toEqual(true);
+    });
+  });
+
+  describe('constructor assignments', function () {
+    it('should set all fields as passed into the constructor object', function () {
+      const test = {
+        value: 'test value'
+      };
+
+      expect(hasExpectedFieldsAndValues(test, new ${config.pascal}(test))).toEqual(true);
     });
   });
 });

@@ -1,48 +1,38 @@
+import { defaultString, getArrayOfModels } from '../../utils';
+import { hasExpectedFieldsAndValues } from '../../utils/test';
+
 import { Hero } from '../hero';
 
 import { HeroStoreState } from './hero-store-state.model';
 
-function testDefaults(obj: any) {
-  expect(obj.heroes).toEqual([]);
-}
+describe('HeroStoreState', function () {
+  describe('constructor defaults', function () {
+    const defaults = {
+      heroes: []
+    };
 
-describe('models', function () {
-  describe('HeroStoreState', function () {
-    describe('constructor defaults', function () {
-      it('should set the default values when no input object is given', function () {
-        const obj = new HeroStoreState();
-        testDefaults(obj);
-      });
-
-      it('should set the default values when an empty input object is given', function () {
-        const obj = new HeroStoreState({});
-        testDefaults(obj);
-      });
-
-      it('should set all fields as passed into the constructor object', function () {
-        const obj = {
-          heroes: [{name: 'test hero'}]
-        };
-
-        const expected = {
-          heroes: [new Hero(obj.heroes[0])]
-        };
-
-        const test = new HeroStoreState(obj);
-
-        for (const field of Object.keys(obj)) {
-          expect(test[field]).toEqual(expected[field]);
-        }
-      });
+    it('should set the default values when given no input object', function () {
+      expect(new HeroStoreState()).toEqual(defaults);
+      // expect(hasExpectedFieldsAndValues(defaults, new HeroStoreState())).toEqual(true);
     });
 
-    describe('fields', function () {
-      it('should have all of, and only, the expected fields', function () {
-        const test = new HeroStoreState();
-        expect(Object.keys(test)).toEqual([
-          'heroes'
-        ]);
-      });
+    it('should set the default values when given null', function () {
+      expect(new HeroStoreState(null)).toEqual(defaults);
+      // expect(hasExpectedFieldsAndValues(defaults, new HeroStoreState())).toEqual(true);
+    });
+  });
+
+  describe('constructor assignments', function () {
+    it('should set all fields as passed into the constructor object', function () {
+      const testInput = {
+        heroes: [{name: 'test hero 1'}, {name: 'test hero 2'}]
+      };
+
+      const test = {
+        heroes: getArrayOfModels(Hero, testInput.heroes)
+      };
+
+      expect(new HeroStoreState(testInput)).toEqual(test);
     });
   });
 });
