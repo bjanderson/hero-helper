@@ -1,4 +1,4 @@
-import { defaultString } from '../../utils';
+import { defaultString } from '@practicalwebdev/utils';
 import { hasExpectedFieldsAndValues } from '../../utils/test';
 
 import { Being } from './being.model';

@@ -1,4 +1,4 @@
-import { getObject, getString } from '../../utils';
+import { getObject, getString } from '@practicalwebdev/utils';
 
 export class Being {
 

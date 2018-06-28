@@ -1,4 +1,4 @@
-import { getObject, getString, getValueOrNull } from '../../utils';
+import { getObject, getString, getValueOrNull } from '@practicalwebdev/utils';
 
 export class RouteChangePayload {
 

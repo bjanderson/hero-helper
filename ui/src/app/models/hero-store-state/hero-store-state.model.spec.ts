@@ -1,4 +1,4 @@
-import { defaultString, getArrayOfModels } from '../../utils';
+import { defaultString, getArrayOfModels } from '@practicalwebdev/utils';
 import { hasExpectedFieldsAndValues } from '../../utils/test';
 
 import { Hero } from '../hero';

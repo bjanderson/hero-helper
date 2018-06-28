@@ -1,4 +1,4 @@
-import { getObject } from '../../utils';
+import { getObject } from '@practicalwebdev/utils';
 
 import { Being } from '../being';
 

@@ -1,4 +1,4 @@
-import { getArrayOfModels, getObject } from '../../utils';
+import { getArrayOfModels, getObject } from '@practicalwebdev/utils';
 
 import { Villain } from '../villain';
 

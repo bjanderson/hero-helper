@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { getArrayOfModels } from '@practicalwebdev/utils';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Hero } from '../../models';
-import { getArrayOfModels } from '../../utils';
 
 import { ApiService } from '../api';
 

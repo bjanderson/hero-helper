@@ -1,6 +1,6 @@
 import { NavigationExtras } from '@angular/router';
 
-import { getArray, getObject, getValueOrNull } from '../../utils';
+import { getArray, getObject, getValueOrNull } from '@practicalwebdev/utils';
 
 export class RouteGoPayload {
 
