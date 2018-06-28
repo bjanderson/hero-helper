@@ -11,9 +11,13 @@ describe('RouterEffects', function () {
   const heroStoreService: any = {dispatchLoadAction: () => undefined};
   const villainStoreService: any = {dispatchLoadAction: () => undefined};
 
+  function init() {
+    effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('constructs', function () {
@@ -23,7 +27,7 @@ describe('RouterEffects', function () {
 
   describe('listenToRouter()', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named listenToRouter', function () {
@@ -33,7 +37,7 @@ describe('RouterEffects', function () {
 
   describe('changeRoute()', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named changeRoute', function () {
@@ -49,7 +53,7 @@ describe('RouterEffects', function () {
 
   describe('logTransition(action: any)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named logTransition', function () {
@@ -65,7 +69,7 @@ describe('RouterEffects', function () {
 
   describe('navigate(action: GoAction)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named navigate', function () {
@@ -81,7 +85,7 @@ describe('RouterEffects', function () {
 
   describe('navigateBack(action: GoAction)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named navigateBack', function () {
@@ -97,7 +101,7 @@ describe('RouterEffects', function () {
 
   describe('navigateForward(action: GoAction)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named navigateForward', function () {
@@ -113,7 +117,7 @@ describe('RouterEffects', function () {
 
   describe('ofRoute(route: string | string[])', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named ofRoute', function () {
@@ -123,7 +127,7 @@ describe('RouterEffects', function () {
 
   describe('loadHeroes(action: GoAction)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named loadHeroes', function () {
@@ -139,7 +143,7 @@ describe('RouterEffects', function () {
 
   describe('loadVillains(action: GoAction)', function () {
     beforeEach(() => {
-      effects = new RouterEffects(actions, router, location, routerStoreService, heroStoreService, villainStoreService);
+      init();
     });
 
     it('has a function named loadVillains', function () {

@@ -11,9 +11,13 @@ describe('VillainService', function () {
     put: () => empty()
   };
 
+  function init() {
+    service = new VillainService(api);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('constructs', function () {
@@ -23,7 +27,7 @@ describe('VillainService', function () {
 
   describe('create()', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('has a function named create', function () {
@@ -40,7 +44,7 @@ describe('VillainService', function () {
 
   describe('delete', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('has a function named delete', function () {
@@ -56,7 +60,7 @@ describe('VillainService', function () {
 
   describe('get', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('has a function named get', function () {
@@ -72,7 +76,7 @@ describe('VillainService', function () {
 
   describe('getAll()', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('has a function named getAll', function () {
@@ -88,7 +92,7 @@ describe('VillainService', function () {
 
   describe('update()', function () {
     beforeEach(() => {
-      service = new VillainService(api);
+      init();
     });
 
     it('has a function named update', function () {

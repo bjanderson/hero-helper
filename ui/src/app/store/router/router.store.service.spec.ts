@@ -12,9 +12,13 @@ describe('RouterStoreService', function () {
     select: () => undefined
   };
 
+  function init() {
+    service = new RouterStoreService(store);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
     });
 
     it('constructs', function () {
@@ -24,7 +28,7 @@ describe('RouterStoreService', function () {
 
   describe('getPath()', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
     });
 
     it('has a function named getPath', function () {
@@ -40,7 +44,7 @@ describe('RouterStoreService', function () {
 
   describe('dispatchBackAction()', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
       service.dispatchAction = () => undefined;
     });
 
@@ -57,7 +61,7 @@ describe('RouterStoreService', function () {
 
   describe('dispatchForwardAction()', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
       service.dispatchAction = () => undefined;
     });
 
@@ -74,7 +78,7 @@ describe('RouterStoreService', function () {
 
   describe('dispatchGoAction()', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
       service.dispatchAction = () => undefined;
     });
 
@@ -91,7 +95,7 @@ describe('RouterStoreService', function () {
 
   describe('dispatchRouteChangeAction()', function () {
     beforeEach(() => {
-      service = new RouterStoreService(store);
+      init();
       service.dispatchAction = () => undefined;
     });
 

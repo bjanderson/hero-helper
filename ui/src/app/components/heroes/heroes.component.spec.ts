@@ -6,9 +6,13 @@ describe('HeroesComponent', function () {
   let component;
   const heroStoreService: any = { getHeroes: () => empty() };
 
+  function init() {
+    component = new HeroesComponent(heroStoreService);
+  }
+
   describe('constructor()', function () {
     beforeEach(function () {
-      component = new HeroesComponent(heroStoreService);
+      init();
     });
 
     it('should create the component', function () {

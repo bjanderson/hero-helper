@@ -42,9 +42,13 @@ describe('${config.pascal}Service', function () {
   let service: ${config.pascal}Service;
   let api: any = { get: () => undefined };
 
+  function init() {
+    service = new ${config.pascal}Service(api);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      service = new ${config.pascal}Service(api);
+      init();
     });
 
     it('constructs', function () {
@@ -54,7 +58,7 @@ describe('${config.pascal}Service', function () {
 
   describe('get', function () {
     beforeEach(() => {
-      service = new ${config.pascal}Service(api);
+      init();
     });
 
     it('has a function named get', function () {

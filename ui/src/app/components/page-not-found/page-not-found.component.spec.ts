@@ -3,9 +3,13 @@ import { PageNotFoundComponent } from './page-not-found.component';
 describe('PageNotFoundComponent', function () {
   let component;
 
+  function init() {
+    component = new PageNotFoundComponent();
+  }
+
   describe('constructor()', function () {
     beforeEach(function () {
-      component = new PageNotFoundComponent();
+      init();
     });
 
     it('should create the component', function () {
@@ -15,7 +19,7 @@ describe('PageNotFoundComponent', function () {
 
   describe('ngOnInit(): void', function () {
     beforeEach(function () {
-      component = new PageNotFoundComponent();
+      init();
     });
 
     it('has a function named ngOnInit', function () {

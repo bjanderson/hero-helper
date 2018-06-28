@@ -7,9 +7,13 @@ describe('HeroEffects', function () {
   const actions$: any = empty();
   const heroService: any = { getAll: () => empty() };
 
+  function init() {
+    effects = new HeroEffects(actions$, heroService);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      effects = new HeroEffects(actions$, heroService);
+      init();
     });
 
     it('has a function named ', function () {
@@ -19,7 +23,7 @@ describe('HeroEffects', function () {
 
   describe('loadHeroes()', function () {
     beforeEach(() => {
-      effects = new HeroEffects(actions$, heroService);
+      init();
     });
 
     it('has a function named loadHeroes', function () {

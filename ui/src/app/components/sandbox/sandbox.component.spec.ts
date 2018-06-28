@@ -3,9 +3,13 @@ import { SandboxComponent } from './sandbox.component';
 describe('SandboxComponent', function () {
   let component;
 
+  function init() {
+    component = new SandboxComponent();
+  }
+
   describe('constructor()', function () {
     beforeEach(function () {
-      component = new SandboxComponent();
+      init();
     });
 
     it('should create the component', function () {

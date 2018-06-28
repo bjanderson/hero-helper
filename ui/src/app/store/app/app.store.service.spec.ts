@@ -8,9 +8,13 @@ describe('AppStoreService', function () {
   let service: AppStoreService;
   const store: any = { dispatch: () => undefined };
 
+  function init() {
+    service = new TestStoreService(store);
+  }
+
   describe('dispatchAction(action: Action)', function () {
     beforeEach(() => {
-      service = new TestStoreService(store);
+      init();
     });
 
     it('has a function named dispatchAction', function () {
@@ -27,7 +31,7 @@ describe('AppStoreService', function () {
 
   describe('getProperty(prop: string)', function () {
     beforeEach(() => {
-      service = new TestStoreService(store);
+      init();
     });
 
     it('has a function named getProperty', function () {
@@ -52,7 +56,7 @@ describe('AppStoreService', function () {
 
   describe('getState(state: any)', function () {
     beforeEach(() => {
-      service = new TestStoreService(store);
+      init();
     });
 
     it('has a function named getState', function () {

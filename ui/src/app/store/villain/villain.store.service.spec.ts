@@ -5,9 +5,13 @@ describe('VillainStoreService', function () {
   let service: VillainStoreService;
   const store: any = {select: () => undefined};
 
+  function init() {
+    service = new VillainStoreService(store);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      service = new VillainStoreService(store);
+      init();
     });
 
     it('constructs', function () {
@@ -17,7 +21,7 @@ describe('VillainStoreService', function () {
 
   describe('getVillains()', function () {
     beforeEach(() => {
-      service = new VillainStoreService(store);
+      init();
     });
 
     it('has a function named getVillains', function () {
@@ -33,7 +37,7 @@ describe('VillainStoreService', function () {
 
   describe('dispatchLoadAction()', function () {
     beforeEach(() => {
-      service = new VillainStoreService(store);
+      init();
     });
 
     it('has a function named dispatchLoadAction', function () {
@@ -49,7 +53,7 @@ describe('VillainStoreService', function () {
 
   describe('dispatchLoadFailAction(payload: string)', function () {
     beforeEach(() => {
-      service = new VillainStoreService(store);
+      init();
     });
 
     it('has a function named dispatchLoadFailAction', function () {
@@ -66,7 +70,7 @@ describe('VillainStoreService', function () {
 
   describe('dispatchLoadSuccessAction(payload: string)', function () {
     beforeEach(() => {
-      service = new VillainStoreService(store);
+      init();
     });
 
     it('has a function named dispatchLoadSuccessAction', function () {

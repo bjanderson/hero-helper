@@ -12,9 +12,13 @@ describe('ApiService', function () {
     put: () => empty()
   };
 
+  function init() {
+    service = new ApiService(http);
+  }
+
   describe('constructor()', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('constructs', function () {
@@ -24,7 +28,7 @@ describe('ApiService', function () {
 
   describe('delete(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('has a function named delete', function () {
@@ -34,7 +38,7 @@ describe('ApiService', function () {
 
   describe('get(url: string, params?: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('has a function named get', function () {
@@ -44,7 +48,7 @@ describe('ApiService', function () {
 
   describe('patch(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('has a function named patch', function () {
@@ -54,7 +58,7 @@ describe('ApiService', function () {
 
   describe('post(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('has a function named post', function () {
@@ -64,7 +68,7 @@ describe('ApiService', function () {
 
   describe('put(url: string, body: any, options: any = this.options): void', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('has a function named put', function () {
@@ -74,7 +78,7 @@ describe('ApiService', function () {
 
   describe('mapError<TResponse>(error: any): Observable<TResponse>', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
       service.mapResponse = function () {};
     });
 
@@ -87,7 +91,7 @@ describe('ApiService', function () {
 
   describe('mapResponse(response: any): any', function () {
     beforeEach(function () {
-      service = new ApiService(http);
+      init();
     });
 
     it('returns response.json() if possible', function () {

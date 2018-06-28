@@ -35,9 +35,13 @@ function createComponentSpec() {
 describe('${config.pascal}Component', function () {
   let component;
 
+  function init() {
+    component = new ${config.pascal}Component();
+  }
+
   describe('constructor()', function () {
     beforeEach(function () {
-      component = new ${config.pascal}Component();
+      init();
     });
 
     it('should create the component', function () {

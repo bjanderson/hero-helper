@@ -7,9 +7,13 @@ describe('VillainEffects', function () {
   const actions$: any = empty();
   const villainService: any = { getAll: () => empty() };
 
+  function init() {
+    effects = new VillainEffects(actions$, villainService);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      effects = new VillainEffects(actions$, villainService);
+      init();
     });
 
     it('has a function named ', function () {
@@ -19,7 +23,7 @@ describe('VillainEffects', function () {
 
   describe('loadVillains()', function () {
     beforeEach(() => {
-      effects = new VillainEffects(actions$, villainService);
+      init();
     });
 
     it('has a function named loadVillains', function () {

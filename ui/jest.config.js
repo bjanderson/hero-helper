@@ -1,6 +1,11 @@
 module.exports = {
+
+  preset: "jest-preset-angular",
+
   collectCoverageFrom: [
-    'src/app/**/*.{ts}'
+    'src/app/**/*.{ts}',
+    '!src/app/**/index.ts',
+    '!src/app/**/*.module.ts'
   ],
 
   coverageDirectory: 'coverage',
@@ -9,24 +14,6 @@ module.exports = {
     "json",
     "lcov",
     "text-summary"
-  ],
-
-  globals: {
-    '__TS_CONFIG__': {
-      'target': 'es6',
-      'module': 'commonjs',
-      'moduleResolution': 'node'
-    },
-    'ts-jest': {
-      'tsConfigFile': 'src/tsconfig.spec.json'
-    },
-    '__TRANSFORM_HTML__': true
-  },
-
-  moduleFileExtensions: [
-    'ts',
-    'js',
-    'json'
   ],
 
   moduleNameMapper: {
@@ -49,15 +36,10 @@ module.exports = {
     'src/app/*.{scss}'
   ],
 
-  testRegex: "(\.)(spec)(\.)(ts)$",
+  testMatch: [
+    "<rootDir>/src/app/**/__tests__/**/*.+(ts|js)?(x)",
+    "<rootDir>/src/app/**/+(*.)+(spec|test).+(ts|js)?(x)"
+  ],
 
-  testResultsProcessor: 'jest-sonar-reporter',
-
-  transform: {
-    '^.+\\.(ts|html)$': '<rootDir>/jest/preprocessor.js'
-  },
-
-  transformIgnorePatterns: [
-    'node_modules/(?!@ngrx)'
-  ]
+  testResultsProcessor: 'jest-sonar-reporter'
 };

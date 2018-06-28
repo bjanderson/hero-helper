@@ -24,12 +24,3 @@ Object.defineProperty(document.body.style, 'transform', {
     };
   },
 });
-
-Object.defineProperty(window, 'APP_METADATA', {
-  value: () => {
-    return {
-      ENV: 'env-test',
-      VERSION: 'version-test'
-    };
-  }
-});

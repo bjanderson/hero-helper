@@ -3,9 +3,13 @@ import { PermissionsService } from './permissions.service';
 describe('PermissionsService', function () {
   let service;
 
+  function init() {
+    service = new PermissionsService();
+  }
+
   describe('initialization', function () {
     beforeEach(function () {
-      service = new PermissionsService();
+      init();
     });
 
     it('constructs', function () {
@@ -15,7 +19,7 @@ describe('PermissionsService', function () {
 
   describe('canAccessRoute(routeId: string): Observable<boolean>', function () {
     beforeEach(function () {
-      service = new PermissionsService();
+      init();
       service.isInitialized = function () { return true; };
       service.userHasRoutePermissions = function () {};
     });
@@ -35,7 +39,7 @@ describe('PermissionsService', function () {
 
   describe('isInitialized(): boolean', function () {
     beforeEach(function () {
-      service = new PermissionsService();
+      init();
     });
 
     it('returns false when approvedUserRoutes are null', function () {
@@ -55,7 +59,7 @@ describe('PermissionsService', function () {
 
   describe('userHasRoutePermissions(routeId: string): boolean', function () {
     beforeEach(function () {
-      service = new PermissionsService();
+      init();
     });
 
     it('returns false when the given route is not in the approvedUserRoutes', function () {

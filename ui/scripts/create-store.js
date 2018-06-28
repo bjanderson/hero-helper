@@ -118,7 +118,6 @@ describe('${config.camel}Actions', function () {
 function createEffects() {
   let text = `import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { switchMap, map, catchError } from 'rxjs/operators';
@@ -126,23 +125,30 @@ import { switchMap, map, catchError } from 'rxjs/operators';
 import { ${config.pascal} } from '../../models';
 import { ${config.pascal}Service } from '../../services';
 
-import { ${config.pascal}ActionTypes, LoadSuccessAction, LoadFailAction } from './${config.name}.store.actions';
+import {
+  ${config.pascal}Action,
+  ${config.pascal}ActionTypes,
+  LoadSuccessAction,
+  LoadFailAction
+} from './${config.name}.store.actions';
 
 @Injectable()
 export class ${config.pascal}Effects {
   @Effect()
-  load${config.pascal}$: Observable<Action> = this.actions$.pipe(
+  load${config.pascal}$: Observable<${config.pascal}Action> = this.actions$.pipe(
     ofType(${config.pascal}ActionTypes.LOAD),
-    switchMap(() =>
-      this.${config.camel}Service.get${config.pascal}s()
-        .pipe(
-          map((${config.camel}s: ${config.pascal}[]) => new LoadSuccessAction(${config.camel}s)),
-          catchError(error => of(new LoadFailAction(error)))
-        )
-    )
-  );
+    switchMap(this.load${config.pascal}.bind(this)));
 
-  constructor(private actions$: Actions, private ${config.camel}Service: ${config.pascal}Service) {}
+  constructor(
+    private actions$: Actions,
+    private ${config.camel}Service: ${config.pascal}Service
+  ) {}
+
+  private load${config.pascal}(): Observable<${config.pascal}Action> {
+    return this.${config.camel}Service.get${config.pascal}s().pipe(
+      map((${config.camel}s: ${config.pascal}[]) => new LoadSuccessAction(${config.camel}s)),
+      catchError(error => of(new LoadFailAction(error))));
+  }
 }
 `;
 
@@ -150,22 +156,63 @@ export class ${config.pascal}Effects {
 }
 
 function createEffectsSpec() {
-  const text = `import { empty } from 'rxjs/observable/empty';
+  const text = `import { empty, of, throwError } from 'rxjs';
+import { take } from 'rxjs/operators';
 
+import {
+  LoadSuccessAction,
+  LoadFailAction
+} from './chord.store.actions';
 import { ${config.pascal}Effects } from './${config.name}.store.effects';
 
 describe('${config.pascal}Effects', function () {
-  let effects: ${config.pascal}Effects;
+  let effects: any;
   let actions$: any = empty();
   let ${config.camel}Service: any = { get: empty() };
 
+  function init() {
+    effects = new ${config.pascal}Effects(actions$, ${config.camel}Service);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      effects = new ${config.pascal}Effects(actions$, ${config.camel}Service);
+      init();
     });
 
     it('has a function named ', function () {
       expect(effects).toBeDefined();
+    });
+  });
+
+  describe('load${config.pascal}()', function() {
+    beforeEach(() => {
+      init();
+    });
+
+    it('is a function', function() {
+       expect(typeof effects.load${config.pascal}).toEqual('function');
+    });
+
+    it('calls ${config.camel}Service.get()', function() {
+      const spy = spyOn(${config.camel}Service, 'get').and.returnValue(empty());
+      effects.load${config.pascal}();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('it returns an instance of LoadSuccessAction', function(done) {
+      effects.${config.camel}Service.get = () => of({});
+      effects.load${config.pascal}().pipe(take(1)).subscribe(result => {
+        expect(result instanceof LoadSuccessAction).toEqual(true);
+        done();
+      });
+    });
+
+    it('it returns an instance of LoadFailAction', function(done) {
+      effects.${config.camel}Service.get = () => throwError({});
+      effects.load${config.pascal}().pipe(take(1)).subscribe(result => {
+        expect(result instanceof LoadFailAction).toEqual(true);
+        done();
+      });
     });
   });
 });
@@ -178,8 +225,6 @@ function createModule() {
   const text = `import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-
-import { ${config.pascal}Service } from '../../services';
 
 import { ${config.pascal}Effects } from './${config.name}.store.effects';
 import { ${config.camel}Reducer } from './${config.name}.store.reducers';
@@ -291,14 +336,6 @@ export class ${config.pascal}StoreService extends AppStoreService {
   dispatchLoadAction() {
     this.dispatchAction(new LoadAction());
   }
-
-  dispatchLoadFailAction(payload: string) {
-    this.dispatchAction(new LoadFailAction(payload));
-  }
-
-  dispatchLoadSuccessAction(payload: string[]) {
-    this.dispatchAction(new LoadSuccessAction(payload));
-  }
 }
 `;
   utils.writeToFile(config.path, `${config.name}.store.service.ts`, service);
@@ -312,9 +349,13 @@ describe('${config.pascal}StoreService', function () {
   let service: ${config.pascal}StoreService;
   let store: any = {select: () => undefined};
 
+  function init() {
+    service = new ${config.pascal}StoreService(store);
+  }
+
   describe('constructor', function () {
     beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
+      init();
     });
 
     it('constructs', function () {
@@ -324,7 +365,7 @@ describe('${config.pascal}StoreService', function () {
 
   describe('get${config.pascal}s()', function () {
     beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
+      init();
     });
 
     it('has a function named get${config.pascal}s', function () {
@@ -340,7 +381,7 @@ describe('${config.pascal}StoreService', function () {
 
   describe('dispatchLoadAction()', function () {
     beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
+      init();
     });
 
     it('has a function named dispatchLoadAction', function () {
@@ -351,40 +392,6 @@ describe('${config.pascal}StoreService', function () {
       spyOn(service, 'dispatchAction').and.returnValue(null);
       service.dispatchLoadAction();
       expect(service.dispatchAction).toHaveBeenCalledWith(new LoadAction());
-    });
-  });
-
-  describe('dispatchLoadFailAction(payload: string)', function () {
-    beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
-    });
-
-    it('has a function named dispatchLoadFailAction', function () {
-      expect(typeof service.dispatchLoadFailAction).toEqual('function');
-    });
-
-    it('calls dispatchAction()', function () {
-      spyOn(service, 'dispatchAction').and.returnValue(null);
-      const payload = 'test error';
-      service.dispatchLoadFailAction(payload);
-      expect(service.dispatchAction).toHaveBeenCalledWith(new LoadFailAction(payload));
-    });
-  });
-
-  describe('dispatchLoadSuccessAction(payload: string)', function () {
-    beforeEach(() => {
-      service = new ${config.pascal}StoreService(store);
-    });
-
-    it('has a function named dispatchLoadSuccessAction', function () {
-      expect(typeof service.dispatchLoadSuccessAction).toEqual('function');
-    });
-
-    it('calls dispatchAction()', function () {
-      spyOn(service, 'dispatchAction').and.returnValue(null);
-      const payload = ['test payload'];
-      service.dispatchLoadSuccessAction(payload);
-      expect(service.dispatchAction).toHaveBeenCalledWith(new LoadSuccessAction(payload));
     });
   });
 });

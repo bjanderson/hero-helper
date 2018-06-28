@@ -3,13 +3,18 @@ import { AuthGuardService } from './auth-guard.service';
 import { PermissionsService } from '../permissions';
 
 describe('AuthGuardService', function () {
-  let permissions;
   let service;
+  const permissions: any = {
+    canAccessRoute: () => undefined
+  };
+
+  function init() {
+    service = new AuthGuardService(permissions);
+  }
 
   describe('initialization', function () {
     beforeEach(function () {
-      permissions = <PermissionsService>{};
-      service = new AuthGuardService(permissions);
+      init();
     });
 
     it('constructs', function () {
@@ -19,9 +24,7 @@ describe('AuthGuardService', function () {
 
   describe('canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>', function () {
     beforeEach(function () {
-      permissions = <PermissionsService>{};
-      permissions.canAccessRoute = function () {};
-      service = new AuthGuardService(permissions);
+      init();
     });
 
     it('calls permissions.canAccessRoute()', function () {
