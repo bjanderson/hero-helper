@@ -38,3 +38,7 @@ Thumbs.db
 
 test-report.xml
 server/src/data/*.json
+
+# github keeps emailing me about vulnerabilities in package-lock.json
+# I can't do anything about them, so stop buggin me about it!
+package-lock.json
