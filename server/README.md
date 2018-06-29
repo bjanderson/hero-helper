@@ -2,7 +2,7 @@
 
 This is the server that backs the hero-helper-ui project.
 
-This is and [express](https://expressjs.com/) server that uses [lowdb](https://github.com/typicode/lowdb) for its data storage.
+This is an [express](https://expressjs.com/) server that uses [lowdb](https://github.com/typicode/lowdb) for its data storage.
 
 ## Data
 
