@@ -4,11 +4,9 @@ This is a demo app with a similar theme to the Angular Tour of Heros tutorial.
 
 The goal of this app is to go deeper into the development of a full web application with more real-world examples that include third-party libraries (such as @ngrx).
 
-There are two packages in this repo, named `server` and `ui` respectively.
-
 ## server
 
-The server runs on port 3001, but you can change that in the `server/src/index.js` file. If you do, then you will also need to change it in the `ui/proxy-config.json` file.
+The server runs on port 3001, but you can change that in the `server/src/index.js` file. If you do, then you will also need to change it in the `proxy-config.json` file.
 
 Before starting the server for the first time, open a terminal in the `server` folder and run
 
@@ -16,15 +14,13 @@ Before starting the server for the first time, open a terminal in the `server` f
 
 Otherwise your server won't have any data to serve.
 
-Then you can start the server by running `npm start` in the server folder.
+Then you can start the server by running `npm start` in the `server` folder.
 
-## ui
-
-# hero-helper-ui
+## UI
 
 This project is built on [Angular 6](https://angular.io/).
 
-## Start
+### Start
 
 To start the server run
 
@@ -37,7 +33,7 @@ To test the build you can run
 
 And the app will be served from the built files in the `dist` folder.
 
-## Test
+### Test
 
 Unit testing is done with [Jest](https://facebook.github.io/jest/).
 
@@ -51,13 +47,13 @@ To run the e2e tests run
 
     npm run e2e
 
-## Lint
+### Lint
 
 To run the linter run
 
     npm run lint
 
-## Code Generators
+### Code Generators
 
 There are several different code generators available in the `scripts` folder. They create the boiler-plate files and code for components, models, services, and stores, respectively.
 
