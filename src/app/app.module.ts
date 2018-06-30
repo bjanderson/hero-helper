@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
@@ -15,6 +15,7 @@ import { metaReducers } from './store/app';
 import { AppComponent } from './app.component';
 import { CustomSerializer } from './app-devtools-utils';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomErrorHandler } from './custom-error-handler';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -35,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
 
   providers: [
+    { provide: ErrorHandler, useClass: CustomErrorHandler },
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ]
 })

@@ -1,5 +1,4 @@
 import { defaultString } from '@practicalwebdev/utils';
-import { hasExpectedFieldsAndValues } from '../../utils/test';
 
 import { Villain } from './villain.model';
 
@@ -10,23 +9,27 @@ describe('Villain', function () {
       name: defaultString
     };
 
+    it('should have the expected fields', function () {
+      expect(Object.keys(defaults)).toEqual(Object.keys(new Villain()));
+    });
+
     it('should set the default values when given no input object', function () {
-      expect(hasExpectedFieldsAndValues(defaults, new Villain())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new Villain()));
     });
 
     it('should set the default values when given null', function () {
-      expect(hasExpectedFieldsAndValues(defaults, new Villain())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new Villain(null)));
     });
   });
 
   describe('constructor assignments', function () {
-    it('should set all fields as passed into the constructor object', function () {
+    it('should set all values passed into the constructor', function () {
       const test = {
         id: 'test id',
         name: 'test name'
       };
 
-      expect(hasExpectedFieldsAndValues(test, new Villain(test))).toEqual(true);
+      expect(Object.values(test)).toEqual(Object.values(new Villain(test)));
     });
   });
 });

@@ -13,7 +13,7 @@ createReducerSpec();
 createService();
 createServiceSpec();
 createIndex();
-addToStoresIndex();
+// addToStoresIndex();
 
 console.log(`\n${config.pascal} store created successfully.\n`)
 
@@ -118,11 +118,9 @@ describe('${config.camel}Actions', function () {
 function createEffects() {
   let text = `import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { switchMap, map, catchError } from 'rxjs/operators';
 
-import { ${config.pascal} } from '../../models';
 import { ${config.pascal}Service } from '../../services';
 
 import {
@@ -146,7 +144,7 @@ export class ${config.pascal}Effects {
 
   private load${config.pascal}(): Observable<${config.pascal}Action> {
     return this.${config.camel}Service.get${config.pascal}s().pipe(
-      map((${config.camel}s: ${config.pascal}[]) => new LoadSuccessAction(${config.camel}s)),
+      map((${config.camel}s: any[]) => new LoadSuccessAction(${config.camel}s)),
       catchError(error => of(new LoadFailAction(error))));
   }
 }
@@ -162,13 +160,15 @@ import { take } from 'rxjs/operators';
 import {
   LoadSuccessAction,
   LoadFailAction
-} from './chord.store.actions';
+} from './${config.name}.store.actions';
 import { ${config.pascal}Effects } from './${config.name}.store.effects';
 
 describe('${config.pascal}Effects', function () {
   let effects: any;
-  let actions$: any = empty();
-  let ${config.camel}Service: any = { get: empty() };
+  const actions$: any = empty();
+  const ${config.camel}Service: any = {
+    get: () => empty()
+  };
 
   function init() {
     effects = new ${config.pascal}Effects(actions$, ${config.camel}Service);
@@ -228,7 +228,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { ${config.pascal}Effects } from './${config.name}.store.effects';
 import { ${config.camel}Reducer } from './${config.name}.store.reducers';
-import { ${config.pascal}StoreService } from './${config.name}.store.service';
 
 @NgModule({
   exports: [
@@ -252,23 +251,21 @@ function createReducer() {
 
 import { ${config.pascal}Action, ${config.pascal}ActionTypes } from './${config.name}.store.actions';
 
-export function ${config.camel}Reducer(state: ${config.pascal}StoreState = new ${config.pascal}StoreState(), action: ${config.pascal}Action) {
-  let newState: ${config.pascal}StoreState;
+export function ${config.camel}Reducer(state: ${config.pascal}StoreState = new ${config.pascal}StoreState(), action: ${config.pascal}Action): ${config.pascal}StoreState {
 
-  switch(action.type) {
-
-    case ${config.pascal}ActionTypes.LOAD_FAIL:
-      newState = new ${config.pascal}StoreState(Object.assign({}, state, {error: action.payload}));
-      return newState;
+  switch (action.type) {
 
     case ${config.pascal}ActionTypes.LOAD_SUCCESS:
-      newState = new ${config.pascal}StoreState(Object.assign({}, state, {${config.camel}s: action.payload, error: ''}));
-      return newState;
+      return loadSuccess(state, action.payload);
 
-    case ${config.pascal}ActionTypes.LOAD:
     default:
       return state;
   }
+}
+
+function loadSuccess(state: ${config.pascal}StoreState, payload: any) {
+  state.${config.camel}s = payload;
+  return new ${config.pascal}StoreState(state);
 }
 `;
 
@@ -278,30 +275,22 @@ export function ${config.camel}Reducer(state: ${config.pascal}StoreState = new $
 function createReducerSpec() {
   const text = `import { ${config.pascal}StoreState } from '../../models';
 
-import { LoadFailAction, LoadSuccessAction } from './${config.name}.store.actions';
+import { LoadSuccessAction } from './${config.name}.store.actions';
 import { ${config.camel}Reducer } from './${config.name}.store.reducers';
 
 describe('${config.camel}Reducer', function () {
   it('returns the given state by default', function () {
     const state = new ${config.pascal}StoreState();
     const expected: any = state;
-    const result: any = ${config.camel}Reducer(state, {type: 'test'} as any);
-    expect(result).toEqual(expected);
-  });
-
-  it('returns the state with the error added', function () {
-    const error = 'test error';
-    const state = new ${config.pascal}StoreState();
-    const expected: any = new ${config.pascal}StoreState({error});
-    const result: any = ${config.camel}Reducer(state, new LoadFailAction(error));
+    const result: any = ${config.camel}Reducer(state, <any>{type: 'default'});
     expect(result).toEqual(expected);
   });
 
   it('returns the state with the payload added', function () {
-    const ${config.camel}s = ['${config.camel}-1', '${config.camel}-2'];
+    const value = '${config.camel}';
     const state = new ${config.pascal}StoreState();
-    const expected: any = new ${config.pascal}StoreState({${config.camel}s});
-    const result: any = ${config.camel}Reducer(state, new LoadSuccessAction(${config.camel}s));
+    const expected: any = new ${config.pascal}StoreState({value});
+    const result: any = ${config.camel}Reducer(state, new LoadSuccessAction(value);
     expect(result).toEqual(expected);
   });
 });
@@ -317,7 +306,7 @@ import { ${config.pascal}StoreState } from '../../models';
 
 import { AppStoreService } from '../app/app.store.service';
 
-import { LoadAction, LoadFailAction, LoadSuccessAction } from './${config.name}.store.actions';
+import { LoadAction } from './${config.name}.store.actions';
 import { ${config.pascal}StoreModule } from './${config.name}.store.module';
 
 @Injectable({
@@ -333,7 +322,7 @@ export class ${config.pascal}StoreService extends AppStoreService {
     return this.store.select(this.${config.camel}sSelector);
   }
 
-  dispatchLoadAction() {
+  dispatchLoadAction(): void {
     this.dispatchAction(new LoadAction());
   }
 }
@@ -342,12 +331,12 @@ export class ${config.pascal}StoreService extends AppStoreService {
 }
 
 function createServiceSpec() {
-  const serviceSpec = `import { LoadAction, LoadFailAction, LoadSuccessAction } from './${config.name}.store.actions';
+  const serviceSpec = `import { LoadAction } from './${config.name}.store.actions';
 import { ${config.pascal}StoreService } from './${config.name}.store.service';
 
 describe('${config.pascal}StoreService', function () {
   let service: ${config.pascal}StoreService;
-  let store: any = {select: () => undefined};
+  const store: any = {select: () => undefined};
 
   function init() {
     service = new ${config.pascal}StoreService(store);

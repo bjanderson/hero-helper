@@ -1,48 +1,35 @@
+import { getArrayOfModels } from '@practicalwebdev/utils';
+
 import { Villain } from '../villain';
 
 import { VillainStoreState } from './villain-store-state.model';
 
-function testDefaults(obj: any) {
-  expect(obj.villains).toEqual([]);
-}
+describe('VillainStoreState', function () {
+  describe('constructor defaults', function () {
+    const defaults = {
+      villains: []
+    };
 
-describe('models', function () {
-  describe('VillainStoreState', function () {
-    describe('constructor defaults', function () {
-      it('should set the default values when no input object is given', function () {
-        const obj = new VillainStoreState();
-        testDefaults(obj);
-      });
-
-      it('should set the default values when an empty input object is given', function () {
-        const obj = new VillainStoreState({});
-        testDefaults(obj);
-      });
-
-      it('should set all fields as passed into the constructor object', function () {
-        const obj = {
-          villains: [{name: 'test villain'}]
-        };
-
-        const expected = {
-          villains: [new Villain(obj.villains[0])]
-        };
-
-        const test = new VillainStoreState(obj);
-
-        for (const field of Object.keys(obj)) {
-          expect(test[field]).toEqual(expected[field]);
-        }
-      });
+    it('should have the expected fields', function () {
+      expect(Object.keys(defaults)).toEqual(Object.keys(new VillainStoreState()));
     });
 
-    describe('fields', function () {
-      it('should have all of, and only, the expected fields', function () {
-        const test = new VillainStoreState();
-        expect(Object.keys(test)).toEqual([
-          'villains'
-        ]);
-      });
+    it('should set the default values when given no input object', function () {
+      expect(Object.values(defaults)).toEqual(Object.values(new VillainStoreState()));
+    });
+
+    it('should set the default values when given null', function () {
+      expect(Object.values(defaults)).toEqual(Object.values(new VillainStoreState(null)));
+    });
+  });
+
+  describe('constructor assignments', function () {
+    it('should set all values passed into the constructor', function () {
+      const test = {
+        villains: getArrayOfModels(Villain, [{id: 1}, {id: 2}])
+      };
+
+      expect(Object.values(test)).toEqual(Object.values(new VillainStoreState(test)));
     });
   });
 });

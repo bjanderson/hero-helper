@@ -10,7 +10,7 @@ export class RouteGoPayload {
 
   constructor(obj?: any) {
     obj = getObject(obj);
-    this.extras = obj != null && obj.extras != null ? obj.extras : null;
+    this.extras = getValueOrNull(obj.extras);
     this.path = getArray(obj.path);
     this.queryParams = getValueOrNull(obj.queryParams);
   }

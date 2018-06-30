@@ -1,35 +1,33 @@
 import { defaultString } from '@practicalwebdev/utils';
 
-import { Being } from './being.model';
+import { ErrorStoreState } from './error-store-state.model';
 
-describe('Being', function () {
+describe('ErrorStoreState', function () {
   describe('constructor defaults', function () {
     const defaults = {
-      id: defaultString,
-      name: defaultString
+      value: defaultString
     };
 
     it('should have the expected fields', function () {
-      expect(Object.keys(defaults)).toEqual(Object.keys(new Being()));
+      expect(Object.keys(defaults)).toEqual(Object.keys(new ErrorStoreState()));
     });
 
     it('should set the default values when given no input object', function () {
-      expect(Object.values(defaults)).toEqual(Object.values(new Being()));
+      expect(Object.values(defaults)).toEqual(Object.values(new ErrorStoreState()));
     });
 
     it('should set the default values when given null', function () {
-      expect(Object.values(defaults)).toEqual(Object.values(new Being(null)));
+      expect(Object.values(defaults)).toEqual(Object.values(new ErrorStoreState(null)));
     });
   });
 
   describe('constructor assignments', function () {
     it('should set all values passed into the constructor', function () {
       const test = {
-        id: 'test id',
-        name: 'test name'
+        value: 'test value'
       };
 
-      expect(Object.values(test)).toEqual(Object.values(new Being(test)));
+      expect(Object.values(test)).toEqual(Object.values(new ErrorStoreState(test)));
     });
   });
 });

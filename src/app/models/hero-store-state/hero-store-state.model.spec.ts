@@ -1,5 +1,4 @@
-import { defaultString, getArrayOfModels } from '@practicalwebdev/utils';
-import { hasExpectedFieldsAndValues } from '../../utils/test';
+import { getArrayOfModels } from '@practicalwebdev/utils';
 
 import { Hero } from '../hero';
 
@@ -11,28 +10,26 @@ describe('HeroStoreState', function () {
       heroes: []
     };
 
+    it('should have the expected fields', function () {
+      expect(Object.keys(defaults)).toEqual(Object.keys(new HeroStoreState()));
+    });
+
     it('should set the default values when given no input object', function () {
-      expect(new HeroStoreState()).toEqual(defaults);
-      // expect(hasExpectedFieldsAndValues(defaults, new HeroStoreState())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new HeroStoreState()));
     });
 
     it('should set the default values when given null', function () {
-      expect(new HeroStoreState(null)).toEqual(defaults);
-      // expect(hasExpectedFieldsAndValues(defaults, new HeroStoreState())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new HeroStoreState(null)));
     });
   });
 
   describe('constructor assignments', function () {
-    it('should set all fields as passed into the constructor object', function () {
-      const testInput = {
-        heroes: [{name: 'test hero 1'}, {name: 'test hero 2'}]
-      };
-
+    it('should set all values passed into the constructor', function () {
       const test = {
-        heroes: getArrayOfModels(Hero, testInput.heroes)
+        heroes: getArrayOfModels(Hero, [{id: 1}, {id: 2}])
       };
 
-      expect(new HeroStoreState(testInput)).toEqual(test);
+      expect(Object.values(test)).toEqual(Object.values(new HeroStoreState(test)));
     });
   });
 });

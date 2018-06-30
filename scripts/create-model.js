@@ -11,7 +11,7 @@ addToModelsIndex();
 console.log(`\n${config.pascal} model created successfully.\n`);
 
 function createModel() {
-  const text = `import { getObject, getString } from '../../utils';
+  const text = `import { getObject, getString } from '@practicalwebdev/utils';
 
 export class ${config.pascal} {
 
@@ -28,8 +28,7 @@ export class ${config.pascal} {
 }
 
 function createModelSpec() {
-  const text = `import { defaultString } from '../../utils';
-import { hasExpectedFieldsAndValues } from '../../utils/test';
+  const text = `import { defaultString } from '@practicalwebdev/utils';
 
 import { ${config.pascal} } from './${config.name}.model';
 
@@ -39,22 +38,26 @@ describe('${config.pascal}', function () {
       value: defaultString
     };
 
+    it('should have the expected fields', function () {
+      expect(Object.keys(defaults)).toEqual(Object.keys(new ${config.pascal}()));
+    });
+
     it('should set the default values when given no input object', function () {
-      expect(hasExpectedFieldsAndValues(defaults, new ${config.pascal}())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new ${config.pascal}()));
     });
 
     it('should set the default values when given null', function () {
-      expect(hasExpectedFieldsAndValues(defaults, new ${config.pascal}())).toEqual(true);
+      expect(Object.values(defaults)).toEqual(Object.values(new ${config.pascal}(null)));
     });
   });
 
   describe('constructor assignments', function () {
-    it('should set all fields as passed into the constructor object', function () {
+    it('should set all values passed into the constructor', function () {
       const test = {
         value: 'test value'
       };
 
-      expect(hasExpectedFieldsAndValues(test, new ${config.pascal}(test))).toEqual(true);
+      expect(Object.values(test)).toEqual(Object.values(new ${config.pascal}(test)));
     });
   });
 });
