@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { HeroStoreService } from '../../store';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'hh-heroes',
   styleUrls: ['./heroes.component.scss'],
   templateUrl: './heroes.component.html'

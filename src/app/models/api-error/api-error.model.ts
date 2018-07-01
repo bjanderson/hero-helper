@@ -1,11 +1,13 @@
+import { getNumber, getObject, getString } from '@practicalwebdev/utils';
+
 export class ApiError {
 
   errorMessage: string;
+  status: number;
 
   constructor(obj?: any) {
-    this.errorMessage = typeof obj === 'string' ? obj :
-      obj != null && obj.errorMessage != null ? obj.errorMessage :
-      obj != null && obj.message != null ? obj.message :
-      'An Error Occurred';
+    obj = getObject(obj);
+    this.errorMessage = getString(obj.errorMessage, 'An Error Occurred');
+    this.status = getNumber(obj.status);
   }
 }

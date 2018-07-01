@@ -15,12 +15,13 @@ createIndex();
 console.log(`\n${config.pascal} component created successfully.\n`)
 
 function createComponent() {
-  let text = `import { Component } from '@angular/core';
+  let text = `import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: '${config.name}',
-  styles: [require('./${config.name}.component.scss')],
-  template: require('./${config.name}.component.html'),
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'prefix-${config.name}',
+  styleUrls: ['./${config.name}.component.scss'],
+  templateUrl: './${config.name}.component.html'
 })
 export class ${config.pascal}Component {
   constructor() {}
@@ -75,7 +76,6 @@ describe('${config.pascal}Component', function () {
 function createModule() {
   let text = `import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { ${config.pascal}Component } from './${config.name}.component';
 
@@ -89,8 +89,7 @@ import { ${config.pascal}Component } from './${config.name}.component';
   ],
 
   imports: [
-    CommonModule,
-    FormsModule
+    CommonModule
   ]
 })
 export class ${config.pascal}Module {}
@@ -104,7 +103,12 @@ function createHtml() {
 }
 
 function createScss() {
-  let text = `.${config.name} {\n\n}\n`;
+  let text = `:host {
+  .${config.name} {
+
+  }
+}
+`;
   utils.writeToFile(config.path, `${config.name}.component.scss`, text);
 }
 
