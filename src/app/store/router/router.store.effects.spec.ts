@@ -46,7 +46,7 @@ describe('RouterEffects', function () {
 
     it('calls routerStoreService.dispatchRouteChangeAction()', function () {
       spyOn(routerStoreService, 'dispatchRouteChangeAction').and.returnValue(null);
-      effects.changeRoute({snapshot: {params: [], routeConfig: {path: 'test-url'}}} as any);
+      effects.changeRoute(<any>{snapshot: {params: [], routeConfig: {path: 'test-url'}}});
       expect(routerStoreService.dispatchRouteChangeAction).toHaveBeenCalled();
     });
   });
@@ -62,7 +62,7 @@ describe('RouterEffects', function () {
 
     it('calls console.info()', function () {
       spyOn(console, 'info').and.returnValue(null);
-      effects.logTransition({payload: {routerState: {url: 'test-url'}}} as any);
+      effects.logTransition(<any>{routerState: {url: 'test-url'}});
       expect(console.info).toHaveBeenCalled();
     });
   });
@@ -78,7 +78,7 @@ describe('RouterEffects', function () {
 
     it('calls router.navigate()', function () {
       spyOn(router, 'navigate').and.returnValue(null);
-      effects.navigate({payload: {path: '', queryParams: '', extras: []}} as any);
+      effects.navigate(<any>{path: '', queryParams: '', extras: []});
       expect(router.navigate).toHaveBeenCalled();
     });
   });

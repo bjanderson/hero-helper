@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION, RouterNavigationPayload, RouterNavigationAction } from '@ngrx/router-store';
-import { Observable } from 'rxjs';
-import { concatMap, filter, map, tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 
 import { PayloadAction, RouteGoPayload } from '../../models';
 
@@ -12,11 +11,8 @@ import { HeroStoreService } from '../hero';
 import { VillainStoreService } from '../villain';
 
 import {
-  BackAction,
-  ForwardAction,
   GoAction,
-  RouterActionTypes,
-  RouteChangeAction
+  RouterActionTypes
 } from './router.store.actions';
 import { RouterStoreService } from './router.store.service';
 
@@ -26,12 +22,14 @@ export class RouterEffects {
   @Effect({ dispatch: false })
   logTransition$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
-    map(this.logTransition.bind(this))
+    map((action: RouterNavigationAction) => action.payload),
+    tap(this.logTransition.bind(this))
   );
 
   @Effect({ dispatch: false })
   navigate$ = this.actions$.pipe(
     ofType(RouterActionTypes.GO),
+    map((action: GoAction) => action.payload),
     tap(this.navigate.bind(this))
   );
 
@@ -83,14 +81,14 @@ export class RouterEffects {
     });
   }
 
-  logTransition(action: any) {
-    console.info.call(console, 'navigated to ' + action.payload.routerState.url);
+  logTransition(payload: RouterNavigationPayload<any>) {
+    console.info.call(console, 'navigated to ' + payload.routerState.url);
   }
 
-  navigate(action: GoAction) {
-    this.router.navigate(action.payload.path, {
-      queryParams: action.payload.queryParams,
-      ...action.payload.extras
+  navigate(payload: RouteGoPayload) {
+    this.router.navigate(payload.path, {
+      queryParams: payload.queryParams,
+      ...payload.extras
     });
   }
 
