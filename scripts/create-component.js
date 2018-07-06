@@ -7,7 +7,9 @@ utils.createFolder(config.path);
 createComponent();
 createComponentSpec();
 // createComponentE2e();
-createModule();
+if (config.isModule) {
+  createModule();
+}
 createHtml();
 createScss();
 createIndex();
@@ -75,9 +77,24 @@ describe('${config.pascal}Component', function () {
 
 function createModule() {
   let text = `import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';`;
 
-import { ${config.pascal}Component } from './${config.name}.component';
+  if (config.hasRoute) {
+    text += '\nimport { RouterModule, Routes } from \'@angular/router\';';
+  }
+
+  text += `
+
+import { ${config.pascal}Component } from './${config.name}.component';`;
+
+if(config.hasRoute) {
+  text += `\n\nexport const routes: Routes = [{
+  path: '',
+  component: ${config.pascal}Component
+}];`;
+}
+
+text += `
 
 @NgModule({
   declarations: [
@@ -89,7 +106,14 @@ import { ${config.pascal}Component } from './${config.name}.component';
   ],
 
   imports: [
-    CommonModule
+    CommonModule`;
+
+    if(config.hasRoute) {
+      text += `,
+      RouterModule.forChild(routes)`;
+    }
+
+    text += `
   ]
 })
 export class ${config.pascal}Module {}
@@ -113,6 +137,11 @@ function createScss() {
 }
 
 function createIndex() {
-  let text = `export * from './${config.name}.module';\n`
+  let text = `export * from './${config.name}.component';\n`
+
+  if (config.isModule) {
+    text +=`export * from './${config.name}.module';\n`
+  }
+
   utils.writeToFile(config.path, `index.ts`, text);
 }

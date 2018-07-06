@@ -143,7 +143,7 @@ export class ${config.pascal}Effects {
   ) {}
 
   private load${config.pascal}(): Observable<${config.pascal}Action> {
-    return this.${config.camel}Service.get${config.pascal}s().pipe(
+    return this.${config.camel}Service.get().pipe(
       map((${config.camel}s: any[]) => new LoadSuccessAction(${config.camel}s)),
       catchError(error => of(new LoadFailAction(error))));
   }
@@ -264,7 +264,7 @@ export function ${config.camel}Reducer(state: ${config.pascal}StoreState = new $
 }
 
 function loadSuccess(state: ${config.pascal}StoreState, payload: any) {
-  state.${config.camel}s = payload;
+  state.value = payload;
   return new ${config.pascal}StoreState(state);
 }
 `;
