@@ -154,7 +154,7 @@ export class ${config.pascal}Effects {
 }
 
 function createEffectsSpec() {
-  const text = `import { empty, of, throwError } from 'rxjs';
+  const text = `import { EMPTY, of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import {
@@ -165,9 +165,9 @@ import { ${config.pascal}Effects } from './${config.name}.store.effects';
 
 describe('${config.pascal}Effects', function () {
   let effects: any;
-  const actions$: any = empty();
+  const actions$: any = EMPTY;
   const ${config.camel}Service: any = {
-    get: () => empty()
+    get: () => EMPTY
   };
 
   function init() {
@@ -194,7 +194,7 @@ describe('${config.pascal}Effects', function () {
     });
 
     it('calls ${config.camel}Service.get()', function() {
-      const spy = spyOn(${config.camel}Service, 'get').and.returnValue(empty());
+      const spy = spyOn(${config.camel}Service, 'get').and.callThrough();
       effects.load${config.pascal}();
       expect(spy).toHaveBeenCalled();
     });
@@ -228,6 +228,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { ${config.pascal}Effects } from './${config.name}.store.effects';
 import { ${config.camel}Reducer } from './${config.name}.store.reducers';
+import { ${config.camel}StoreService } from './${config.name}.store.service';
 
 @NgModule({
   exports: [
@@ -238,6 +239,10 @@ import { ${config.camel}Reducer } from './${config.name}.store.reducers';
   imports: [
     StoreModule.forFeature('${config.camel}s', ${config.camel}Reducer),
     EffectsModule.forFeature([${config.pascal}Effects])
+  ],
+
+  providers: [
+    ${config.camel}StoreService
   ]
 })
 export class ${config.pascal}StoreModule {}
@@ -290,7 +295,7 @@ describe('${config.camel}Reducer', function () {
     const value = '${config.camel}';
     const state = new ${config.pascal}StoreState();
     const expected: any = new ${config.pascal}StoreState({value});
-    const result: any = ${config.camel}Reducer(state, new LoadSuccessAction(value);
+    const result: any = ${config.camel}Reducer(state, new LoadSuccessAction(value));
     expect(result).toEqual(expected);
   });
 });
@@ -307,11 +312,8 @@ import { ${config.pascal}StoreState } from '../../models';
 import { AppStoreService } from '../app/app.store.service';
 
 import { LoadAction } from './${config.name}.store.actions';
-import { ${config.pascal}StoreModule } from './${config.name}.store.module';
 
-@Injectable({
-  providedIn: ${config.pascal}StoreModule
-})
+@Injectable()
 export class ${config.pascal}StoreService extends AppStoreService {
   ${config.camel}s = createFeatureSelector<${config.pascal}StoreState>('${config.camel}s');
   ${config.camel}sSelector = createSelector(this.${config.camel}s, this.getProperty('${config.camel}s'));

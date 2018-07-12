@@ -110,7 +110,7 @@ text += `
 
     if(config.hasRoute) {
       text += `,
-      RouterModule.forChild(routes)`;
+    RouterModule.forChild(routes)`;
     }
 
     text += `

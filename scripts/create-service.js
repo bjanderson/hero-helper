@@ -36,11 +36,14 @@ export class ${config.pascal}Service {
 }
 
 function createServiceSpec() {
-  const text = `import { ${config.pascal}Service } from './${config.name}.service';
+  const text = `import { EMPTY } from 'rxjs';
+import { ${config.pascal}Service } from './${config.name}.service';
 
 describe('${config.pascal}Service', function () {
   let service: ${config.pascal}Service;
-  let api: any = { get: () => undefined };
+  const api: any = {
+    get: () => EMPTY
+  };
 
   function init() {
     service = new ${config.pascal}Service(api);
@@ -66,7 +69,7 @@ describe('${config.pascal}Service', function () {
     });
 
     it('calls api.get()', function () {
-      spyOn(api, 'get').and.returnValue(null);
+      spyOn(api, 'get').and.callThrough();
       service.get();
       expect(api.get).toHaveBeenCalled();
     });
