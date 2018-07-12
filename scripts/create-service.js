@@ -8,7 +8,7 @@ utils.createFolder(config.path);
 createService();
 createServiceSpec();
 createIndex();
-addToServicesIndex();
+// addToServicesIndex();
 
 console.log(`\n${config.pascal} service created successfully.\n`);
 
