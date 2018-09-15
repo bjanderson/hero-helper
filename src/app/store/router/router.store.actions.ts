@@ -1,4 +1,4 @@
-import { PayloadAction, RouteChangePayload, RouteGoPayload } from '../../models';
+import { PayloadAction, Route } from '@practicalwebdev/utils';
 
 export const RouterActionTypes = {
   BACK: '[Router] Back',
@@ -16,11 +16,11 @@ export class ForwardAction extends PayloadAction {
 }
 
 export class GoAction extends PayloadAction {
-  constructor(payload: RouteGoPayload) { super(RouterActionTypes.GO, payload); }
+  constructor(payload: Route) { super(RouterActionTypes.GO, payload); }
 }
 
 export class RouteChangeAction extends PayloadAction {
-  constructor(payload: RouteChangePayload) { super(RouterActionTypes.ROUTE_CHANGE, payload); }
+  constructor(payload: Route) { super(RouterActionTypes.ROUTE_CHANGE, payload); }
 }
 
 export type RouteAction =

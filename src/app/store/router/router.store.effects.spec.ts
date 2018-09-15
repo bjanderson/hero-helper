@@ -51,7 +51,7 @@ describe('RouterEffects', function () {
     });
   });
 
-  describe('logTransition(action: any)', function () {
+  /* describe('logTransition(action: any)', function () {
     beforeEach(() => {
       init();
     });
@@ -65,7 +65,7 @@ describe('RouterEffects', function () {
       effects.logTransition(<any>{routerState: {url: 'test-url'}});
       expect(console.info).toHaveBeenCalled();
     });
-  });
+  }); */
 
   describe('navigate(action: GoAction)', function () {
     beforeEach(() => {

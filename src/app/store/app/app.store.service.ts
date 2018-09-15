@@ -1,6 +1,6 @@
 import { Action, Store } from '@ngrx/store';
 
-export abstract class AppStoreService {
+export abstract class StoreService {
   store: Store<any>;
 
   dispatchAction(action: Action) {

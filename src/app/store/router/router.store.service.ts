@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 
-import { RouteChangePayload, RouteGoPayload } from '../../models';
-
-import { AppState, AppStoreService } from '../app';
+import { AppState, Route, StoreService } from '@practicalwebdev/utils';
 
 import {
   BackAction,
@@ -14,7 +12,7 @@ import {
 } from './router.store.actions';
 
 @Injectable()
-export class RouterStoreService extends AppStoreService {
+export class RouterStoreService extends StoreService {
   routerReducerState = createFeatureSelector<RouterReducerState>('router');
   routerPathSelector = createSelector(this.routerReducerState, this.getProperty('url'));
 
@@ -32,11 +30,11 @@ export class RouterStoreService extends AppStoreService {
     this.dispatchAction(new ForwardAction());
   }
 
-  dispatchGoAction(payload: RouteGoPayload) {
+  dispatchGoAction(payload: Route) {
     this.dispatchAction(new GoAction(payload));
   }
 
-  dispatchRouteChangeAction(payload: RouteChangePayload) {
+  dispatchRouteChangeAction(payload: Route) {
     this.dispatchAction(new RouteChangeAction(payload));
   }
 }

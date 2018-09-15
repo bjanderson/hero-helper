@@ -5,7 +5,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION, RouterNavigationPayload, RouterNavigationAction } from '@ngrx/router-store';
 import { filter, map, tap } from 'rxjs/operators';
 
-import { PayloadAction, RouteGoPayload } from '../../models';
+import { PayloadAction, Route } from '@practicalwebdev/utils';
 
 import { HeroStoreService } from '../hero';
 import { VillainStoreService } from '../villain';
@@ -75,19 +75,19 @@ export class RouterEffects {
   }
 
   changeRoute(event: ActivationEnd) {
-    this.routerStoreService.dispatchRouteChangeAction({
+    this.routerStoreService.dispatchRouteChangeAction(new Route({
       params: { ...event.snapshot.params },
       path: event.snapshot.routeConfig.path
-    });
+    }));
   }
 
   logTransition(payload: RouterNavigationPayload<any>) {
-    console.info.call(console, 'navigated to ' + payload.routerState.url);
+    // console.log(console, 'navigated to ' + payload.routerState.url);
   }
 
-  navigate(payload: RouteGoPayload) {
+  navigate(payload: Route) {
     this.router.navigate(payload.path, {
-      queryParams: payload.queryParams,
+      queryParams: payload.params,
       ...payload.extras
     });
   }

@@ -2,8 +2,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule as NgrxStoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@practicalwebdev/utils';
 
 import { environment } from '../environments/environment';
 
@@ -25,8 +26,9 @@ import { CustomErrorHandler } from './custom-error-handler';
     BrowserModule,
     HttpClientModule,
 
+    StoreModule,
     ...storeModules,
-    StoreModule.forRoot({} as any, {initialState: {}, metaReducers}),
+    NgrxStoreModule.forRoot({} as any, {initialState: {}, metaReducers}),
 
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),

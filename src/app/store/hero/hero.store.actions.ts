@@ -1,4 +1,4 @@
-import { PayloadAction } from '../../models';
+import { PayloadAction } from '@practicalwebdev/utils';
 
 export const HeroActionTypes = {
   LOAD: '[Hero] Load',

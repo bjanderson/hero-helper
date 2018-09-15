@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "body-parser": "1.18.3",
-    "esm": "3.0.55",
+    "esm": "3.0.82",
     "express": "4.16.3",
     "lowdb": "1.0.0",
-    "morgan": "1.9.0",
-    "nodemon": "1.17.5",
-    "uuid": "3.2.1"
+    "morgan": "1.9.1",
+    "nodemon": "1.18.4",
+    "uuid": "3.3.2"
   }
 }

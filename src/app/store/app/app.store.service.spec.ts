@@ -1,11 +1,11 @@
-import { AppStoreService } from './app.store.service';
+import { StoreService } from './app.store.service';
 
-class TestStoreService extends AppStoreService {
+class TestStoreService extends StoreService {
   constructor(public store: any) { super(); }
 }
 
 describe('AppStoreService', function () {
-  let service: AppStoreService;
+  let service: StoreService;
   const store: any = { dispatch: () => undefined };
 
   function init() {

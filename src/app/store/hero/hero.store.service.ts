@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
+import { StoreService } from '@practicalwebdev/utils';
 
 import { HeroStoreState } from '../../models';
-
-import { AppStoreService } from '../app/app.store.service';
 
 import { LoadAction, LoadFailAction, LoadSuccessAction } from './hero.store.actions';
 
 @Injectable()
-export class HeroStoreService extends AppStoreService {
+export class HeroStoreService extends StoreService {
   heroStoreState = createFeatureSelector<HeroStoreState>('heroes');
   heroesSelector = createSelector(this.heroStoreState, this.getProperty('heroes'));
 

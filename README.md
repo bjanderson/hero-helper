@@ -76,12 +76,4 @@ I use [Linux Mint](https://linuxmint.com/) as my operating system.
 
 I use [Visual Studio Code](https://code.visualstudio.com/) as my editor.
 
-I recommend the following VSCode plugins (I am not affiliated with any of them):
-
-* [EditorConfig for VS Code](https://github.com/editorconfig/editorconfig-vscode)
-* [TSLint](https://github.com/Microsoft/vscode-tslint)
-* [Jest](https://github.com/jest-community/vscode-jest)
-* [Git History](https://github.com/DonJayamanne/gitHistoryVSCode)
-* [Settings Sync](https://github.com/shanalikhan/code-settings-sync)
-
-I do design with [Inkscape](https://inkscape.org/en/)
+I do design with [Inkscape](https://inkscape.org/en/) and [yEd](https://www.yworks.com/products/yed)
