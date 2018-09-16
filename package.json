@@ -37,7 +37,7 @@
     "@angular/compiler-cli": "6.1.7",
     "@angular/language-service": "6.1.7",
     "@ngrx/store-devtools": "6.1.0",
-    "@practicalwebdev/schematics": "1.1.1",
+    "@practicalwebdev/schematics": "2.0.0",
     "@types/jasmine": "2.8.8",
     "@types/jasminewd2": "2.0.3",
     "@types/jest": "23.3.2",

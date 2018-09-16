@@ -4,7 +4,6 @@ import { StoreService } from '@practicalwebdev/utils';
 
 import { VillainStoreState } from '../../models';
 
-
 import { LoadAction, LoadFailAction, LoadSuccessAction } from './villain.store.actions';
 
 @Injectable()

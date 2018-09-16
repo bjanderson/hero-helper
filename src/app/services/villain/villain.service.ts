@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { getArrayOfModels } from '@practicalwebdev/utils';
+import { getArrayOfModels, ApiService } from '@practicalwebdev/utils';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Villain } from '../../models';
-
-import { ApiService } from '../api';
 
 @Injectable({
   providedIn: 'root'
