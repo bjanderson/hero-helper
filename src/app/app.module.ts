@@ -1,20 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule as NgrxStoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@practicalwebdev/utils';
+import { ApiService, DevtoolsRouterStateSerializer, metaReducers, StoreModule } from '@practicalwebdev/utils';
 
 import { environment } from '../environments/environment';
 
 import { AppHeaderNavModule } from './components/app-header-nav';
 
 import { storeModules } from './store';
-import { metaReducers } from './store/app';
 
 import { AppComponent } from './app.component';
-import { CustomSerializer } from './app-devtools-utils';
 import { AppRoutingModule } from './app-routing.module';
 import { CustomErrorHandler } from './custom-error-handler';
 
@@ -29,8 +28,8 @@ import { CustomErrorHandler } from './custom-error-handler';
     StoreModule,
     ...storeModules,
     NgrxStoreModule.forRoot({} as any, {initialState: {}, metaReducers}),
-
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
+    EffectsModule.forRoot([]),
     environment.production ? [] : StoreDevtoolsModule.instrument({maxAge: 50}),
 
     AppHeaderNavModule,
@@ -39,7 +38,8 @@ import { CustomErrorHandler } from './custom-error-handler';
 
   providers: [
     { provide: ErrorHandler, useClass: CustomErrorHandler },
-    { provide: RouterStateSerializer, useClass: CustomSerializer }
+    { provide: RouterStateSerializer, useClass: DevtoolsRouterStateSerializer },
+    { provide: ApiService, useClass: ApiService, deps: [ HttpClientModule ]}
   ]
 })
 export class AppModule { }
