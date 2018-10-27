@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
@@ -39,7 +39,7 @@ import { CustomErrorHandler } from './custom-error-handler';
   providers: [
     { provide: ErrorHandler, useClass: CustomErrorHandler },
     { provide: RouterStateSerializer, useClass: DevtoolsRouterStateSerializer },
-    { provide: ApiService, useClass: ApiService, deps: [ HttpClientModule ]}
+    { provide: ApiService, useClass: ApiService, deps: [ HttpClient ]}
   ]
 })
 export class AppModule { }
