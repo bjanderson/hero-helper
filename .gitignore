@@ -1,0 +1,22 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# package-lock.json is good when working on a team,
+# but this ain't that kind of project
+package-lock.json
+
+test-report.xml
+server/src/data/*.json
+*.log
+
+/coverage
+/dist
+/node_modules
+/out-tsc
+/tmp
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
