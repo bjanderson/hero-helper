@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "data": "node -r esm src/data-builder/main.js",
+    "datagen": "node -r esm src/data-builder/main.js",
     "start": "nodemon -r esm --watch src --ignore src/data src/index.js"
   },
   "dependencies": {

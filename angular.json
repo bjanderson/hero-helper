@@ -103,7 +103,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "port": 4201,
+            "port": 4299,
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "hero-helper:serve"
           },
