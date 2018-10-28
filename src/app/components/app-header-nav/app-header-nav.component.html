@@ -1,0 +1,37 @@
+<div class="app-header-nav">
+  <span class="logo">
+
+    <img src="/assets/img/usa-shield-28x32.png" alt="logo">
+    Hero Helper
+  </span>
+
+  <span class="main-nav">
+    <a class="main-nav-item"
+      [routerLink]="['/home']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Home
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/heroes']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Heroes
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/villains']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Villains
+    </a>
+
+    <a class="main-nav-item"
+      [routerLink]="['/admin']"
+      [routerLinkActive]="['active-link']"
+      [routerLinkActiveOptions]="{exact: true}">
+      Admin
+    </a>
+  </span>
+</div>
