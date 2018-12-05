@@ -1,6 +1,7 @@
-import { empty } from 'rxjs';
+import { empty, of } from 'rxjs';
 
 import { RouterEffects } from './router.store.effects';
+import { RouterActionTypes } from './router.store.actions';
 
 describe('RouterEffects', function () {
   let effects: RouterEffects;
@@ -122,6 +123,26 @@ describe('RouterEffects', function () {
 
     it('has a function named ofRoute', function () {
       expect(typeof effects.ofRoute).toEqual('function');
+    });
+
+    it('returns the action if the route matches the payload path', function (done) {
+      const action = {type: RouterActionTypes.ROUTE_CHANGE, payload: {path: 'test'}};
+      of(action)
+        .pipe(effects.ofRoute('test'))
+        .subscribe(result => {
+          expect(result).toEqual(action);
+          done();
+        });
+    });
+
+    it('returns the action if the payload path is in the route array', function (done) {
+      const action = {type: RouterActionTypes.ROUTE_CHANGE, payload: {path: 'test'}};
+      of(action)
+        .pipe(effects.ofRoute(['test']))
+        .subscribe(result => {
+          expect(result).toEqual(action);
+          done();
+        });
     });
   });
 

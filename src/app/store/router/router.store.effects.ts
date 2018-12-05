@@ -113,7 +113,7 @@ export class RouterEffects {
         }
       }
 
-      return isRouteAction;
+      return false;
     });
   }
 

@@ -15,7 +15,6 @@ export function heroReducer(state: HeroStoreState = new HeroStoreState(), action
       newState = new HeroStoreState(Object.assign({}, state, {heroes: action.payload, error: ''}));
       return newState;
 
-    case HeroActionTypes.LOAD:
     default:
       return state;
   }
