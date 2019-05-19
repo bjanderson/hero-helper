@@ -1,19 +1,16 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ApiService, DevtoolsRouterStateSerializer, metaReducers, StoreModule } from '@lernato/common-angular';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule as NgrxStoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ApiService, DevtoolsRouterStateSerializer, metaReducers, StoreModule } from '@practicalwebdev/utils';
-
 import { environment } from '../environments/environment';
-
-import { AppHeaderNavModule } from './components/app-header-nav';
-
-import { storeModules } from './store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppHeaderNavModule } from './components/app-header-nav';
+import { storeModules } from './store';
 
 @NgModule({
   bootstrap: [ AppComponent ],

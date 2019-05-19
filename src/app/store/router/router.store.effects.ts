@@ -1,20 +1,17 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
+import { PayloadAction, Route } from '@lernato/common-angular';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ROUTER_NAVIGATION, RouterNavigationPayload, RouterNavigationAction } from '@ngrx/router-store';
+import { RouterNavigationAction, RouterNavigationPayload, ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { filter, map, tap } from 'rxjs/operators';
-
-import { PayloadAction, Route } from '@practicalwebdev/utils';
-
 import { HeroStoreService } from '../hero';
 import { VillainStoreService } from '../villain';
-
-import {
-  GoAction,
-  RouterActionTypes
-} from './router.store.actions';
+import { GoAction, RouterActionTypes } from './router.store.actions';
 import { RouterStoreService } from './router.store.service';
+
+
+
 
 @Injectable()
 export class RouterEffects {

@@ -1,6 +1,6 @@
-import { defaultString } from '@practicalwebdev/utils';
-
+import { defaultString } from '@lernato/common';
 import { LoadingStoreState } from './loading-store-state.model';
+
 
 describe('LoadingStoreState', function () {
   describe('constructor defaults', function () {

@@ -1,6 +1,6 @@
-import { defaultString } from '@practicalwebdev/utils';
-
+import { defaultString } from '@lernato/common';
 import { Hero } from './hero.model';
+
 
 describe('Hero', function () {
   describe('constructor defaults', function () {

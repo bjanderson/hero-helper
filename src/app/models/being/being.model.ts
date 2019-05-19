@@ -1,4 +1,4 @@
-import { getObject, getString } from '@practicalwebdev/utils';
+import { getObject, getString } from '@lernato/common';
 
 export class Being {
 

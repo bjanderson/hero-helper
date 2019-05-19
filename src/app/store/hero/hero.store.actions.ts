@@ -1,4 +1,4 @@
-import { PayloadAction } from '@practicalwebdev/utils';
+import { PayloadAction } from '@lernato/common-angular';
 
 export const HeroActionTypes = {
   LOAD: '[Hero] Load',

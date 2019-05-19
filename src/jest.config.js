@@ -9,7 +9,6 @@ module.exports = {
   coverageDirectory: 'coverage',
 
   coverageReporters: [
-    "json",
     "lcov",
     "text-summary"
   ],
@@ -30,8 +29,5 @@ module.exports = {
 
   testMatch: [
     "<rootDir>/src/app/**/*.spec.ts"
-  ],
-
-  testResultsProcessor: 'jest-sonar-reporter',
-
+  ]
 };

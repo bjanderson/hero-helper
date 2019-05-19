@@ -1,8 +1,8 @@
-import { getArrayOfModels } from '@practicalwebdev/utils';
-
+import { getArrayOfModels } from '@lernato/common';
 import { Hero } from '../hero';
-
 import { HeroStoreState } from './hero-store-state.model';
+
+
 
 describe('HeroStoreState', function () {
   describe('constructor defaults', function () {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { getArrayOfModels, ApiService } from '@practicalwebdev/utils';
+import { getArrayOfModels } from '@lernato/common';
+import { ApiService } from '@lernato/common-angular';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
 import { Villain } from '../../models';
 
 @Injectable({

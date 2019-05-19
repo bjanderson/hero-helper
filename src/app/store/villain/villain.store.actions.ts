@@ -1,4 +1,4 @@
-import { PayloadAction } from '@practicalwebdev/utils';
+import { PayloadAction } from '@lernato/common-angular';
 
 export const VillainActionTypes = {
   LOAD: '[Villain] Load',

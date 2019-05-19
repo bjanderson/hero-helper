@@ -1,4 +1,4 @@
-import { PayloadAction, Route } from '@practicalwebdev/utils';
+import { PayloadAction, Route } from '@lernato/common-angular';
 
 export const RouterActionTypes = {
   BACK: '[Router] Back',

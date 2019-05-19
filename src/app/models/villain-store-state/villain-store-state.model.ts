@@ -1,6 +1,6 @@
-import { getArrayOfModels, getObject } from '@practicalwebdev/utils';
-
+import { getArrayOfModels, getObject } from '@lernato/common';
 import { Villain } from '../villain';
+
 
 export class VillainStoreState {
 

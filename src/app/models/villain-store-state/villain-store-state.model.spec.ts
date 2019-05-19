@@ -1,8 +1,8 @@
-import { getArrayOfModels } from '@practicalwebdev/utils';
-
+import { getArrayOfModels } from '@lernato/common';
 import { Villain } from '../villain';
-
 import { VillainStoreState } from './villain-store-state.model';
+
+
 
 describe('VillainStoreState', function () {
   describe('constructor defaults', function () {

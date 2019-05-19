@@ -1,6 +1,6 @@
-import { defaultString } from '@practicalwebdev/utils';
-
+import { defaultString } from '@lernato/common';
 import { ErrorStoreState } from './error-store-state.model';
+
 
 describe('ErrorStoreState', function () {
   describe('constructor defaults', function () {

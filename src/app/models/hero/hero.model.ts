@@ -1,6 +1,6 @@
-import { getObject } from '@practicalwebdev/utils';
-
+import { getObject } from '@lernato/common';
 import { Being } from '../being';
+
 
 export class Hero extends Being {
 

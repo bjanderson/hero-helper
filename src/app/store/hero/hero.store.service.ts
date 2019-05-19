@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
+import { StoreService } from '@lernato/common-angular';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
-import { StoreService } from '@practicalwebdev/utils';
-
 import { HeroStoreState } from '../../models';
-
 import { LoadAction, LoadFailAction, LoadSuccessAction } from './hero.store.actions';
+
+
 
 @Injectable()
 export class HeroStoreService extends StoreService {
   heroStoreState = createFeatureSelector<HeroStoreState>('heroes');
-  heroesSelector = createSelector(this.heroStoreState, this.getProperty('heroes'));
+  heroesSelector = createSelector(this.heroStoreState, state => state.heroes);
 
   constructor(public store: Store<HeroStoreState>) { super(); }
 
