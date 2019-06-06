@@ -1,9 +1,3 @@
-import {
-  BackAction,
-  ForwardAction,
-  GoAction,
-  RouteChangeAction
-} from './router.store.actions';
 import { RouterStoreService } from './router.store.service';
 
 describe('RouterStoreService', function () {

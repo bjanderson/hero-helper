@@ -10,9 +10,6 @@ import { VillainStoreService } from '../villain';
 import { GoAction, RouterActionTypes } from './router.store.actions';
 import { RouterStoreService } from './router.store.service';
 
-
-
-
 @Injectable()
 export class RouterEffects {
 

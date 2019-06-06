@@ -1,12 +1,11 @@
-import { empty, of } from 'rxjs';
-
-import { RouterEffects } from './router.store.effects';
+import { EMPTY, of } from 'rxjs';
 import { RouterActionTypes } from './router.store.actions';
+import { RouterEffects } from './router.store.effects';
 
 describe('RouterEffects', function () {
   let effects: RouterEffects;
-  const actions: any = empty();
-  const router: any = { events: empty(), navigate: () => undefined };
+  const actions: any = EMPTY;
+  const router: any = { events: EMPTY, navigate: () => undefined };
   const location: any = {back: () => undefined, forward: () => undefined};
   const routerStoreService: any = {dispatchRouteChangeAction: () => undefined};
   const heroStoreService: any = {dispatchLoadAction: () => undefined};

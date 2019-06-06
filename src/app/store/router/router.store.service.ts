@@ -4,8 +4,6 @@ import { RouterReducerState } from '@ngrx/router-store';
 import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { BackAction, ForwardAction, GoAction, RouteChangeAction } from './router.store.actions';
 
-
-
 @Injectable()
 export class RouterStoreService extends StoreService {
   routerReducerState = createFeatureSelector<RouterReducerState>('router');
